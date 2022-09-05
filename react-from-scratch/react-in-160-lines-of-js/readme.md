@@ -1,12 +1,12 @@
----\
-Objective
+---
+# Objective
 
 write React from scratch
 
 
 
----\
-Roadmap
+---
+# Roadmap
 
 
 1. Elements
@@ -15,20 +15,20 @@ Roadmap
 4. Components
 
 
----\
-A. Elements
+---
+# A. Elements
 
 how JSX -> virtual DOM?
 
 
-A-1. process of generating VDOM
+## A-1. process of generating VDOM
 
 JAX -> API -> VDOM
 `<div .../>` -> f(div: ...) -> {type:div ...}
 
 
 
-A-2. par1. JAX
+## A-2. par1. JAX
 
 ```JAX
 /** @jsx createElement */
@@ -41,7 +41,7 @@ const list = <ul className="some-list">
 JAX = javascript + html
 
 
-A-3. part2. transcompile using API
+## A-3. part2. transcompile using API
 
 ```javascript
 const list = createElement('ul', {className: 'some-list'},
@@ -50,7 +50,7 @@ const list = createElement('ul', {className: 'some-list'},
 );
 ```
 
-A-4. part3. desired function that returns Virtual DOM
+## A-4. part3. desired function that returns Virtual DOM
 
 
 ```javascript
@@ -66,6 +66,7 @@ const prettyVDOM = (vdom) => JSON.stringify(vdom, null, 4);
 ```
 
 
+## A-5. Example
 
 
 Example #1: Simple text
@@ -136,15 +137,15 @@ output (VDOM)
 
 
 
----\
-B. Rendering
+---
+# B. Rendering
 
 how virtual DOM -> DOM?
 
 traverse tree algorithm. on each node, VDOM -> DOM
 
 
-B-1. render()
+## B-1. render()
 
 js에서 어떻게 render()가 콜 되냐면, 
 ```javascript
@@ -286,8 +287,8 @@ const setAttribute = (dom, key, value) => {
 
 
 
----\
-C. Patching
+---
+# C. Patching
 
 how virtual DOM tree patch existing DOM tree using key?
 
@@ -404,13 +405,141 @@ key가 다른 애는(one -> three)는 바꾼다는거지?
 
 
 
+---
+# D. Components
 
----\
-D. Components
+## D-1. what is React Component?
 
-- what is React Component?
-    - creation
-    - lifecycle
-    - rendering procedure
+props -> Component -> VDOM -> DOM
 
+Component is javascript function with "props" and "state"
+
+what are "props" and "state"?
+
+## D-2. props 
+
+props(property) is read-only object that cannot be modified. 
+
+example
+
+```javascript
+function Add(props) {
+  return (
+    <div>
+      {props.n1} + {props.n2} = {props.n1 + props.n2}
+    </div>
+  )
+}
+
+<Add n1={2} n2={3} />
+
+```
+
+## D-3. state
+
+state is data that change over time. 
+
+```javascript
+function AddWithInput(props) {
+  const [n2, setN2] = React.useState(0)
+  
+  function handleInputChange(event) {
+    const input = event.target
+    const newN2 = Number(input.value)
+    setN2(newN2)
+  }
+  
+  return (
+    <div>
+      {props.n1} +{' '}
+      <input type="number" value={n2} onChange={handleInputChange} /> ={' '}
+      {props.n1 + n2}
+    </div>
+  )
+}
+
+```
+
+useState tracks data value over lifetime of the component. 
+
+## D-4. Component 
+
+```javascript
+class Component {
+    constructor(props) { //takes props as parameter 
+        this.props = props || {}; //stores read-only props 
+        this.state = null; //stores changing state 
+    }
+
+    static render(vdom, parent=null) {
+        const props = Object.assign({}, vdom.props, {children: vdom.children});
+        if (Component.isPrototypeOf(vdom.type)) {
+            const instance = new (vdom.type)(props);
+            instance.componentWillMount(); //react lifecycle - before render
+            instance.base = render(instance.render(), parent);
+            instance.base.__gooactInstance = instance;
+            instance.base.__gooactKey = vdom.props.key;
+            instance.componentDidMount(); //react lifecycle- after render 
+            return instance.base;
+        } else {
+            return render(vdom.type(props), parent);
+        }
+    }
+
+    static patch(dom, vdom, parent=dom.parentNode) {
+        const props = Object.assign({}, vdom.props, {children: vdom.children});
+        if (dom.__gooactInstance && dom.__gooactInstance.constructor == vdom.type) {
+            dom.__gooactInstance.componentWillReceiveProps(props); //react lifecycle method 
+            dom.__gooactInstance.props = props;
+            return patch(dom, dom.__gooactInstance.render(), parent);
+        } else if (Component.isPrototypeOf(vdom.type)) { //VDOM이 extends Component한 리엑트 컴포넌트면 
+            const ndom = Component.render(vdom, parent); //새로운 DOM에 render() 이후, 
+            return parent ? (parent.replaceChild(ndom, dom) && ndom) : (ndom); //기존 DOM과 갈아끼운다 
+        } else if (!Component.isPrototypeOf(vdom.type)) { //VDOM이 리엑트 컴포넌트가 아니면, 
+            return patch(dom, vdom.type(props), parent); //patch() 
+        }
+    }
+
+    setState(next) {
+        const compat = (a) => typeof this.state == 'object' && typeof a == 'object';
+        if (this.base && this.shouldComponentUpdate(this.props, next)) {
+            const prevState = this.state;
+            this.componentWillUpdate(this.props, next); //fire all lifecycle method 
+            this.state = compat(next) ? Object.assign({}, this.state, next) : next; //setState 이후, 
+            patch(this.base, this.render()); //re-render() 
+            this.componentDidUpdate(this.props, prevState); //fire all lifecycle method 
+        } else {
+            this.state = compat(next) ? Object.assign({}, this.state, next) : next;
+        }
+    }
+
+    shouldComponentUpdate(nextProps, nextState) { //when props or state is different, return true  
+        return nextProps != this.props || nextState != this.state;
+    }
+
+    componentWillReceiveProps(nextProps) { //react lifecycle method to be overrided 
+        return undefined;
+    }
+
+    componentWillUEdate(nextProps, nextState) { //react lifecycle method to be overrided 
+        return undefined;
+    }
+
+    componentDidUpdate(prevProps, prevState) { //react lifecycle method to be overrided
+        return undefined;
+    }
+
+    componentWillMount() { //react lifecycle method to be overrided 
+        return undefined;
+    }
+
+    componentDidMount() { //react lifecycle method to be overrided 
+        return undefined;
+    }
+
+    componentWillUnmount() { //react lifecycle method to be overrided 
+        return undefined;
+    }
+};
+```
 
