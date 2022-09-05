@@ -16,5 +16,5 @@ How?
 ---\
 Commit Message Protocol
 
-javascript-concept: ${details}
+javascript-concept: ${details}\
 react-scratch: ${details}
