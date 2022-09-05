@@ -1,4 +1,4 @@
-import { render, Component } from './gooact';
+import Gooact, { render, Component } from './gooact';
 
 class Title extends Component {
     componentDidMount() {

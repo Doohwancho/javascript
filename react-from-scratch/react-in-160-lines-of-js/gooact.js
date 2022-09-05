@@ -136,7 +136,7 @@ class Component {
         return undefined;
     }
 
-    componentWillUEdate(nextProps, nextState) { //react lifecycle method to be overrided 
+    componentWillUpdate(nextProps, nextState) { //react lifecycle method to be overrided 
         return undefined;
     }
 
