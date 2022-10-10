@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #absolute {
+            background: yellow;
+            position: absolute; /* #absolute의 부모중 position:static이 없어서, 최상단인 body태그 기준으로 움직임. */
+            right: 0;
+        }
+
+        #parent {
+            position: relative; /* child의 부모가 static이 아니기 때문에, child는 parent기준으로 움직임. */
+            width: 100px;
+            height: 100px;
+            background: skyblue;
+        }
+
+        #child {
+            position: absolute;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- position: absolute -->
+    <!-- absolute는 부모중 position:static 속성을 가지고 있지 않은 부모 기준으로 움직임.-->
+    <!-- absolute가 되면 div여도 더는 width:100%가 아니게 됨 -->
+    <div>
+        <div id="absolute">absolute</div>
+      </div>
+      <div id="parent">
+        <div id="child">children</div>
+      </div>
+</body>
+</html>

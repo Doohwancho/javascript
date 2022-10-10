@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- scss to css converter : https://www.sassmeister.com/ -->
+    <style>
+        body {
+            height: calc(100vh - 100px);
+            background: #f2f2f2;
+        }
+
+        h3 {
+            text-align: center;
+            font-family: Courier;
+            font-weight: 550;
+        }
+
+        .burger {
+            position: static;
+            
+            display: flex; /* flexbox container 생성 */
+            height: 100%;
+            margin: auto; /* height가 100%니까, 좌우의 margin만 최대로 설정. 100vw - 200px*/
+            align-items: center; 
+
+            flex-direction: column; /* flexbox container에서 위에서 아래로 열로 정렬 */
+            width: 200px;
+        }
+
+        .burger .bun {
+            position:static;
+            height: 80px;
+            width: 180px;
+            border-radius: 100px 100px 20px 20px; /* 좌상, 우상, 좌하, 우하. 숫자가 커질수록 둥굴게, 0일수록 사각형.*/ 
+            background: #f4a864;
+        }
+
+        .sesame-seed {
+            position: relative; /* 부모인 bun top기준으로 위치가 정해짐 */
+            background: #ffe3ca;
+            height: 8px;
+            width: 20px;
+            border-radius: 100%;
+        }
+
+        .sesame-seed.one {
+            transform: rotate(-10deg);
+            top: 10px;
+            left: 30%;
+        }
+
+        .sesame-seed.two {
+            transform: rotate(8deg);
+            left: 45%;
+            top: 20px;
+        }
+
+        .sesame-seed.three {
+            transform: rotate(4deg);
+            left: 60%;
+            top: 10px;
+        }
+
+        .burger .bun.bottom {
+            border-radius: 20px 20px 100px 100px;
+        }
+
+        .burger .cosmic-fill {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background-image: url('./fill-01_vgkaj7.svg');
+            background-repeat: round; 
+            /* initial 인 경우, 하나씩 추가되는게 아니라, 서서히 보여지네? repeat이고 height:100%이니까. */
+            /* round
+                가용 영역이 늘어나면 반복 이미지도 늘어나 여백을 남기지 않습니다. 
+                이미지를 하나 더 추가할 공간이 생기면 (남은 공간 >= 이미지 너비의 절반) 
+                비로소 반복 횟수를 하나 추가합니다. 
+                이 때, 원래 존재하던 이미지는 모두 줄어들어 새로운 이미지를 위한 공간을 확보합니다. 
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Drag & Resize the window to watch the Burger Grow 😋 </h3>
+    <div class="burger">
+        <div class="bun top">
+            <div class="sesame-seed one"></div>
+            <div class="sesame-seed two"></div>
+            <div class="sesame-seed three"></div>
+        </div>
+        <div class="cosmic-fill"></div>
+        <div class="bun bottom"></div>
+    </div>
+</body>
+
+</html>

@@ -26,4 +26,6 @@ Todos
 
 a-1. forkify.js :white_check_mark:\
 a-2. Snakegame.js :white_check_mark:\
-a-3. Budget-App.js :white_check_mark:
+a-3. Budget-App.js :white_check_mark:\
+a-4. portfolio-webiste :white_check_mark:\
+a-5. syntax :white_check_mark:

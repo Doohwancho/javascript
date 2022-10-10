@@ -1,0 +1,64 @@
+<html style="padding: 0; margin: 0">
+<head>
+<title>시맨틱 예시</title>
+</head>
+
+<!--
+    공간
+
+    1. block
+        block: <div>처럼 한줄 전체 차지
+    2. inline
+        inline: 높이 너비 못정함. 상하 padding과 margin줄 수 없음.  ex) span        
+    3. inline-block
+        inline-block: block은 한줄 전체를 차지하는데, 부분만 차지하게 하고싶다면? display:inline-block, width:30%, height:70%
+-->
+
+<!--
+    Semantic tags
+
+    header - 최상단 제목
+    footer - 저작권 정보나 사이트 제공자 정보 넣는 부분. copyright
+    main - 한페이지당 무조건 하나있어야 함. 다른페이지와 겹치면 안됨. 메인내용이 들어가는 틀. 전체 한줄을 가져가는게 아니기 때문에 display: inline-block
+    nav - 왼쪽에 navbar. row 전체 한줄을 가져가는게 아니기 때문에 display: inline-block
+
+    section - 구획
+    article - article은 그 자체로 완전해야 함.
+    aside - main과 관련있지만 직접적으로 연관성이 없는 부분을 분리하는 태그. ex) 이전글, 다음글
+-->
+
+<body style="padding: 0; margin: 0">
+  <header style="background: red">ZeroCho Blog</header>
+  <nav style="width: 20%; display: inline-block; background: yellow; vertical-align: top; height: 90%">
+    <ul>
+      <li>Home</li><li>프로필</li><li>HTML&CSS</li>
+    </ul>
+  </nav>
+  <main style="width: 79%; display: inline-block; background: skyblue; height: 90%">
+    
+    <section>
+      <h1>공지사항</h1>
+      <div><b>ZeroCho</b> <em>바보</em></div>
+    </section>
+
+    <section>
+
+      <article>
+        <h2>HTML 강좌</h2>
+
+        <p>HTML 참 쉽죠?</p>
+        <p>CSS는 어려워요</p>
+        <p>자바스크립트는 더 어려워요</p>
+      </article>
+
+      <aside>
+        <ul>
+          <li>이전글</li><li>다음글</li>
+        </ul>
+      </aside>
+
+    </section>
+  </main>
+  <footer style="background:green">Copyright ZeroCho</footer>
+<body>
+</html>

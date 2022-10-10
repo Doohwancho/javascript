@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        span, div {
+            background: yellow;
+            border: 1px solid red;
+        }
+
+        .top {
+            position: relative;
+            top: 5px;
+            z-index: 1;
+        }
+
+        .right {
+            position: relative;
+            right: 5px;
+        }
+
+        .bottom {
+            position: relative;
+            bottom: 5px;
+        }
+
+        .left {
+            position: relative;
+            left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- position: relative -->
+    <!-- position relative to its normal position -->
+    <span class="top">top</span>
+    <span class="right">right</span>
+    <span class="bottom">bottom</span>
+    <div class="left">left</div>
+</body>
+</html>

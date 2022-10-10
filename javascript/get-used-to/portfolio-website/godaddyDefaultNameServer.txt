@@ -1,0 +1,4 @@
+
+네임서버	IP 주소
+ns19.domaincontrol.com	
+ns20.domaincontrol.com

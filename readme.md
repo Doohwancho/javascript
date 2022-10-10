@@ -8,10 +8,12 @@ modularize concepts of frontend mainly in javascript
 ---\
 Fields
 
-A. Javascript\
-B. Typescript\
-C. React\
-D. Nodejs
+A. Html\
+B. Css\
+C. Javascript\
+D. Typescript\
+E. React\
+F. Nodejs
 
 
 ---\
