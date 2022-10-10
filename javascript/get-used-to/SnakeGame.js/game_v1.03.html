@@ -1,0 +1,330 @@
+<!--
+
+    
+    v1.01 변경사항
+
+    1. 점수판 추가
+    2. 시작버튼 추가
+    3. snake가 벽에 닿았을 경우, 자동으로 방향전환 기능 추가
+
+
+    v1.02 변경사항
+
+    4. snake가 벽에 닿았을 때, 벽쪽으로 방향키를 눌렀을 경우, 초기화 되는 문제 해결
+    5. 객체지향적 코드로 수정
+    6. game over 추가
+    7. game over시 점수 초기화 추가
+
+    
+    v1.03 변경사항
+    8. 시작하자마자 방향키를 누르지 않으면 무한 game over뜨는 에러 해결
+    9. 가는 방향과 반대방향을 눌렀을 경우, snake 초기화 되는 문제 해결
+    10. 사과가 snake 꼬리에 생성되는 문제 해결
+    11. 한 방향으로 가다가, 벽에 부딫여서 자동으로 방향이 전환된 경우, 반대방향을 잘못 인식하던 문제 해결
+    12. 시작 버튼 활성화
+
+    <보완해야 할 사항>
+    
+    a. snake의 머리부터 2번째 앞에 있는 칸의 사과를 미리 먹는 에러
+    b. 가는 방향의 옆방향과 뒤의 방향을 아주 빠르게 누르면 game over되는 현상 
+    c. 게임 bgm 추가
+    d. 사과 먹을때 visual effect 추가
+    e. 사과 먹을때 sound effect 추가
+    f. game over bgm추가
+    g. 시작버튼+점수판과 게임판 와꾸맞추기
+    h. 시작버튼 누르기 전, 보드가 로드되지 않는 에러.
+
+
+
+-->
+
+<head>
+    <style type="text/css">
+        #menuTable {
+            border-collapse: collapse;
+            display: inline-block;
+            width: 340px;
+        }
+
+        #menuTable td {
+            width: 170px;
+        }
+
+        #menuTable td button {
+            font-weight: bold;
+            height: 30px;
+            border: 1px solid blue;
+            width: 70px;
+            background: #5AAFFF;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<canvas id="gc" width="400" height="400"></canvas>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script>
+    
+    px = py = 5;
+    gs = tc = 20;
+    ax = ay = 15;
+    xv = 1;
+    yv = 0;
+    lastKey = 37;
+    trail = [];
+    tail = 2;
+
+    var score = 0;
+    var gameInterval;
+    
+
+    $(document).on('click', '#startBtn', function(){
+                end();
+                start();
+            });
+
+    function start(){
+        canv = document.getElementById("gc");
+        ctx = canv.getContext("2d");
+        document.addEventListener("keydown", keyPush);
+        gameInterval = setInterval(game, 1000/11);
+    }
+
+    function end() {
+        clearInterval(gameInterval);
+    }
+
+    function move(){
+        px += xv;
+        py += yv;
+        if (px < 0) {
+            if(py == 0){
+                px = 0;
+                py += 1;
+                xv = 0;
+                yv = 1;
+                lastKey = 38;
+            } 
+            else if(py == tc-1){
+                px = 0;
+                py -= 1;
+                xv = 0;
+                yv = -1;
+                lastKey = 40;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    px = 0;
+                    py += 1;
+                    xv = 0;
+                    yv = 1;
+                    lastKey = 38;
+                }
+                else{
+                    px = 0;
+                    py -= 1;
+                    xv = 0;
+                    yv = -1;
+                    lastKey = 40;
+                }
+            }
+        }
+        else if (px > tc - 1) {
+            if(py == 0){
+                px = tc - 1;
+                py += 1;
+                xv = 0;
+                yv = 1;
+                lastKey = 38;
+            } 
+            else if(py == tc-1){
+                px = tc - 1;
+                py -= 1;
+                xv = 0;
+                yv = -1;
+                lastKey = 40;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    px = tc - 1;
+                    py += 1;
+                    xv = 0;
+                    yv = 1;
+                    lastKey = 38;
+                }
+                else{
+                    px = tc - 1;
+                    py -= 1;
+                    xv = 0;
+                    yv = -1;
+                    lastKey = 40;
+                }
+            }
+        }
+        else if (py < 0) {
+            if(px == 0){
+                py = 0;
+                px += 1;
+                xv = 1;
+                yv = 0;
+                lastKey = 37;
+            } 
+            else if(px == tc-1){
+                py = 0;
+                px -= 1;
+                xv = -1;
+                yv = 0;
+                lastKey = 39;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    py = 0;
+                    px += 1;
+                    xv = 1;
+                    yv = 0;
+                    lastKey = 37;
+                }
+                else{
+                    py = 0;
+                    px -= 1;
+                    xv = -1;
+                    yv = 0;
+                    lastKey = 39;
+                }
+            }
+        }
+        else if (py > tc - 1) {
+            if(px == 0){
+                py = tc - 1;
+                px += 1;
+                xv = 1;
+                yv = 0;
+                lastKey = 37;
+            } 
+            else if(px == tc-1){
+                py = tc - 1;
+                px -= 1;
+                xv = -1;
+                yv = 0;
+                lastKey = 39;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    py = tc - 1;
+                    px += 1;
+                    xv = 1;
+                    yv = 0;
+                    lastKey = 37;
+                }
+                else{
+                    py = tc - 1;
+                    px -= 1;
+                    xv = -1;
+                    yv = 0;
+                    lastKey = 39;
+                }
+            }
+        }
+    }
+
+    function drawBoard(){
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canv.width, canv.height);
+    }
+
+    function drawSnake(){
+        ctx.fillStyle = "lime";
+        for (var i = 0; i < trail.length; i++) {
+            ctx.fillRect(trail[i].x * gs, trail[i].y * gs, gs - 2, gs - 2);
+            if (trail[i].x == px && trail[i].y == py) {
+                gameOver();
+            }
+        }
+        trail.push({ x: px, y: py });
+        while (trail.length > tail) {
+            trail.shift();
+        }
+    }
+
+    function eatApple(){
+        if (ax == px && ay == py) {
+            tail++;
+            score++;
+            $('#score').text(score); //jquery코드. <span>안에 id='score에 var score값을 넣으라는 것.'
+            
+            appleCreated = true;
+            while(appleCreated){
+                ax = Math.floor(Math.random() * tc);
+                ay = Math.floor(Math.random() * tc);
+                for (var i = 0; i < trail.length; i++) {
+                    if (trail[i].x == ax && trail[i].y == ay) {
+                        break;
+                    }
+                    if(i == trail.length-1) appleCreated = false;
+                }
+            }
+            }
+        ctx.fillStyle = "red";
+        ctx.fillRect(ax * gs, ay * gs, gs - 2, gs - 2);
+    }
+
+    function gameOver(){
+        alert("Game Over!");
+        score = 0;
+        $('#score').text(score);
+        tail = 2;
+    }
+    
+    function keyPush(evt) {
+        if(evt.keyCode != lastKey){ //가고있는 방향과 반대방향으로 설정
+            switch (evt.keyCode) {
+                case 37:
+                    xv = -1; yv = 0;
+                    lastKey = 39;
+                    break;
+                case 38:
+                    xv = 0; yv = -1;
+                    lastKey = 40;
+                    break;
+                case 39:
+                    xv = 1; yv = 0;
+                    lastKey = 37;
+                    break;
+                case 40:
+                    xv = 0; yv = 1;
+                    lastKey = 38;
+                    break;
+            }
+        }
+    }
+    
+    function game() {
+        drawBoard();
+        drawSnake();
+        move();
+        eatApple();
+    }
+
+    function init(){
+        drawBoard();
+        drawSnake();
+        eatApple();
+    }
+
+</script>
+
+<!-- 모든 코드 indent 정렬은 ctrl+k+f-->
+<html>
+<table id='menuTable'>
+    <tr>
+        <td class='alignLeft'>
+            <button id='startBtn'>시작</button>
+        </td>
+        <td class='alignRight'>
+            <span>점수 : <span id='score'>0</span></span>
+        </td>
+    </tr>
+</table>
+
+</html>

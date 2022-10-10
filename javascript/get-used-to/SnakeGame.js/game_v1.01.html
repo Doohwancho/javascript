@@ -1,0 +1,215 @@
+<!--
+    v1.01
+    
+    <변경사항>
+
+    1. 점수판 추가
+    2. 시작버튼 추가
+    3. snake가 벽에 닿았을 경우, 자동으로 방향전환 기능 추가
+
+    <보완사항>
+
+    1. snake가 벽에 충돌시 쌓아둔 snake가 없어지고 길이 2의 snake로 다시 시작함
+    2. game over추가
+    3. game over시 점수 초기화 추가
+    4. 시작 버튼 눌렀을 경우 시작 추가 
+
+-->
+
+<head>
+    <style type="text/css">
+        #menuTable {
+            border-collapse: collapse;
+            display: inline-block;
+            width: 340px;
+        }
+
+        #menuTable td {
+            width: 170px;
+        }
+
+        #menuTable td button {
+            font-weight: bold;
+            height: 30px;
+            border: 1px solid blue;
+            width: 70px;
+            background: #5AAFFF;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<canvas id="gc" width="400" height="400"></canvas>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script>
+    window.onload = function () {
+        canv = document.getElementById("gc");
+        ctx = canv.getContext("2d");
+        document.addEventListener("keydown", keyPush);
+        setInterval(game, 1000 / 11); //1000 / 15
+    }
+    px = py = 10;
+    gs = tc = 20;
+    ax = ay = 15;
+    xv = yv = 0;
+    trail = [];
+    tail = 2;
+    var score = 0;
+
+    function game() {
+        px += xv;
+        py += yv;
+        if (px < 0) {
+            if(py == 0){
+                px = 0;
+                xv = 0;
+                yv = 1;
+            } 
+            else if(py == tc-1){
+                px = 0;
+                xv = 0;
+                yv = -1;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    px = 0;
+                    xv = 0;
+                    yv = 1;
+                }
+                else{
+                    px = 0;
+                    xv = 0;
+                    yv = -1;
+                }
+            }
+        }
+        if (px > tc - 1) {
+            if(py == 0){
+                px = tc - 1;
+                xv = 0;
+                yv = 1;
+            } 
+            else if(py == tc-1){
+                px = tc - 1;
+                xv = 0;
+                yv = -1;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    px = tc - 1;
+                    xv = 0;
+                    yv = 1;
+                }
+                else{
+                    px = tc - 1;
+                    xv = 0;
+                    yv = -1;
+                }
+            }
+        }
+        if (py < 0) {
+            if(px == 0){
+                py = 0;
+                xv = 1;
+                yv = 0;
+            } 
+            else if(px == tc-1){
+                py = 0;
+                xv = -1;
+                yv = 0;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    py = 0;
+                    xv = 1;
+                    yv = 0;
+                }
+                else{
+                    py = 0;
+                    xv = -1;
+                    yv = 0;
+                }
+            }
+        }
+        if (py > tc - 1) {
+            if(px == 0){
+                py = tc - 1;
+                xv = 1;
+                yv = 0;
+            } 
+            else if(px == tc-1){
+                py = tc - 1;
+                xv = -1;
+                yv = 0;
+            }
+            else{
+                if(Math.random()>=0.5){
+                    py = tc - 1;
+                    xv = 1;
+                    yv = 0;
+                }
+                else{
+                    py = tc - 1;
+                    xv = -1;
+                    yv = 0;
+                }
+            }
+        }
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canv.width, canv.height);
+
+        ctx.fillStyle = "lime";
+        for (var i = 0; i < trail.length; i++) {
+            ctx.fillRect(trail[i].x * gs, trail[i].y * gs, gs - 2, gs - 2);
+            if (trail[i].x == px && trail[i].y == py) {
+                tail = 2;
+            }
+        }
+        trail.push({ x: px, y: py });
+        while (trail.length > tail) {
+            trail.shift();
+        }
+
+        if (ax == px && ay == py) {
+            tail++;
+            score++;
+            $('#score').text(score); //jquery코드. <span>안에 id='score에 var score값을 넣으라는 것.'
+            ax = Math.floor(Math.random() * tc);
+            ay = Math.floor(Math.random() * tc);
+        }
+        ctx.fillStyle = "red";
+        ctx.fillRect(ax * gs, ay * gs, gs - 2, gs - 2);
+    }
+    function keyPush(evt) {
+        switch (evt.keyCode) {
+            case 37:
+                xv = -1; yv = 0;
+                break;
+            case 38:
+                xv = 0; yv = -1;
+                break;
+            case 39:
+                xv = 1; yv = 0;
+                break;
+            case 40:
+                xv = 0; yv = 1;
+                break;
+        }
+    }
+</script>
+
+<!-- 모든 코드 indent 정렬은 ctrl+k+f-->
+<html>
+<table id='menuTable'>
+    <tr>
+        <td class='alignLeft'>
+            <button id='startBtn'>시작</button>
+        </td>
+        <td class='alignRight'>
+            <span>점수 : <span id='score'>0</span></span>
+        </td>
+    </tr>
+</table>
+
+</html>

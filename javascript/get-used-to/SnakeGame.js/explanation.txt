@@ -1,0 +1,233 @@
+<body>
+<canvas id="gc" width="400" height="400"></canvas>
+<!-- 
+    < Point1 - width & height >
+
+    tile size(tc)가 20이니깐, 20x20인데, gs(grid size) 20x20에서 한칸의 격자 사이즈도 20이니깐, 가로세로 400짜리 판 생성
+    만약, 만약 400x400보다 작은 수를 입력한다고 해도, 이미 snake game은 돌아가는데, 그중에서 일부분만 보여짐.
+    쉽게, 이미지 파일의 가로세로 값 입력한다고 생각하면 편함.
+
+
+    밑에 snake game이 이정도 크기에서 돌아간다고 가정한다면,
+    ┌───┐
+    │   │
+    └───┘ 
+
+    canvas크기를 작게하면 보여지는 부분만 축소되지 snake game은 그대로 돌아감.
+
+    ┌─┬─┐    
+    │─┘ │
+    └───┘
+    큰 사각형은 snake game이 구동되는 부분이고, 안에 작은 사각형은 작게 보여지는 canvas의 범위임. 
+
+    반대로 canvas를 600x600으로 크게 설정하면, 600x600안에 400x400 내에서 snake game이 구동되고,
+
+    나머지 빈 공간은 그냥 검정색으로 남게됨.
+
+
+    < Point2 - id = "gc" >
+
+    canvas의 id를 임의의 문자열 "gc"라고 정해둠. 
+
+    "gc"가 아닌 다른 문자열 아무거나로 설정해 두어도 무관.
+
+    id tag를 설정하는 이유는, 밑에 <script> tag안에서 window.onload()로 canvas를 불러올 계획인데,
+
+    canvas를 불러올 때, 특정한 이름으로 불러오기 위해 임의의 이름을 부여한 것.
+
+    canvas를 불러올 땐, documnet.getElementById(); 로 불러옴. 말 그대로, 
+
+    get element(= 원소를 불러온다) ById(= 해당 원소의 이름으로) 라는 뜻.
+-->
+
+<script>
+window.onload = function() {
+    /*
+    < Point3 - window.onload >
+    사용법 : window.onload = function(){ 시작시 실행될 내용 }
+
+    window.onload 함수는 웹페이지 로딩이 끝나는 시점에서 실행되는 함수.
+
+    문서의 모든 컨텐츠(images, script, css, etc)가 로드된 후 발생하는 이벤트.
+
+    단점이 몇가지 존재.
+
+    단점1. 페이지 안의 이미지나 외부파일이 로드 될때까지 기다린 후에 사용하기 때문에, 
+
+    엔드유저 입장에서 불필요한 로딩시간이 길어짐.
+
+    단점2. 동일페이지에서 onload함수는 하나만 존재하여야 함. 따라서, 만약 외부 라이브러리에서
+
+    onload가 이미 선언되어있다면, 이를 찾거나 하나로 합치는건 엄청 어려운 일.
+
+    단점3. body onload=""와 window.onload가 동시에 선언되어 있는경우, body onload=""만 작동하고,
+
+    onload 작동하지 않음.
+
+    jquery에서는 이러한 onload의 단점을 보완하기 위해 ready()함수 제공.
+
+
+
+
+    window.onload를 알기전에 먼저 <body onload="">도 있음.
+    
+    onload란 cs환경 개발 시, 프로그램 기동할 때 뭔가 작동하게 하고싶을 때 쓰는 것.
+    
+    따옴표 안에 javascript 작성하면 됨.
+
+    예를들면, <body onload = "hello world!">
+
+    아니면,
+
+    <script language = "javascript">
+    function init(){
+        alert("hello world!");
+    }
+    </script>
+
+    <body onload="init()">
+    
+    이렇게 한 후, 해당 함수(init(){};)를 호출하는 것.
+
+    아니면, 객체지향식으로 helloworld.js 이라는 javascript파일에
+
+    function init(){
+        alert("hello world!");
+    }
+
+    를 만들어 주고, html 페이지에 추가할 땐
+
+    <script src="helloworld.js"></script>
+    <body onload="init();">
+    
+    을 해주면, 페이지 로딩시 helloworld.js 파일에 있는 init()함수를 실행함. 
+
+    그런데, 함수명을 바꾼다거나, 함수호출시 매개변수의 갯수가 변한다거나 하면,
+
+    모든 페이지의 onload를 바꾸어 주어야 하기 때문에,
+
+    onload코드를 자바스크립트 안에 밀어 넣을 수 있음. 
+
+    그것이 바로 window.onload
+
+    helloworld.js파일안 코드를 밑에 방식으로 짜면 됨.
+
+    function init(){
+        alert("hello world!");
+    }
+    window.onload = function(){
+        init();
+        alert("additional functions");
+    }
+
+    혹은 onloadFunc(){}써도 됨.
+
+    function init(){}
+
+    function onloadFunc(){
+        init();
+        alert("additional codes");
+    }
+    window.onload = onloadFunc;
+
+    
+    여하튼, 위의 이유로 window.onload를 쓰는 것.
+
+    <script>
+    window.onload = function(){
+        함수1();
+        함수2();
+    }
+    </script>
+
+    **참고
+    <body onload="">가 실행되면, window.onload는 실행이 안됨.
+
+    따라서, 동시에 실행하려면 window::onload(){시작시 실행할 함수} 써야 함.
+
+    실행순서는 <body onload="">가 먼저 실행되고, 다음에 window::onload()가 실행됨. 
+
+    출처 : https://m.blog.naver.com/PostView.nhn?blogId=pstormage&logNo=130122572720&proxyReferer=https%3A%2F%2Fwww.google.com%2F
+    출처 : http://chongmoa.com/javascript/5726
+    출처 : http://jinolog.com/programming/javascript/2011/03/21/jquery-ready-function.html
+    */
+    canv=document.getElementById('gc');
+    ctx=canv.getContext("2d");
+    /*
+    맨 위에 만든 캔버스(canvas)는 400x400으로 만들었지만, 안은 비어있음. 이 캔버스의 속성을 2d로 설정해 주는게 .getContext();
+    */
+
+    document.addEventListener("keydown",keyPush); // addEventListener의 장점은 하나의 이벤트 대상에 복수의 동일 이벤트 타입 리스너를 등록할 수 있다는 점이다. 
+                                                  // keyPush라는 함수를 만들어서, 방향키를 입력했을 때, 어떠한 동작을 하게끔 설정.
+    setInterval(game,1000/15); //1000밀리 세컨드는 1초를 의미. 1초를 15번 나눈 짧은 순간마다 game함수를 다시 갱신시키겠다는 뜻.
+}
+px=py=5;  //player x,y(=좌표))
+gs=tc=20; //grid size && tile count -> 20x20 보드판 생성
+ax=ay=15; //apple x, apple y
+xv=yv=0;  //x-velocity, y-velocity. 아래에 keypush()함수에서 키보드 방향키로 인해 방향을 바꿀 수 있음.
+trail=[]; //snake의 현재 위치를 {x,y}로 담는 리스트
+tail=5;   //snake 길이의 갯수(꼬리+몸통 도합)
+
+function game(){
+    px+=xv; //keyPush()함수에서 좌우상하로 움직일때마다 x-velocity, y-velocity가 바뀌어서 px에 더해지게 됨/
+    py+=yv;
+
+    //아래 if문들은, px,py가 보드 안에 있는지 확인하고, 보드 밖으로 벗어났다면, 반대편 보드에서 튀어나오게 하라는 함수.
+    if(px<0){
+        px=tc-1;
+    }
+    if(px>tc-1){
+        px=0;
+    }
+    if(py<0){
+        py=tc-1;
+    }
+    if(py>tc-1){
+        py=0;
+    }
+    ctx.fillStyle="black"; //먼저 검정색 배경으로 400x400을 덮음
+    ctx.fillRect(0,0,canv.width,canv.height);
+
+    ctx.fillStyle="lime";   //snake 색은 라임(=초록)색
+    for(var i = 0; i < trail.length; i++){ //sna
+        ctx.fillRect(trail[i].x*gs, trail[i].y*gs, gs-2, gs-2); //fillRect(x, y, width, height); -> 색칠된 직사각형을 그리는 것
+                                                                //gs-2를 해주는 이유는, 칸마다 구분지어 주기 위함. 그냥 gs, gs넣으면 라임색 snake가 붙어져있는 것으로 나타남.
+        if(trail[i].x == px && trail[i].y == py){     //꼬리에 부딛치면, 처음인 꼬리 5개로 설정
+            tail = 5;
+        }
+    }
+    trail.push({x:px,y:py}); //1000ms/15마다 한칸씩 움직이고, 움직일때마다 해당 사각형의 위치를 {x,y}로 trail이라는 이름에 리스트에 넣어줌.
+
+    while(trail.length>tail){
+        trail.shift();         //shift함수는 배열에 첫번째 아이템을 제거하는 것.
+                               //꼬리까지의 {x,y}함수를 가지고 있으면, 위에 for문에서 라임색으로 trail에있는 x,y좌표를 받아 라임색으로 그리는 것. 
+    }
+
+    if(ax == px && ay == py){  //사과(=먹이)를 먹었으면, 
+        tail++;  //꼬리를 하나 증가시키고
+        ax=Math.floor(Math.random()*tc); //사과의 x좌표를 랜덤하게 설정
+        ay=Math.floor(Math.random()*tc); //사과의 y좌표를 랜덤하게 설정
+    }
+
+    ctx.fillStyle="red"; //사과(=먹이)의 색은 빨간색
+    ctx.fillRect(ax*gs,ay*gs,gs-2,gs-2); //fillRect(x, y, width, height);
+}
+
+function keyPush(evt){
+    switch(evt.keyCode){ //키보드의 화살표 4가지 경우의 수를 switch문을 통해 표현
+        case 37: //키보드 왼쪽 화살표는 컴퓨터 언어로 37 
+            xv=-1;yv=0; //고로 왼쪽으로 한칸 이동이니까 x-1
+            break;
+        case 38: //키보드 위쪽 화살표는 컴퓨터 언어로 38
+            xv=0;yv=-1; //고로 위로 한칸이니까 y-1
+            break;
+        case 39: //키보드 오른쪽 화살표는 컴퓨터 언어로 39
+            xv=1;yv=0; //고로 오른쪽으로 한칸이니까 x+1
+            break;            
+        case 40: //키보드 아래 화살표는 컴퓨터 언어로 40
+            xv=0;yv=1; //고로 아래로 한칸이니까 y+1
+            break;           
+        }
+}
+</script>
+</body>

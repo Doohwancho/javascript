@@ -1,0 +1,24 @@
+{
+  "name": "snakegame",
+  "version": "1.0.0",
+  "description": "snake game",
+  "main": "index.js",
+  "homepage": "https://Doohwancho.github.io/SnakeGame.js",
+  "dependencies": {
+    "gh-pages": "^2.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "gh-pages -d dist2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Doohwancho/SnakeGame.js.git"
+  },
+  "author": "Doohwancho",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Doohwancho/SnakeGame.js/issues"
+  }
+}

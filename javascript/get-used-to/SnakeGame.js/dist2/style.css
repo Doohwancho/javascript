@@ -1,0 +1,46 @@
+#menuTable {
+    border-collapse: collapse;
+    display: inline-block;
+    width: 400px;
+}
+
+#menuTable td {
+    width: 200px;
+}
+
+#menuTable td button {
+    font-weight: bold;
+    height: 30px;
+    border: 1px solid blue;
+    width: 70px;
+    background: #5AAFFF;
+    color: white;
+    cursor: pointer;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    /* background: #00343A; */
+    background: -webkit-gradient(linear, 0% 0%, 0%, 100%, from(rgba(13, 52, 58, 1)),
+            to(#000000));
+    overflow: hidden;
+}
+
+.drop {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)),
+            to(rgba(255, 255, 255, 0.6)));
+    width: 1px;
+    height: 89px;
+    position: absolute;
+    -webkit-animation: fall .63s linear infinite;
+}
+
+@-webkit-keyframes fall {
+    to {
+        margin-top: 900px;
+    }
+}
