@@ -1,0 +1,35 @@
+html {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    background: #00343A; 
+    background: -webkit-gradient(linear, 0% 0%, 0%, 100%, from(rgba(13, 52, 58, 1)),
+            to(#000000));
+    overflow: hidden;
+}
+
+.drop {
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)),
+            to(rgba(255, 255, 255, 0.6)));
+    width: 1px;
+    height: 89px;
+    position: absolute;
+    -webkit-animation: fall .63s linear infinite;
+}
+
+@-webkit-keyframes fall {
+    to {
+        margin-top: 900px;
+    }
+}
+
+/* 
+접두어
+
+-webkit-: 구글, 사파리  브라우저에 적용
+-moz-: 파이어폭스, 브라우저에 적용
+-ms-: 익스플로어에 적용, 보통 생략함.
+-o-: 오페라 브라우저에 적용
+*/

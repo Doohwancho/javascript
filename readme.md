@@ -13,7 +13,8 @@ B. Css\
 C. Javascript\
 D. Typescript\
 E. React\
-F. Nodejs
+F. Nodejs\
+G. UIUX
 
 
 ---\

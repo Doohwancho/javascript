@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainy</title>
+
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            background: #00343A; 
+            /* background: -webkit-gradient(linear, 0% 0%, 0%, 100%, from(rgba(13, 52, 58, 1)),
+                    to(#000000)); */
+            overflow: hidden;
+        }
+
+        .drop {
+            background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)),
+                    to(rgba(255, 255, 255, 0.6)));
+            width: 1px;
+            height: 86px; /* how to change this? */
+            position: absolute; 
+            animation: fall .63s linear infinite; 
+
+            /* position: relative; */
+            /* animation: diagnal .63s linear infinite;   */
+        }
+
+        @keyframes fall {
+            from{
+                margin-left: 0%;
+            } 
+            to {
+                margin-left:10%;
+                margin-top: 100%;
+            }
+        }
+
+        @keyframes diagnal {
+            0%       { transform: translatex(0px) translatey(0%) }
+            /* 50%      { transform: translatex(50%) translatey(50%) } */
+            100%     { transform: translatex(100px) translatey(100px) }
+        }
+
+        /* 
+        접두어
+
+        -webkit-: 구글, 사파리  브라우저에 적용
+        -moz-: 파이어폭스, 브라우저에 적용
+        -ms-: 익스플로어에 적용, 보통 생략함.
+        -o-: 오페라 브라우저에 적용
+        */
+
+    </style>
+</head>
+<body>
+    <section class="rain"></section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+    <script>
+        var nbDrop = getRandomInt(10, 500); 
+
+        function getRandomInt(min, max) { 
+            return Math.floor(Math.random() * (max - min + 1)) + min; 
+        }
+
+        function createRain(){
+            
+            for(i = 1; i < nbDrop; i++){
+                var dropLeft = getRandomInt(0, 1600); 
+                var dropTop = getRandomInt(-1000, 1400); 
+                
+                $('.rain').append('<div class="drop" id="drop' + i + '"></div>');
+                $('#drop'+i).css('left', dropLeft);
+                $('#drop'+i).css('top', dropTop);
+            }
+        }
+
+        createRain();
+
+    </script>
+</body>
+</html>
