@@ -9,7 +9,7 @@ Fields
 
 a. get-used-to\
 b. build react from scratch :soon:\
-c. component :white_check_mark:\
+c. component-based-programming :white_check_mark:\
 d. hook :soon:
 
 
@@ -25,4 +25,6 @@ a-5. react documetnation :soon:\
 
 b-1. goact :white_check_mark:
 
-d-1. useState
+c-1. [thinking-in-react](https://beta.reactjs.org/learn/thinking-in-react) :white_check_mark:
+
+d-1. useState :white_check_mark:

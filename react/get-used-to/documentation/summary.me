@@ -19,3 +19,55 @@ C. Hook
 Functions starting with use are called Hooks. 
 
 ex. useState로 값 저장. db까지 갈 필요없는 애들을 얘로 관리하나?
+
+
+---
+D. props vs state? - still not clear
+
+
+For parent-child communication, simply pass props.
+
+Use state to store the data your current page needs in your controller-view.
+Use props to pass data & event handlers down to your child components.
+
+These lists should help guide you when working with data in your components.
+
+
+
+Props
+
+- are immutable
+- which lets React do fast reference checks
+- are used to pass data down from your view-controller
+- your top level component
+- have better performance
+- use this to pass data to child components
+
+
+
+State
+
+- should be managed in your view-controller
+- your top level component
+- is mutable
+- has worse performance
+- should not be accessed from child components
+- pass it down with props instead
+
+
+
+---
+E. thinking in react 
+
+1. 만들고 싶은 UI를 atomic 단위로 자름
+2. 각 atomic 단위가 component가 되어, static하게 컴포넌트 만들어 봄
+3. state, props 흐름 파악. 어떻게 부모로부터 데이터 전해줄 것인가?
+4. state가 어디에 있어야 할지 고민
+    ex. thinking-in-react.js에서 useState 훅을 FilterableProductTable 안에서 관리함.
+    왜? 얘 자식이 1. 검색바 2. 테이블인데, 검색바에 input이 부모한테 가서, 그 키워드가 테이블에 필터, 영향주니까.
+    아마 state 관리하는 곳 역시 atomic하게 해야할 듯?
+5. inverse data flow 
+    유저가 데이터 인풋하면, 그걸로 state 바꾸게 하기
+    ex. onChange={(e) => onFilterTextChange(e.target.value)}
+    저 onFilterTextChange는 useState에 setter 함수를 보낸 것. 
+    click event발생시, 해당 값을 useState에 넣는 방식.
