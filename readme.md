@@ -1,7 +1,17 @@
 ---\
 Objective
 
-modularize concepts of frontend mainly in javascript
+
+better user experience(positive feeling towards this app)
+
+
+
+---\
+Approach
+
+
+1. [retrograde analysis](https://www.youtube.com/watch?v=v34NqCbAA1c&ab_channel=TED-Ed)
+2. modularize concepts of frontend mainly in javascript
 
 
 

@@ -11,7 +11,12 @@ Concepts
 
 
 a. get-used-to
-
+x. npm || yarn
+x. babel
+x. webpack
+x. minifier(ex. terser, swc)
+x. eslint
+x. jest
 
 
 ---\
