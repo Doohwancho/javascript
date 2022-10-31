@@ -30,4 +30,5 @@ c-1. [thinking-in-react](https://beta.reactjs.org/learn/thinking-in-react) :whit
 
 d-1. useState :white_check_mark:
 
-e-1. useState - example:gallary.js
+e-1. useState - example:gallary.js :white_check_mark:\
+e-2. state as snapshot :white_check_mark:

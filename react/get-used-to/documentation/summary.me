@@ -34,6 +34,37 @@ useState에서 index의 값을 보관해줌.
 
 
 ---
+E. state as snapshop
+
+
+변수처럼 바로 꺼내 쓰는게 아니라,
+render되기 전 까지, state 업데이트 안된다.
+
+
+
+on state-as-snapshot/
+
+why case1 fails?
+
+<button onClick={() => {
+  setNumber(0 + 1);
+  setNumber(0 + 1);
+  setNumber(0 + 1);
+}}>+3</button>
+
+이거랑 같기 때문.
+
+
+
+case2) why alert shows 0 not 5?
+아직 render 안되서 state가 업데이트 안됬기 때문.
+
+
+
+
+
+
+---
 E. props vs state? - still not clear
 
 
