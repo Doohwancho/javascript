@@ -7,10 +7,11 @@ modularize react concepts
 ---\
 Fields
 
-a. get-used-to\
+a. get-used-to :soon:\
 b. build react from scratch :soon:\
 c. component-based-programming :white_check_mark:\
 d. hook :soon:
+e. state :soon:\
 
 
 ---\
@@ -28,3 +29,5 @@ b-1. goact :white_check_mark:
 c-1. [thinking-in-react](https://beta.reactjs.org/learn/thinking-in-react) :white_check_mark:
 
 d-1. useState :white_check_mark:
+
+e-1. useState - example:gallary.js
