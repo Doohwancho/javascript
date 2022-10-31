@@ -24,7 +24,8 @@ C. Javascript\
 D. Typescript\
 E. React\
 F. Nodejs\
-G. UIUX
+G. UIUX\
+H. Next.js
 
 
 ---\
