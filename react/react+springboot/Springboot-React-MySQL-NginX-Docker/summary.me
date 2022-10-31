@@ -1,0 +1,82 @@
+
+---
+A. react app 분석
+
+Q1. 구조
+
+src/
+    components/
+        header
+        bookItem
+    pages/
+        books/
+        user/
+
+header랑 bookItem 컴포넌트 별도 관리하고, 
+pages는 book관련 따로, user관련 따로 관리하네?
+
+
+
+Q2. Router
+
+index.js에서 <BrowserRouter> 로 감싸네?
+하위에 App.js에서 <Route path="/saveForm" exact={true} component={SaveForm} /> 로 어느 path에 어느 컴포넌트(페이지)로 보낼지 처리하네?
+
+
+<Container>안에 Router안 내용만 바뀌고 url만 바뀌는 것 처럼 보이지, header나 다른 html은 고정되 있고, 내용물만 바뀌는 듯?
+이게 spa인가? single page app?
+
+
+header.js에서 App.js에서 router에서 설정한걸 GET으로 보내는걸 <Link>로 해놓았네?
+
+
+Q3. react-bootstrap
+
+header에서 react-bootstrap이 있네?
+bootstrap은 react에서도 열일하네 ㅋㅋ
+
+
+Q4. home page 
+
+useEffect가 뭐지?
+useEffect() 안에 정의된 함수 fires everytime document re-renders
+
+useEffect(() => {}, [param]); 에서 [param]이 바뀔 때마다, useEffect 안에 함수를 re-run 
+
+
+fetch해서 가져온 book 정보가 그려지면 다시 re-render하는 형태네?
+무한 스크롤도 이걸로 만드나보네
+
+
+Q5. props?
+
+Detail.js에서 props를 받는데 App.js를 보면 router에 Detail에 파라미터 넣는게 없는데?
+
+console.log(props); 찍어보니까 history, location, match 등이 들어있네?
+
+그냥 props.history.push('/') 했는데 main page로 re-direct 해주네?
+
+
+state vs props 쳐봤더니,
+state는 바뀌면 dom을 re-render해주는데
+props는 바뀌어도 re-render 안하네?
+
+
+
+
+
+---
+B. springboot app 분석
+
+
+Q1. application.yml에서 db 나누기
+
+8081포트는 dev용으로 h2 붙여놓고
+8080포트는 production용으로 mysql 붙여놨네
+
+
+Q2. cors filter 
+
+프론트에서 요청을 ajax로 보내니까, 이거 허용해주려고 
+corsFilter에서 cors 모든 요청 허용한 듯?
+
