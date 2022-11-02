@@ -36,13 +36,12 @@ spring:
   config:
     activate:
       on-profile:
-        - prod
+        - prod #/book-backend 에 Dockerfile에서 env에 "prod"라고 명시해준다.
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://hk-mysql:3306/cos?serverTimezone=Asia/Seoul
+    url: jdbc:mysql://database:3306/book?autoReconnect=true&useSSL=false #여기서 database는 docker-compose에서 mysql을 database라고 칭한 것.
     username: root
-    password: 
-
+    password: password 
   jpa:
     hibernate:
       ddl-auto: create # create, update, none

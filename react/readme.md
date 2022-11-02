@@ -10,9 +10,13 @@ Fields
 a. get-used-to :soon:\
 b. build react from scratch :soon:\
 c. component-based-programming :white_check_mark:\
-d. hook :soon:
+d. hook :soon:\
 e. state :soon:\
-
+f. react+springboot on docker :white_check_mark:\
+x. context api instead of redux\
+x. lifecycle\
+x. 비동기 데이터 업데이트\
+x. jsx 차이점
 
 ---\
 Todos
@@ -26,9 +30,15 @@ a-5. react documetnation :soon:\
 
 b-1. goact :white_check_mark:
 
-c-1. [thinking-in-react](https://beta.reactjs.org/learn/thinking-in-react) :white_check_mark:
+c-1. [thinking-in-react](https://beta.reactjs.org/learn/thinking-in-react) :white_check_mark:\
+c-x. function based component
 
-d-1. useState :white_check_mark:
+d-1. useState :white_check_mark:\
+d-x. 자주 쓰는 hook들
 
 e-1. useState - example:gallary.js :white_check_mark:\
-e-2. state as snapshot :white_check_mark:
+e-2. state as snapshot :white_check_mark:\
+e-x. state management
+
+f-1. react+springboot analyze :white_check_mark:\
+f-2. react+springboot+mysql on docker-compose :white_check_mark:
