@@ -57,7 +57,7 @@ e-1. basic web component :white_check_mark:\
 e-2. shadow DOM :white_check_mark:\
 e-3. slots :white_check_mark:\
 e-4. lifecycle methods :white_check_mark:\
-e-5. extending existing html elements
+e-5. extending existing html elements :white_check_mark:
 
 
 ---\
