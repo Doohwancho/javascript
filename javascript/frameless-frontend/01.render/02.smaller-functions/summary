@@ -1,0 +1,23 @@
+---
+Takeaway1
+
+
+01.simple-rendering-function을 divide and conquer 방식으로, 여러 component로 쪼개서 관리한 것.
+
+
+app한 뭉치였던게, todos, filter, counter 세 component로 쪼개지고,
+이 쪼개진 component를 html, css, js, test 따로 관리한다.
+
+
+
+
+---
+Takeaway2
+
+
+
+관심사별로 컴포넌트를 나눠놓으니까, unit test 하기에도 용이해진 듯.
+
+test할 때에는, mock input 넣고, output 나오는거 보는데, 주로 ui보다는 기능적으로 데이터가 출력이 되는지 여부라던지 위주로 확인하는 듯.
+
+검색해보니 ui 테스팅은 chromatic이라고 스냅샷 찍어서 이미지를 diff해주는 테스팅 라이브러리를 주로 쓰고, 브라우저별로 테스팅은 testcafe라는 라이브러리를 쓰는 듯

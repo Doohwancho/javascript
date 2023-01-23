@@ -44,7 +44,7 @@ a-5. syntax :white_check_mark:
 
 
 b-1. rendering: pure rendering function :white_check_mark:\
-b-2. rendering: smaller functions\
+b-2. rendering: smaller functions :white_check_mark:\
 b-3. rendering: component registry\
 b-4. rendering: dynamic data\
 b-5. rendering: virtual DOM\
