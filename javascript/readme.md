@@ -46,8 +46,7 @@ a-5. syntax :white_check_mark:
 b-1. rendering: pure rendering function :white_check_mark:\
 b-2. rendering: smaller functions :white_check_mark:\
 b-3. rendering: component registry :white_check_mark:\
-b-4. rendering: dynamic data\
-b-5. rendering: virtual DOM\
+b-4. rendering: virtual DOM :white_check_mark:\
 b-x. dom event handling\
 b-x. router\
 b-x. state management\
