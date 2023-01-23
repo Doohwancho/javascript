@@ -1,0 +1,15 @@
+---
+Structure
+
+
+html tag에 data-component에 입력한 키 값을 바탕으로,
+1. todos
+2. counter
+3. filters
+가 registry 객체에 등록되어
+
+index.js에서 registry.renderRoot()하면 렌더링 된다.
+
+
+
+
