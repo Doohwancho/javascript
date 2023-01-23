@@ -1,0 +1,12 @@
+---
+core
+
+
+rendering is,
+view = f(state)
+
+
+index.js에서 보면, view(prev_DOM, new_DOM) 해서 렌더링 한다.
+prev_DOM을 deep_copy한 후,(immutable) 내용물 값을 바꿔서 반환한걸, 기존 root DOM에 .replaceWith()로 갈아낀다.
+
+

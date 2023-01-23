@@ -43,15 +43,18 @@ a-4. portfolio-webiste :white_check_mark:\
 a-5. syntax :white_check_mark:
 
 
-b-x. rendering\
+b-1. rendering: pure rendering function :white_check_mark:\
+b-2. rendering: smaller functions\
+b-3. rendering: component registry\
+b-4. rendering: dynamic data\
+b-5. rendering: virtual DOM\
 b-x. dom event handling\
-b-x. http request\
 b-x. router\
 b-x. state management\
-b-x. spa
 
 
 d-1. component lifecycle
+
 
 e-1. basic web component :white_check_mark:\
 e-2. shadow DOM :white_check_mark:\
@@ -63,6 +66,8 @@ e-5. extending existing html elements :white_check_mark:
 ---\
 Reference
 
+
+b. [book:프레임워크 없는 프론트엔드 개발](https://github.com/Apress/frameworkless-front-end-development)
 
 c. [steal AniInside](https://github.com/DeAcct/AniInside/blob/main/src/utility/interaction.js)
 
