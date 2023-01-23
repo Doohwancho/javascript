@@ -13,3 +13,39 @@ index.js에서 registry.renderRoot()하면 렌더링 된다.
 
 
 
+---
+High Order Function
+
+
+registry.js에서 고차함수가 눈에 띄는데,
+
+const add = (name, component) => {
+  registry[name] = renderWrapper(component)
+}
+
+const renderRoot = (root, state) => {
+  const cloneComponent = root => {
+    return root.cloneNode(true)
+  }
+
+  return renderWrapper(cloneComponent)(root, state)
+}
+
+
+add()같은 경우, component를 registry라는 빈 객체에 todos, filters, counter를 이런 식으로 'todos': renderWrapper(todosView) 등록시키기 위해서 저리 작성되었고,
+
+renderRoot()의 경우, cloneComponent라는 함수를 renderWrapper에 넘기고, 해당 함수를 사용하기 위해 (root, state)파라미터를 고차함수 형태로 다시 넘기는 식.
+
+이 함수는 root를 deep copy한 후, state안 값을 update시켜서 render하는 메서드.
+
+
+renderWrapper()는 이런식으로 시작됨.
+
+const renderWrapper = component => {
+  return (targetElement, state) => {
+    const element = component(targetElement, state)
+	...
+
+}
+
+고차함수로 만든 이유는 함수 넘겨주고 객체 deep copy하고 하는 모든걸 side effect 없게 순수함수 형식으로 처리해야 하기 때문에 registry 객체에 html 값 등록시키는 함수나, root node를 deep copy하는 함수를 통 째로 넘겨줌
