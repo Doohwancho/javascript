@@ -11,7 +11,10 @@ todos in Javascript
 
 
 a. get-used-to\
-b. frameless-frontend
+b. frameless-frontend\
+c. banila-js-project\
+d. banila-js: spa from scratch\
+e. web component\
 x. core:this\
 x. core:scope\
 x. core:closure\
@@ -46,3 +49,23 @@ b-x. http request\
 b-x. router\
 b-x. state management\
 b-x. spa
+
+
+d-1. component lifecycle
+
+e-1. basic web component :white_check_mark:\
+e-2. shadow DOM\
+e-3. slots\
+e-4. lifecycle methods\
+e-5. extending existing html elements
+
+
+---\
+Reference
+
+
+c. [steal AniInside](https://github.com/DeAcct/AniInside/blob/main/src/utility/interaction.js)
+
+d. [spa demo](https://github.com/wnsguddl789/spa)
+
+e-1..5. [web component crashcourse](https://www.youtube.com/watch?v=2I7uX8m0Ta0&ab_channel=WebDevSimplified)
