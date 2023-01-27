@@ -7,11 +7,11 @@ modularize react concepts
 ---\
 Fields
 
-a. get-used-to :soon:\
-b. build react from scratch :soon:\
+a. get-used-to\
+b. build react from scratch\
 c. component-based-programming :white_check_mark:\
-d. hook :soon:\
-e. state :soon:\
+d. hooks\
+e. state\
 f. react+springboot on docker :white_check_mark:\
 g. starter template :white_check_mark:
 
@@ -44,14 +44,17 @@ b-1. goact :white_check_mark:
 c-1. [thinking-in-react](https://beta.reactjs.org/learn/thinking-in-react) :white_check_mark:\
 c-x. function based component
 
-d-1. useState :white_check_mark:\
+d-1. useState (basic) :white_check_mark:\
+d-2. useEffect (basic) :white_check_mark:\
+d-3. useContext (basic)\
 d-x. useRef\
-d-x. useEffect - useState는 데이터 임시 저장, 얜 영구저장인가?\
-d-x. useEffect에서 clenUp이 무엇인지?\
 d-x. useMemo\
 d-x. useCallback\
 d-x. useMemo\
 d-x. useReducer\
+d-x. useImperativeHandle\
+d-x. useLayoutEffect\
+d-x. useDebugValue\
 d-x. create custom hook
 
 
@@ -67,3 +70,9 @@ g-1. [react,ts,eslint,vite,jest-dom](https://www.youtube.com/watch?v=cchqeWY0Nak
 x-x. redux-saga\
 x-x. redux-toolkit\
 
+
+---\
+reference
+
+
+d. [react-hooks-by-example](https://github.com/Lemoncode/react-hooks-by-example)

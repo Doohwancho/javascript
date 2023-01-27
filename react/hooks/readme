@@ -1,0 +1,13 @@
+---
+concepts
+
+
+1. useState - when data changes, re-render the UI
+2. useEffect - component가 mount, update, delete 되는 시점에 발동하는 메서드
+
+
+---
+reference
+
+
+https://github.com/Lemoncode/react-hooks-by-example
