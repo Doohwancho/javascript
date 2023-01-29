@@ -46,7 +46,8 @@ c-x. function based component
 
 d-1. useState (basic) :white_check_mark:\
 d-2. useEffect (basic) :white_check_mark:\
-d-3. useDebounce :white_check_mark:
+d-3. useDebounce :white_check_mark:\
+d-4. create custom hook :white_check_mark:
 
 d-x. useContext (basic)\
 d-x. useRef\
@@ -56,8 +57,7 @@ d-x. useMemo\
 d-x. useReducer\
 d-x. useImperativeHandle\
 d-x. useLayoutEffect\
-d-x. useDebugValue\
-d-x. create custom hook
+d-x. useDebugValue
 
 
 e-1. useState - example:gallary.js :white_check_mark:\
