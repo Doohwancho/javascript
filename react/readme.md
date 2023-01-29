@@ -46,7 +46,9 @@ c-x. function based component
 
 d-1. useState (basic) :white_check_mark:\
 d-2. useEffect (basic) :white_check_mark:\
-d-3. useContext (basic)\
+d-3. useDebounce :white_check_mark:
+
+d-x. useContext (basic)\
 d-x. useRef\
 d-x. useMemo\
 d-x. useCallback\

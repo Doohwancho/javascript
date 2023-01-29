@@ -4,6 +4,7 @@ concepts
 
 1. useState - when data changes, re-render the UI
 2. useEffect - component가 mount, update, delete 되는 시점에 발동하는 메서드
+3. useDebounce - useEffect의 dependency로, render()될 때마다 useEffect() 발동이 아닌, 특정ms 이후에 딱 한번만 useEffect() 발동시킴
 
 
 ---
