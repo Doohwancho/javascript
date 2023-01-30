@@ -47,7 +47,7 @@ b-1. rendering: pure rendering function :white_check_mark:\
 b-2. rendering: smaller functions :white_check_mark:\
 b-3. rendering: component registry :white_check_mark:\
 b-4. rendering: virtual DOM :white_check_mark:\
-b-x. dom event handling\
+b-5. DOM: return DOM instead of html, with user-defined event attached to it :white_check_mark:\
 b-x. router\
 b-x. state management\
 

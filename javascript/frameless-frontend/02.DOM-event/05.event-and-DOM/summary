@@ -1,0 +1,18 @@
+---
+diff 01.render?
+
+
+.addEventListener로 DOM관리가 추가됨.
+이젠 todo list에서 check, delete 가능.
+
+
+달라진 부분
+1. index.js에서 사용자 정의 event가 추가됨(사용자 정의 state에 대해)
+2. registery.js에서 event도 파라미터로 받아 넘겨줌
+3. view/app.js에서는 키보드에 e키를 누르면 user-defined event인 add()가 발동하게끔 되어있네.
+4. todos.js가 원래는 쌩짜 html코드 반환했었는데, 이젠 DOM을 만들고 event를 붙여서 반환한다.
+
+
+
+
+
