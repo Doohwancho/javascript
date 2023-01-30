@@ -51,11 +51,11 @@ d-4. custom hook :white_check_mark:\
 d-5. pure-component (useMemo, useCallback) :white_check_mark:\
 d-6. useReducer :white_check_mark:\
 d-7. useContext (basic) :white_check_mark:\
-d-8. useRef :white_check_mark:
+d-8. useRef :white_check_mark:\
+d-9. useDebugValue :white_check_mark:
 
 d-x. useImperativeHandle\
 d-x. useLayoutEffect\
-d-x. useDebugValue
 
 
 e-1. useState - example:gallary.js :white_check_mark:\
@@ -75,4 +75,5 @@ x-x. redux-toolkit\
 reference
 
 
-d. [react-hooks-by-example](https://github.com/Lemoncode/react-hooks-by-example)
+d. [react-hooks-by-example](https://github.com/Lemoncode/react-hooks-by-example) \
+d. [10 react hooks explained](https://www.youtube.com/watch?v=TNhaISOUy6Q&ab_channel=Fireship)
