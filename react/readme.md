@@ -47,13 +47,11 @@ c-x. function based component
 d-1. useState (basic) :white_check_mark:\
 d-2. useEffect (basic) :white_check_mark:\
 d-3. useDebounce :white_check_mark:\
-d-4. create custom hook :white_check_mark:
+d-4. custom hook :white_check_mark:\
+d-5. pure-component (useMemo, useCallback) :white_check_mark:
 
 d-x. useContext (basic)\
 d-x. useRef\
-d-x. useMemo\
-d-x. useCallback\
-d-x. useMemo\
 d-x. useReducer\
 d-x. useImperativeHandle\
 d-x. useLayoutEffect\
