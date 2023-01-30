@@ -49,9 +49,9 @@ d-2. useEffect (basic) :white_check_mark:\
 d-3. useDebounce :white_check_mark:\
 d-4. custom hook :white_check_mark:\
 d-5. pure-component (useMemo, useCallback) :white_check_mark:\
-d-6. useReducer :white_check_mark:
+d-6. useReducer :white_check_mark:\
+d-7. useContext (basic) :white_check_mark:
 
-d-x. useContext (basic)\
 d-x. useRef\
 d-x. useImperativeHandle\
 d-x. useLayoutEffect\

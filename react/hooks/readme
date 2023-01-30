@@ -8,6 +8,8 @@ concepts
 4. useMemo - memoization으로, 첫 렌더링 때 캐시에 저장해놓고 re-render시 안바뀌었으면 캐시 뿌리고 바뀌었으면 다시 캐시 업데이트
 5. useCallback - useMemo와 같이 memoization인데, useMemo는 특정 값을 캐시하고 useCallback은 특정 함수를 캐시함.
 6. useReducer - useState 대신 사용. setter 업데이트하는 메서드를 컴포넌트 바깥으로 분리하고 싶을 때 사용.
+7. useContext - 여러 component에게 props를 2중,3중 넘기지 않고, useState를 전역적으로 쓰고싶을 때 사용.
+
 
 
 ---
