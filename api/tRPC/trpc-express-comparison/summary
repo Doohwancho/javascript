@@ -1,0 +1,52 @@
+---
+first thoughts
+
+
+tRPC는 기존 gRPC의 typescript 버전인건가?
+
+
+1.
+REST는 payload에 json담아 통신하는 것이고,
+tRPC는 protobuf라는걸 payload에 담아 통신
+
+
+2.
+REST는 http1+ 이상에서 동작하는데,
+tRPC는 http2+ 이상에서만 동작함.
+
+
+3.
+tRPC는 streaming, bidirectional messaging 지원함.
+stream같은 앤가?
+
+
+4.
+REST보다 통신속도가 빨라서 micro-service에서 컨테이너끼리 통신할 때 많이 사용한다고 한다.
+
+
+
+---
+thought after reading explanation
+
+
+
+1.
+REST는 client, server가 분리되었기 때문에, 서버에서 route 경로 바꿔서 client랑 접촉불량 에러나는게 둘이 시작해서 서버 붙이기 전까진 모름.
+tRPC에서는 client랑 server랑 뭐가 안맞는게 있으면(변수 이름이라던가, 라우팅 주소라던가..) 런타임 전에 코드 에디터에서 바로 에러라고 나옴.
+왜?
+tRPC는 client/server 분리된 REST와는 다르게 client단에서 서버단의 메서드를 직접 불러오는 식. 그래서 메서드 명 틀리거나, 변수명 틀리거나, 타입 틀리거나 하면 코드 실행하기도 전에 알 수 있는 것.
+
+그리고 이걸 typescript로 구현한 이유도, 변수명, 주소명만 체크해주는게 아니라, 변수의 type checking도 해줌.
+springboot에서 @Valid해서 타입체킹하던걸 여기선 코드 없이 자동으로 해주나봄. 오~
+
+
+
+2.
+tRPC에 main.tx보면, httpBatchLink를 쓰는데, 이건 여러 http request을 하나에 담아 통째로 call 보내는 것. -> http2 기능중에 multiplexing 기능을 활용하는건가봄.
+이래서 tRPC가 REST보다 빠르다는 건가봄. 여러 call을 개별적으로 보내고 받는게 아니라, 한번에 묶어서 보내니까.
+
+그래서 main.ts에서 주석처리되어있는 Promise.all()안에 여러 fetch call들이 하나의 http2 request로 묶여서 나감. chrome dev tool의 network tab에서 보면, 하나의 요청이 나간다는걸 확인 가능하다.
+
+물론 server->client 결과값 받을 때에도, 하나의 request로 묶어서 n개의 결과값이 날라옴.
+
+
