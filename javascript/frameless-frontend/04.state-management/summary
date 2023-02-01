@@ -18,8 +18,11 @@ MVC 관심사의 분리가 atomic하게 되어있다.
 
 
 
+
 ---
 B. Reactive Programming
+
+
 
 
 Q. what is reactive programming?
@@ -75,17 +78,60 @@ Reactive Programming은 애초에 server->client로 보내줄 때, DOM에 .addEv
 
 
 
----
-Event Bus
-03.event-bus/Event Bus Example
-03.1/Smaller Modifiers
-
 
 ---
-04/Redux
+C.Redux
+
+
+
+
+Q. what is redux?
+
+
+redux's 3 principles
+
+1. all states of app managed in a single object, in tree structure
+	- better when debugging
+	- easier to implement undo/redo
+2. state is read-only
+	- only way to change state is passing 'action' object
+	- this is how passing 'action' object looks like below.
+	store.dispatch({
+	  type: 'COMPLETE_TODO',
+	  index: 1
+	})
+
+	store.dispatch({
+	  type: 'SET_VISIBILITY_FILTER',
+	  filter: 'SHOW_COMPLETED'
+	})
+3. should use reducer when changing state
+	- 순수 상태 유지하기 위해 reducer 씀.
+	- reducer란, 이전 state 받아서 'action' 하여 새로운 state를 반환하는 함수.
+
+
+
+
+Q. what is this code?
+
+
+reducer에서 'action' 메서드, 즉 state를 manage할 메서드들을 정의하고, methods라는 객체에 담아,
+reducer(prevState, action); 을 반환함.
+
+state는 controller인 index.js에서 정의되어 view에 DOM이랑 reducer와 함께넘겨주면,
+view단에 각 componenet에서 model/actionCreators.js를 받아 action method에 정의한 대로 addEventHandler()를 한다.
+
+예를들어, todos DOM에 특정 버튼 키가 눌리면, 해당 키에 달린 이벤트리스너가 reducer(prevState, action)을 발동하는 식.
+
+
+
+Q. state에 두 메서드가 setter로 동시접근하면 어떻게 됨?
+
+
+아마 node가 내부적으로는 멀티쓰레드(4쓰레드였나?) 여도, 어찌됬든 싱글 쓰레드 queue로 돌기 때문에,reducer에 'action' object를 받는 이유도, single thread queue에 순차적으로 받고 순차처리 해서 race condition 없게끔 하기 때문에 이런 state를 순수상태로 가져가는 시도를 할 수 있었던게 아닐까?
+
+
 
 
 ---
-State Management with Web Components
-05/Example 1
-05.1/Example 2
+D. State Management with Web Components
