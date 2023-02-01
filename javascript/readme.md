@@ -48,7 +48,8 @@ b-2. rendering: smaller functions :white_check_mark:\
 b-3. rendering: component registry :white_check_mark:\
 b-4. rendering: virtual DOM :white_check_mark:\
 b-5. DOM: return DOM instead of html, with user-defined event attached to it :white_check_mark:\
-b-x. router\
+b-6. router: fragment-identifier # :white_check_mark:\
+b-7. router: history-api\
 b-x. state management\
 
 

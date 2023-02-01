@@ -1,0 +1,23 @@
+---
+Q. why use #?
+
+
+router.js에서
+
+1. window.addEventListener('hashchange', checkRoutes)
+2. checkRoutes()
+
+
+...부분이 핵심.
+
+checkRoutes()에서 아래 부분이 있는데,
+const currentRoute = routes.find(route => {
+    return route.fragment === window.location.hash
+})
+
+
+client에 url에서 hash 부분, #부분이 달라지는걸 DOM.addEventListener로 observe하다가,
+달라지는걸 감지해서 바꾸는 거거든.
+
+이 hash가 달라지는 부분을 캐치하기 위해서 '#'(fragment identifier) 쓰는 것.
+
