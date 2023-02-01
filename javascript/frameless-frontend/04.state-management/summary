@@ -1,48 +1,78 @@
 ---
-index
+A. MVC
 
 
-00/External state
+M(model) -> model/model.js
+V(view) -> view/*.js
+C(controller) -> index.js
 
-Observable State
-01/Rendering Listener
-01.1/More Listeners
 
-Reactive Programming
-02/Observable Factory
-02.1/Base Proxy Example
-02.2/Observable Factory with proxy
+model에서는 state 있고, state를 관리하는 메서드들이 있음. 얘네들을
+controller에서 factory 형태로 받아서, state를 관리하는 이벤트로 한번 더 감싸줌. 이걸 view로 보냄.
+view에서는 각 상태에 맞게 view/app.js, view/counter.js, view/filter.js view/todos.js의 템플렛에 넣어 render()함.
 
-Event Bus
-03.event-bus/Event Bus Example
-03.1/Smaller Modifiers
 
-04/Redux
-
-State Management with Web Components
-05/Example 1
-05.1/Example 2
-
+model에 business logic과, 그것에 관한 test code를 넣어서 관리.
+MVC 관심사의 분리가 atomic하게 되어있다.
 
 
 
 
 ---
-00/External state
+B. Reactive Programming
+
+
+Q. what is reactive programming?
+
+A. application이 'Observerable'하다.
+왜? 객체/데이터 observe하다가, 바뀌었을 때, 바로 반응하는게 reactive programming.
+
+
+Q. how?
+
+model에서 state를 관리하고, state를 관리하는 메서드들을 MVC에서는 controller layer에서 event로 감쌓서 view에게 던져줬다면,
+
+reactive-programming 식은, model layer에 observable.js가 따로 있어서, 여기에서 event로 한번 감싸는걸 proxy를 써서 한다.
+
+model <- proxy -> controller -> view
+
+이런식이다.
+
+
+Q. why wrap with proxy?
+
+observable.js에 wrapAction을 보면, 해당 event가 call되었을 때, model에 state manage method를 발동시키는데, 발동시킨 이후, value반환 직전에 invokeListeners(); 를 실행하여,
+
+  const invokeListeners = () => {
+    const data = freeze(stateGetter())
+    listeners.forEach(l => l(data))
+  }
+
+state의 원본 데이터와 원본 state에 딸린 listener들을 실행시키는데,
+
+약간 java의 AOP 느낌으로다가, 특정 객체, 메서드가 실행되는지 observe하다가, 실행되면 거기에 덧붙여져서 실행되어야 하는 코드를 저기에 넣는 듯 하다.
+
+
+AOP처럼 모든 기능을 모듈적으로 만들고, observer에다가 필요기능을 AOP처럼 추가시키는 식으로 하면,
+코드의 일관성이 있기 때문에, 코드 이해할 땐 predictable-format이 도움 되긴 하겠으나,
+
+프로젝트 규모가 커져서 복잡해지면, observer에 걸린 메서드들 다 다른 폴더에 있을테니 타고타고 이리저리 왔다갔다해서 정신없을 듯 하다.
+
+또한 AOP하기 적절한 기능들도 있지만(logging, performance checking, etc) 추상화로 명확하게 나누기 어려운 기능개발할 땐, reactive-programming이 효과적인지 의문이다.
 
 
 
----
-Observable State
-01/Rendering Listener
-01.1/More Listeners
+
+Q. MVC vs Reactive Programming?
 
 
----
-Reactive Programming
-02/Observable Factory
-02.1/Base Proxy Example
-02.2/Observable Factory with proxy
+MVC는 약간 client에서 요청을 하면, 서버에서 controller가 요청 받아 model로 적합한 state manage한 후, view로 render해서 보내주는 느낌이라면,
+
+Reactive Programming은 애초에 server->client로 보내줄 때, DOM에 .addEventListener() 달아서, 여기에서 특정 행동이 일어난게 observe되면, 그 때 client->server로 요청하는 느낌인듯?
+
+
+
+
 
 
 ---
