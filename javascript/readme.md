@@ -51,7 +51,8 @@ b-5. DOM: return DOM instead of html, with user-defined event attached to it :wh
 b-6. router: fragment-identifier # :white_check_mark:\
 b-7. state management: MVC :white_check_mark:\
 b-8. state management: Reactive Programming :white_check_mark:\
-b-9. state management: Redux :white_check_mark:
+b-9. state management: Redux :white_check_mark:\
+b-10. state management: web component with state management :white_check_mark:
 
 
 

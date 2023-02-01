@@ -133,5 +133,43 @@ Q. state에 두 메서드가 setter로 동시접근하면 어떻게 됨?
 
 
 
+
 ---
 D. State Management with Web Components
+
+
+
+Q. what is this code?
+
+
+custom Web Component를 이용해서 todo app을 컴포넌트 단위로 추상화 하여 components/에 넣어놓고,
+component에서 필요한 기능이 있을 때, 다른 컴포넌트가 필요하면 다른 컴포넌트 불러오고,
+model에
+
+
+component사이에서 통신하는 것도 좀 신기한게,
+List.js에서 delete신호를 보낼 때, event를 만들어서 날리면,
+application.js에서 담당 DOM에 붙어있던 .addEventListener(EVENTS.ITEM_DELETED)가 듣고, 바로 삭제시킴.
+삭제시키는 것은
+ deleteItem (index) {
+    this
+      .actions
+      .deleteItem(index)
+  }
+
+이런식으로 actionFactory에서 받아온 deleteItem으로 state에 특정 아이템 삭제함.
+
+
+
+B.Reactive Programming에 observer 방식을 차용한 듯?
+
+prevState를 INITIAL_STATE에서 관리하고, state에 CRUD가 일어나면, 기존 state를 수정하여 새로운 state로 만든 이후, this.syncAttributes(state)로 동기화 하는 듯?
+
+
+그나저나 이 방식은 하나에 component에서 html+css+js+DOM manipulation+model 다해먹네?
+
+뭐 필요한거 한 파일에 몰아서 추상화한걸 선호하는 사람이 있을 순 있는데
+난 별로인 듯;
+
+
+여튼 컴포넌트 단위로도 state manage가 가능하다는걸 보여주는데 의의를 주는 예시인 듯.
