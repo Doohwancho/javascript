@@ -1,6 +1,6 @@
 //import { Link } from "react-router-dom";
 import { useState } from "react"
-import BoardDetails from "./BoardDetails";
+import BoardDetails from "../components/BoardDetails";
 
 interface BoardTypes {
 	id: number
