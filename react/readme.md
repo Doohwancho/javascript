@@ -13,19 +13,21 @@ c. component-based-programming :white_check_mark:\
 d. hooks\
 e. state\
 f. react+springboot on docker :white_check_mark:\
-g. starter template :white_check_mark:
+g. starter template :white_check_mark:\
+z. module
+zz. playground
 
-x. context api instead of redux\
-x. router(react-router-dom)\
+x. router(react-router-dom)
 x. styled component\
-x. lifecycle\
 x. proxy\
-x. axios\
-x. 비동기 데이터 업데이트\
-x. jsx 차이점\
-x. react-query\
 x. atom design\
 x. flux pattern
+x. redux\
+x. redux-saga\
+x. redux-toolkit\
+x. context api instead of redux\
+x. react-query
+
 
 
 
@@ -67,8 +69,21 @@ f-2. react+springboot+mysql on docker-compose :white_check_mark:
 
 g-1. [react,ts,eslint,vite,jest-dom](https://www.youtube.com/watch?v=cchqeWY0Nak&t=3s&ab_channel=CodingGarden) :white_check_mark:
 
-x-x. redux-saga\
-x-x. redux-toolkit\
+z-a. bbs\
+z-a-1. board-list\
+z-a-2. board-view\
+z-a-3. board-register\
+z-a-4. board-edit\
+z-a-5. signup\
+z-a-6. login
+
+z-b. ecommerce\
+z-b-1. 상품 목록/ 상품 상세\
+z-b-2. 장바구니\
+z-b-3. 검색\
+z-b-4. 위시리스트
+
+zz-1. env setup with vite :white_check_mark:
 
 
 ---\
