@@ -83,7 +83,9 @@ z-b-2. 장바구니\
 z-b-3. 검색\
 z-b-4. 위시리스트
 
-zz-1. env setup with vite :white_check_mark:
+zz-1. env setup with vite :white_check_mark:\
+zz-2. react-router-dom으로 routing 설정 :white_check_mark:\
+zz-3. passing props using 'useState' :white_check_mark:
 
 
 ---\

@@ -9,7 +9,7 @@ export default function Nav() {
 					<Link to="/">Home</Link>
 				</li>
 				<li>
-					<Link to="/board">Board</Link>
+					<Link to="/board">BoardList</Link>
 				</li>
 			</ul>
 		</>
