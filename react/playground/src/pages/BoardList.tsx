@@ -1,6 +1,6 @@
 //import { Link } from "react-router-dom";
 import { useState } from "react"
-import BoardDetails from "../components/BoardDetails";
+import BoardDetails from "../components/BoardList/BoardDetails";
 
 interface BoardTypes {
 	id: number
@@ -21,6 +21,11 @@ function Board() {
       name: "phone",
       price: 3000
     },
+	{
+		id: 2,
+		name: "shirts",
+		price: 1000
+	}
   ])
 	return (
 		<>

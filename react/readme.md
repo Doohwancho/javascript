@@ -86,7 +86,8 @@ z-b-4. 위시리스트
 zz-1. env setup with vite :white_check_mark:\
 zz-2. react-router-dom으로 routing 설정 :white_check_mark:\
 zz-3. passing props using 'useState' :white_check_mark:\
-zz-4. component 계통도 :white_check_mark:
+zz-4. component 계통도 :white_check_mark:\
+zz-5. feat: toppings :white_check_mark:
 
 
 ---\

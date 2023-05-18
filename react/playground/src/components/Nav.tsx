@@ -11,6 +11,9 @@ export default function Nav() {
 				<li>
 					<Link to="/board">BoardList</Link>
 				</li>
+				<li>
+					<Link to="/toppings">Toppings</Link>
+				</li>
 			</ul>
 		</>
 	);
