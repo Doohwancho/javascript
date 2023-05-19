@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap');
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Jua', sans-serif;
+}
+
+body {
+  margin: 0;
+  cursor: default;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}

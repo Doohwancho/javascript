@@ -1,0 +1,34 @@
+.topping {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #ccc;
+    height: 5.5rem;
+  }
+  
+  .namePriceDescription {
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .name {
+    font-weight: 500;
+    width: 9rem;
+    margin-right: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .price {
+    color: rgb(110, 110, 110);
+    font-size: 1.3rem;
+    width: 5rem;
+    margin-right: 2rem;
+    text-align: right;
+  }
+  
+  .description {
+    font-size: 1.3rem;
+    width: 23rem;
+    margin-right: 0.5rem;
+  }

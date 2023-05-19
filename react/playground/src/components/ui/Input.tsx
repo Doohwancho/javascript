@@ -1,4 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
+import classes from './Input.module.css';
+
 
 interface InputProps {
   label: string;
@@ -8,7 +10,7 @@ interface InputProps {
 
 const Input: React.FC<InputProps> = props => {
     return (
-        <div>
+        <div className={classes.input}>
             <label htmlFor={props.input.id}>{props.label}</label>
             <input {...props.input} />
         </div>
