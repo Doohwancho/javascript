@@ -1,5 +1,5 @@
 
-import Card from '../ui/Card';
+import Card from '../UI/Card';
 import classes from './ToppingSummary.module.css';
 
 

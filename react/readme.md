@@ -89,7 +89,8 @@ zz-3. passing props using 'useState' :white_check_mark:\
 zz-4. component 계통도 :white_check_mark:\
 zz-5. feat: toppings :white_check_mark:\
 zz-6. feat: header & 장바구니 아이콘 :white_check_mark:\
-zz-7. feat: category :white_check_mark:
+zz-7. feat: category :white_check_mark:\
+zz-8. feat: cart :white_check_mark:
 
 
 ---\

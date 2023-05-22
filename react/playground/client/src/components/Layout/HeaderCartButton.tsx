@@ -5,16 +5,15 @@ interface ShowCartHandler {
     (): void;  
 }
 
-interface CartItem {
-    // Add properties based on your actual cart item structure
-    id: number;
-    name: string;
-    amount: number;
-    quantity: number;
-    // ...other properties...
-}
+type Topping = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  amount: number;
+};
   
-type CartItems = CartItem[];
+type CartItems = Topping[];
   
 
 interface HeaderCartButtonProps {

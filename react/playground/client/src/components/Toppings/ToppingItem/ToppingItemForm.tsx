@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import Input from "../../ui/Input";
+import Input from "../../UI/Input";
 
 import classes from  "./ToppingItemForm.module.css";
 
@@ -16,12 +16,13 @@ type Topping = {
     id: string;
     topping: Topping;
     onSaveCategories: (item: Topping) => void;
+    onSaveItem: (topping: Topping) => void;
   }
 
 const ToppingItemForm = (props: PropType) => {
-    const { id, topping, onSaveCategories } = props;
+    const { id, topping, onSaveCategories, onSaveItem } = props;
 
-    const [itemState, setItemState] = useState({
+    const [itemState, setItemState] = useState<Topping>({
         id: topping.id,
         name: topping.name,
         description: topping.description,
@@ -31,19 +32,31 @@ const ToppingItemForm = (props: PropType) => {
     
       const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        // onSaveItem(itemState);
+        onSaveItem(itemState);
       }
     
       const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setItemState(prev => {
-          const newState = {
-            ...prev,
-            // typeof(newState.amount) -> string
-            amount: Number(e.target.value),
-          };
-          onSaveCategories(newState);
-          return newState
-        })
+        /** case1) */
+
+        // setItemState(prev => {
+        //   const newState = {
+        //     ...prev,
+        //     // typeof(newState.amount) -> string
+        //     amount: Number(e.target.value),
+        //   };
+        //   onSaveCategories(newState); //TODO - ANTI-PATTERN: ToppingItemForm의 state를 바꾸는 함수 안에 Topping의 상태를 바꾸는 함수는 넣으면, rendering 2번 일어난다. 
+        //   return newState
+        // })
+
+        /** case2)  */
+        const newState = {
+          ...itemState,
+          // typeof(newState.amount) -> string
+          amount: Number(e.target.value),
+        };
+        
+        onSaveCategories(newState);
+        setItemState(newState);
       }
 
     return (

@@ -6,29 +6,27 @@ import classes from './Header.module.css';
 interface ShowCartHandler {
     (): void;  
 }
-
-interface CartItem {
-    // Add properties based on your actual cart item structure
-    id: number;
+type Topping = {
+    id: string;
     name: string;
+    description: string;
+    price: number;
     amount: number;
-    quantity: number;
-    // ...other properties...
-}
+  };
   
-type CartItems = CartItem[];
+type CartItems = Topping[];
   
 
-interface HeaderProps {
+interface PropType {
     showCartHandler: ShowCartHandler;
     cartItems: CartItems;
 }
 
-const Header = ({ showCartHandler, cartItems }: HeaderProps) => {
+const Header = ({ showCartHandler, cartItems }: PropType) => {
     return (
         <>
         <header className={classes.header} >
-          <h1>GreekZik</h1>
+          <h1>Cart-Header</h1>
           <HeaderCartButton onClick={showCartHandler} cartItems={cartItems} />
         </header>
       </>

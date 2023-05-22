@@ -28,6 +28,7 @@ type PropType = {
     topping: Topping;
     backendData: BackendData;
     onSaveCategories: (itemState: Topping) => void;
+    onSaveItem: (topping: Topping) => void;
 }
 
 const ToppingItem = (props: PropType) => {
@@ -45,9 +46,7 @@ const ToppingItem = (props: PropType) => {
           id={id}  
           topping={topping}
           onSaveCategories={props.onSaveCategories}
-          //   amount={amount} 
-          //   onSaveItem={props.onSaveItem} 
-          //   backendData={backendData}
+          onSaveItem={props.onSaveItem} 
         />
       </li>
     );
