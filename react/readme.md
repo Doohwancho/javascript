@@ -12,9 +12,9 @@ b. build react from scratch\
 c. component-based-programming :white_check_mark:\
 d. hooks\
 e. state\
-f. react+springboot on docker :white_check_mark:\
 g. starter template :white_check_mark:\
-z. module
+y. steal\
+z. module\
 zz. playground
 
 x. router(react-router-dom)
@@ -64,10 +64,24 @@ e-1. useState - example:gallary.js :white_check_mark:\
 e-2. state as snapshot :white_check_mark:\
 e-x. state management
 
-f-1. react+springboot analyze :white_check_mark:\
-f-2. react+springboot+mysql on docker-compose :white_check_mark:
-
 g-1. [react,ts,eslint,vite,jest-dom](https://www.youtube.com/watch?v=cchqeWY0Nak&t=3s&ab_channel=CodingGarden) :white_check_mark:
+
+
+y-a-1. react+springboot analyze :white_check_mark:\
+y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\
+
+y-b-1. react-ts-bbs setup(node v12 lts) :white_check_mark:\
+y-b-2. library - moment.js :white_check_mark:\
+y-b-3. library - yup.js :white_check_mark:\
+y-b-4. library - formik.js :white_check_mark:\
+y-b-5. library - toast.js :white_check_mark:\
+y-b-6. ts interface를 각 컴포넌트에 쓰는게 아닌, dto/ 로 따로 빼고 import해서 사용 :white_check_mark:\
+y-b-7. react bootstrap(ui framework) 적용 :white_check_mark:\
+y-b-8. props.history.push로 뒤로가기 처리 :white_check_mark:\
+y-b-9. redux 어떻게 쓰는지 느낌만 파악 :white_check_mark:\
+y-b-10. api.ts에서 node_env(prod | local) 에 따라 api endpoint 변경 처리 :white_check_mark:\
+y-b-11. api.ts에서 request를 인터셉터해서 jwt token을 헤더에 첨부 :white_check_mark:
+
 
 z-a. bbs\
 z-a-1. board-list\
