@@ -82,6 +82,16 @@ y-b-9. redux 어떻게 쓰는지 느낌만 파악 :white_check_mark:\
 y-b-10. api.ts에서 node_env(prod | local) 에 따라 api endpoint 변경 처리 :white_check_mark:\
 y-b-11. api.ts에서 request를 인터셉터해서 jwt token을 헤더에 첨부 :white_check_mark:
 
+y-c-1. App.tsx에 전체 css 적용 + styled로 컴포넌트 모듈식으로 적용 :white_check_mark:\
+y-c-2. styled는 styled.form 처럼 미리 만들어진 템플릿의 css를 입히는 식 :white_check_mark:\
+y-c-3. config.ts에서 모든 url 관리 후 import 해서 사용 :white_check_mark:\
+y-c-4. recoil.ts에서 모든 atom 정의 후, useSetRecoilState()로 setter, useRecoilValue()로 getter :white_check_mark:\
+y-c-5. image upload :white_check_mark:\
+y-c-6. 단일 image도 컴포넌트로 만들어 넣어줌 :white_check_mark:\
+y-c-7. useParam() gets you id from /board/comment/${id} :white_check_mark:\
+y-c-8. post submit 직후 loading (spinning bar) 처리 :white_check_mark:\
+y-c-9. <Container >에서 flexbox & grid 처리:white_check_mark:
+
 
 z-a. bbs\
 z-a-1. board-list\
@@ -113,3 +123,6 @@ reference
 
 d. [react-hooks-by-example](https://github.com/Lemoncode/react-hooks-by-example) \
 d. [10 react hooks explained](https://www.youtube.com/watch?v=TNhaISOUy6Q&ab_channel=Fireship)
+
+y-b. [react-ts-bbs](https://github.com/eastflag/react-board-typescript) \
+y-c. [electric-vapers react ts project](https://github.com/imkdw/toy-project.git)
