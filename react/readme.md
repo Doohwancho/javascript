@@ -17,15 +17,8 @@ y. steal\
 z. module\
 zz. playground
 
-x. router(react-router-dom)
 x. styled component\
-x. proxy\
-x. atom design\
-x. flux pattern
 x. redux\
-x. redux-saga\
-x. redux-toolkit\
-x. context api instead of redux\
 x. react-query
 
 
@@ -92,6 +85,7 @@ y-c-7. useParam() gets you id from /board/comment/${id} :white_check_mark:\
 y-c-8. post submit 직후 loading (spinning bar) 처리 :white_check_mark:\
 y-c-9. <Container >에서 flexbox & grid 처리:white_check_mark:
 
+y-d-1. styled component naming convention :white_check_mark:
 
 z-a. bbs\
 z-a-1. board-list\
@@ -125,4 +119,5 @@ d. [react-hooks-by-example](https://github.com/Lemoncode/react-hooks-by-example)
 d. [10 react hooks explained](https://www.youtube.com/watch?v=TNhaISOUy6Q&ab_channel=Fireship)
 
 y-b. [react-ts-bbs](https://github.com/eastflag/react-board-typescript) \
-y-c. [electric-vapers react ts project](https://github.com/imkdw/toy-project.git)
+y-c. [electric-vapers react ts project](https://github.com/imkdw/toy-project.git) \
+y-d. [instagram react ts](https://github.com/imkdw/toy-project)
