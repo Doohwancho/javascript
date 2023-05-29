@@ -87,6 +87,10 @@ y-c-9. <Container >에서 flexbox & grid 처리:white_check_mark:
 
 y-d-1. styled component naming convention :white_check_mark:
 
+y-e-1. global style에 rem size 기준 default로 하기 :white_check_mark:\
+y-e-2. oauth를 요청해도 accessToken받고 recoil과 sessionStorage에 보관한다. :white_check_mark:\
+y-e-3. slider 구현 :white_check_mark:
+
 z-a. bbs\
 z-a-1. board-list\
 z-a-2. board-view\
@@ -120,4 +124,5 @@ d. [10 react hooks explained](https://www.youtube.com/watch?v=TNhaISOUy6Q&ab_cha
 
 y-b. [react-ts-bbs](https://github.com/eastflag/react-board-typescript) \
 y-c. [electric-vapers react ts project](https://github.com/imkdw/toy-project.git) \
-y-d. [instagram react ts](https://github.com/imkdw/toy-project)
+y-d. [instagram react ts](https://github.com/imkdw/toy-project) \
+y-e. [used-marketplace react ts](https://github.com/imkdw/used-marketplace)
