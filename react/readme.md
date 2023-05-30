@@ -91,6 +91,24 @@ y-e-1. global style에 rem size 기준 default로 하기 :white_check_mark:\
 y-e-2. oauth를 요청해도 accessToken받고 recoil과 sessionStorage에 보관한다. :white_check_mark:\
 y-e-3. slider 구현 :white_check_mark:
 
+y-f-1. library: react-responsive library -> useMediaQuery()로 특정 width 이하이면 isMobile로 전환 :white_check_mark:\
+y-f-2. library: react-cookie -> useCookie()로 unique addView()만을 위한 수동 쿠키 관리 :white_check_mark:\
+y-f-3. feat-bbs: category 처리를 `/boards?category1=${mainCategory}&category2=${subCategory}` 이런식으로 함 :white_check_mark:\
+y-f-4. feat-bbs: BoardListPage에 main category, sub category 구분지어 내려주고, getBoard(main_cat, sub_cat) 요청도 구분지어 함 :white_check_mark:\
+y-f-5. feat-bbs: 글에 tag 1,2,3 구현 :white_check_mark:\
+y-f-6. feat-bbs: client side validation before submit using regex :white_check_mark:\
+y-f-7. feat-bbs: client side validation fail시 view 처리 :white_check_mark:\
+y-f-8. feat-bbs: board id를 위해 uuid를 썼지만, 굳이? :white_check_mark:\
+y-f-9. feat-bbs: 댓글 삭제 후, getBoard() 요청 받아와서 상태관리에 board정보 최신 업데이트 :white_check_mark:\
+y-f-10. feat-bbs: 글 추천 시, access token을 같이 보내서 로그인 해야만 추천 가능하도록 구현 :white_check_mark:\
+y-f-11. feat-bbs: addView()시, 1유저 1 view를 확실히 하기 위해, useCookie()로 별도 쿠키 관리 하고(macaddress 안쓰는구나) updateView 요청을 따로 빼놓음. :white_check_mark:\
+y-f-12. feat-user: user history(bbs/comment) :white_check_mark:\
+y-f-13. knowhow: services/ 에 post 관련 async await 함수 전부 모아 관리 :white_check_mark:\
+y-f-14. knowhow: URLSearchParams()으로 pages를 route 해준다 :white_check_mark:\
+y-f-15. knowhow: prop pass시 key를 쓰는 이유 :white_check_mark:\
+y-f-16. knowhow: assets 처리(svg icons) :white_check_mark:
+
+
 z-a. bbs\
 z-a-1. board-list\
 z-a-2. board-view\
@@ -125,4 +143,5 @@ d. [10 react hooks explained](https://www.youtube.com/watch?v=TNhaISOUy6Q&ab_cha
 y-b. [react-ts-bbs](https://github.com/eastflag/react-board-typescript) \
 y-c. [electric-vapers react ts project](https://github.com/imkdw/toy-project.git) \
 y-d. [instagram react ts](https://github.com/imkdw/toy-project) \
-y-e. [used-marketplace react ts](https://github.com/imkdw/used-marketplace)
+y-e. [used-marketplace react ts](https://github.com/imkdw/used-marketplace) \
+y-f. [hello-developer](https://github.com/imkdw/hdev_client)
