@@ -109,52 +109,44 @@ y-f-15. knowhow: prop pass시 key를 쓰는 이유 :white_check_mark:\
 y-f-16. knowhow: assets 처리(svg icons) :white_check_mark:
 
 
-feat: notification 구현 w/ react-query
-feat: filter 구현 w/ react-query
-feat: 배너의 슬라이더 이렇게 구현했구나
-feat: OAuth github
-
-
-knowhow: directory 구조가 다음과 같음
-knowhow: css reset
-knowhow: loadingbar, alert message modal, scroll to top 밑에 페이지 spa로 전환하네
-knowhow: 모든 url + http header 처리를 여기서 하네?
-knowhow: http request 마다, jwt access token를 local storage에서 꺼내어 첨부
-knowhow: http response 인터셉터 해서 http status에 따라 다르게 처리(w/ toast)
-knowhow: 비번변경 patch로 잘 처리 했네.
-knowhow: file을 FormData에 담아 보내고, multipart/form-data 로 보내는구나!
-knowhow: asset을 font/icon/image로 구분하고 index.ts로 묶음
-knowhow: loadingbar, alert message modal, scroll to top 밑에 페이지 spa로 전환하네?
-knowhow: `<S. 어쩌구>` 가 style 컴포넌트 네이밍 컨벤션인가보네? 쓸만한듯
-knowhow - scroll to top 구현
-knowhow: filter를 statemanagement의 장점을 잘 살려 구현함. re-render 안일어남.
-knowhow: styled의 dynamic css 활용. 조건에 맞게 animiation 변경.
-knowhow: ? 표시는 null일 수 있다는 말. 그러니 null이면 에러 뱉지마~
-knowhow: 로그인 한 회원에게만 보이는 컴포넌트는, 이렇게 처리*
-knowhow: form input의 파일확장자 타입을 .jpg, .png, .gif 등 지정 가능하다.
-knowhow: access token & refresh token을 local storage에 담는다. 근데 얜 따로 state management 안하네? 굳이 팔 필요 없단건가?
-knowhow: inputs, passwordCheck이 바뀔 때마다, 재랜더링 해서 validation check.
-
-
-library: recoil에 atom은 getter, selector는 setter의 용도인줄 착각했는데, atom은 그저 인터페이스이고, selector가 getter & setter 둘 다 해당
-library: react-toastify displays a brief message or alert that fades in and out of view
-library: react query로 요청할 떄, 파라미터에서 cache time, stale time도 지정할 수 있구나
-library: what is queryClient.invalidateQueries() ?
-library: 포폴이 post되었으니, portfolio_list 를 가르키는 react-query를 다시 re-fetch해서 re-render!
-library: react-query를 useMutation으로 쓰는구나~ onSuccess, onError로 핸들링하고.
-library: toast로 성공시 alert modal을 이런식으로 띄우는구나
-
-
-Q. 서버와 통신을 axios로 할거면, react-query를 왜 쓴거지? 다른 특수목적으로 썼나? 아니면 일반 http 요청과 구분지을만한 상태가 있나?
-Q. notification을 백엔드에서 어떻게 디자인 했을까? putNotification() 도 있는데, 왜 하필 put method?
-Q. recoil로 서버에 요청보내고 응답받으면 여기 묶인 컴포넌트들 죄다 re-render 일어날테니까, 이 경우엔 react-query 쓰는게 맞지 않나? -> 맞는데, 얘 호출하는걸 react-query씀
-Q. backend에서 parameter 어떻게 받아서 처리했을까? pagination w/ size, field, sort, search(query, searchType) 이 다 공존하는디
-Q. why not use styled for img, h2, p, div, etc?
-Q. react-query에서, diff useQuery() useMutation()?
-
-
-more: 근데 length만 validation check하는건 너무 부실. regex로 보충 필요.
-
+y-g-1. feat: notification 구현 w/ react-query :white_check_mark:\
+y-g-2. feat: filter 구현 w/ react-query :white_check_mark:\
+y-g-3. feat: 배너의 슬라이더 이렇게 구현했구나 :white_check_mark:\
+y-g-4. feat: OAuth github :white_check_mark:\
+y-g-5. feat: 대댓글 :white_check_mark:\
+y-g-6. knowhow: directory 구조가 다음과 같음 :white_check_mark:\
+y-g-7. knowhow: css reset :white_check_mark:\
+y-g-8. knowhow: loadingbar, alert message modal, scroll to top 밑에 페이지 spa로 전환하네 :white_check_mark:\
+y-g-9. knowhow: 모든 url + http header 처리를 여기서 하네? :white_check_mark:\
+y-g-10. knowhow: http request 마다, jwt access token를 local storage에서 꺼내어 첨부 :white_check_mark:\
+y-g-11. knowhow: http response 인터셉터 해서 http status에 따라 다르게 처리(w/ toast) :white_check_mark:\
+y-g-12. knowhow: 비번변경 patch로 잘 처리 했네. :white_check_mark:\
+y-g-13. knowhow: file을 FormData에 담아 보내고, multipart/form-data 로 보내는구나! :white_check_mark:\
+y-g-14. knowhow: asset을 font/icon/image로 구분하고 index.ts로 묶음 :white_check_mark:\
+y-g-15. knowhow: loadingbar, alert message modal, scroll to top 밑에 페이지 spa로 전환하네? :white_check_mark:\
+y-g-16. knowhow: `<S. 어쩌구>` 가 style 컴포넌트 네이밍 컨벤션인가보네? 쓸만한듯 :white_check_mark:\
+y-g-17. knowhow - scroll to top 구현 :white_check_mark:\
+y-g-18. knowhow: filter를 statemanagement의 장점을 잘 살려 구현함. re-render 안일어남. :white_check_mark:\
+y-g-19. knowhow: styled의 dynamic css 활용. 조건에 맞게 animiation 변경. :white_check_mark:\
+y-g-20. knowhow: ? 표시는 null일 수 있다는 말. 그러니 null이면 에러 뱉지마~ :white_check_mark:\
+y-g-21. knowhow: 로그인 한 회원에게만 보이는 컴포넌트는, 이렇게 처리* :white_check_mark:\
+y-g-22. knowhow: form input의 파일확장자 타입을 .jpg, .png, .gif 등 지정 가능하다. :white_check_mark:\
+y-g-23. knowhow: access token & refresh token을 local storage에 담는다. 근데 얜 따로 state management 안하네? 굳이 팔 필요 없단건가? :white_check_mark:\
+y-g-24. knowhow: inputs, passwordCheck이 바뀔 때마다, 재랜더링 해서 validation check. :white_check_mark:\
+y-g-25. library: recoil에 atom은 getter, selector는 setter의 용도인줄 착각했는데, atom은 그저 인터페이스이고, selector가 getter & setter 둘 다 해당 :white_check_mark:\
+y-g-26. library: react-toastify displays a brief message or alert that fades in and out of view :white_check_mark:\
+y-g-27. library: react query로 요청할 떄, 파라미터에서 cache time, stale time도 지정할 수 있구나 :white_check_mark:\
+y-g-28. library: what is queryClient.invalidateQueries() ? :white_check_mark:\
+y-g-29. library: 포폴이 post되었으니, portfolio_list 를 가르키는 react-query를 다시 re-fetch해서 re-render! :white_check_mark:\
+y-g-30. library: react-query를 useMutation으로 쓰는구나~ onSuccess, onError로 핸들링하고. :white_check_mark:\
+y-g-31. library: toast로 성공시 alert modal을 이런식으로 띄우는구나 :white_check_mark:\
+y-g-32. Q. 서버와 통신을 axios로 할거면, react-query를 왜 쓴거지? 다른 특수목적으로 썼나? 아니면 일반 http 요청과 구분지을만한 상태가 있나? :white_check_mark:\
+y-g-33. Q. notification을 백엔드에서 어떻게 디자인 했을까? putNotification() 도 있는데, 왜 하필 put method? :white_check_mark:\
+y-g-34. Q. recoil로 서버에 요청보내고 응답받으면 여기 묶인 컴포넌트들 죄다 re-render 일어날테니까, 이 경우엔 react-query 쓰는게 맞지 않나? -> 맞는데, 얘 호출하는걸 react-query씀 :white_check_mark:\
+y-g-35. Q. backend에서 parameter 어떻게 받아서 처리했을까? pagination w/ size, field, sort, search(query, searchType) 이 다 공존하는디 :white_check_mark:\
+y-g-36. Q. why not use styled for img, h2, p, div, etc? :white_check_mark:\
+y-g-37. Q. react-query에서, diff useQuery() useMutation()? :white_check_mark:\
+y-g-38. more: 근데 length만 validation check하는건 너무 부실. regex로 보충 필요. :white_check_mark:
 
 z-a. bbs\
 z-a-1. board-list\

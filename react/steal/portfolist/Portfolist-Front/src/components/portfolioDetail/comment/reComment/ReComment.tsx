@@ -31,7 +31,7 @@ const ReComment = ({ comment, portfolioId }: Props) => {
     commentDeleteWarning_atom
   );
 
-  const { data: reCommentValue } = useQuery(
+  const { data: reCommentValue } = useQuery( //TODO - feat: 대댓글
     ["recomment_value", comment.comment_id],
     () => getReComment(comment.comment_id),
     {
