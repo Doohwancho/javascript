@@ -47,7 +47,8 @@ d-5. pure-component (useMemo, useCallback) :white_check_mark:\
 d-6. useReducer :white_check_mark:\
 d-7. useContext (basic) :white_check_mark:\
 d-8. useRef :white_check_mark:\
-d-9. useDebugValue :white_check_mark:
+d-9. useDebugValue :white_check_mark:\
+d-10. why use custom hook? :white_check_mark:
 
 d-x. useImperativeHandle\
 d-x. useLayoutEffect\
