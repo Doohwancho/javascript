@@ -12,14 +12,14 @@ b. build react from scratch\
 c. component-based-programming :white_check_mark:\
 d. hooks\
 e. state\
+f. react-query\
 g. starter template :white_check_mark:\
 y. steal\
 z. module\
 zz. playground
 
 x. styled component\
-x. redux\
-x. react-query
+x. redux
 
 
 
@@ -57,6 +57,9 @@ d-x. useLayoutEffect\
 e-1. useState - example:gallary.js :white_check_mark:\
 e-2. state as snapshot :white_check_mark:\
 e-x. state management
+
+f-1. basic react query :white_check_mark:\
+f-2. infinite scroll :white_check_mark:
 
 g-1. [react,ts,eslint,vite,jest-dom](https://www.youtube.com/watch?v=cchqeWY0Nak&t=3s&ab_channel=CodingGarden) :white_check_mark:
 
