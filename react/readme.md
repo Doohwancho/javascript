@@ -7,13 +7,14 @@ modularize react concepts
 ---\
 Fields
 
-a. get-used-to\
+a. get-used-to :white_check_mark:\
 b. build react from scratch\
 c. component-based-programming :white_check_mark:\
-d. hooks\
-e. state\
-f. react-query\
+d. hooks :white_check_mark:\
+e. state :white_check_mark:\
+f. react-query :white_check_mark:\
 g. starter template :white_check_mark:\
+h. design patterns :white_check_mark:\
 y. steal\
 z. module\
 zz. playground
@@ -63,6 +64,11 @@ f-2. infinite scroll :white_check_mark:
 
 g-1. [react,ts,eslint,vite,jest-dom](https://www.youtube.com/watch?v=cchqeWY0Nak&t=3s&ab_channel=CodingGarden) :white_check_mark:
 
+h-1. compound-component :white_check_mark:\
+h-2. control props :white_check_mark:\
+h-3. custom hooks pattern :white_check_mark:\
+h-4. props getter pattern :white_check_mark:\
+h-5. state reducer pattern :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\
