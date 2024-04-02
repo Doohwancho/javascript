@@ -1,7 +1,7 @@
 ---\
 Objective
 
-modularize nextjs 13
+modularize nextjs
 
 
 
@@ -9,8 +9,12 @@ modularize nextjs 13
 ---\
 concepts
 
-a. installation\
-b. special files for ver13\
+
+z. steal\
+zz. playground
+
+x. installation\
+x. special files for ver13\
 x. routing\
 x. rendering\
 x. data fetching\
@@ -23,8 +27,13 @@ x. tooling
 
 
 ---\
+Todos
+
+
+z-a
+
+---\
 reference
 
-a-1. [official nextjs13 docs](https://beta.nextjs.org/docs/getting-started) :white_check_box:
 
-b-1. overview(page, layout, template, loading, error, head)
+z-a. [vercel/commerce](https://github.com/vercel/commerce)

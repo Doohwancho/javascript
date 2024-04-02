@@ -1,0 +1,12 @@
+@import "@/reset.scss";
+
+.SliceParagraph {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  &__Item {
+    font-size: var(--slice-paragraph-font-size);
+    line-height: var(--slice-paragraph-line-height);
+    overflow-wrap: break-word;
+  }
+}

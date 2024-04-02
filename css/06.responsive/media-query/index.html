@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Design Example</title>
+    <style>
+      /* Base styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+
+      /* Header */
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Navigation menu */
+      nav {
+        background-color: #666;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+      }
+
+      /* Main content */
+      main {
+        padding: 20px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+      }
+
+      /* Responsive styles */
+      @media screen and (max-width: 600px) {
+        /* Adjust header font size */
+        header {
+          font-size: 18px;
+        }
+
+        /* Adjust navigation menu font size */
+        nav {
+          font-size: 14px;
+        }
+
+        /* Adjust main content padding */
+        main {
+          padding: 10px;
+        }
+
+        /* Adjust footer font size */
+        footer {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Responsive Design Example</h1>
+    </header>
+
+    <nav>
+      <a href="#">Home</a> | <a href="#">About</a> |
+      <a href="#">Contact</a>
+    </nav>
+
+    <main>
+      <h2>Main Content</h2>
+      <p>
+        This is an example of a responsive website design. Try resizing the
+        browser window to see how the layout adjusts based on screen size.
+      </p>
+    </main>
+
+    <footer>&copy; 2024 - Example Company</footer>
+  </body>
+</html>

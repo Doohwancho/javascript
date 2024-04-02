@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Selector Example</title>
+    <style>
+      /* CSS Selector Example */
+      /* Selects all paragraphs inside div elements */
+      div p {
+        color: blue;
+      }
+
+      /* Selects all elements with class "highlight" */
+      .highlight {
+        background-color: yellow;
+      }
+
+      /* Selects all elements with tag name "h1" */
+      h1 {
+        font-size: 24px;
+      }
+
+      /* Selects the first paragraph element */
+      p:first-of-type {
+        font-weight: bold;
+      }
+
+      /* Selects all even rows in a table */
+      tr:nth-child(even) {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <p>This paragraph is inside a div.</p>
+    </div>
+    <p class="highlight">This paragraph has the highlight class.</p>
+    <h1>This is a heading.</h1>
+    <p>This is the first paragraph.</p>
+    <p>This is the second paragraph.</p>
+    <table>
+      <tr>
+        <td>Row 1, Cell 1</td>
+        <td>Row 1, Cell 2</td>
+      </tr>
+      <tr>
+        <td>Row 2, Cell 1</td>
+        <td>Row 2, Cell 2</td>
+      </tr>
+      <tr>
+        <td>Row 3, Cell 1</td>
+        <td>Row 3, Cell 2</td>
+      </tr>
+    </table>
+  </body>
+</html>

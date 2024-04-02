@@ -16,7 +16,10 @@ export function InfinitePeople() {
     useInfiniteQuery(['sw-people'], ({ pageParam = initialUrl }) => fetchUrl(pageParam), {
       getNextPageParam: (lastPage, allPage) => lastPage.next || undefined,
     });
-    //sw-people: unique key for caching and tracking the query
+    //query-key
+    //  쿼리 키 : 문자열 or 배열, 캐싱 처리에 있어서 중요한 개념
+    // .❗️중요❗️ 다른 컴포넌트에서 같은 키로 요청하면, 캐싱을 같이 처리하는데, 같은 컴포넌트에서 다른 키로 여러번 요청하면, 캐싱을 다르게 처리한다. 
+    //  ex. sw-people: unique key for caching and tracking the query
     //getNextPageParam: A function that returns the URL for the next page of data (or undefined if there is no next page).
 
   if (isLoading) return <div className="loading">Loading...</div>;

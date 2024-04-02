@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Unit Example</title>
+    <style>
+        /* Define a rainbow-colored gradient background */
+        body {
+            background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+            height: 100vh; /* Set the height of the body to full viewport height */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+
+        /* Define a container div */
+        .container {
+            width: 80%; /* Set the width of the container to 80% of the viewport width */
+            margin: 0 auto; /* Center the container horizontally */
+            padding: 20px; /* Add some padding */
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Box shadow for a 3D effect */
+            text-align: center; /* Center-align text */
+        }
+
+        /* Define heading styles */
+        h1 {
+            font-size: 3rem; /* Set font size to 3 times the root font size */
+            margin-bottom: 20px; /* Add some margin below the heading */
+            color: purple; /* Set text color to purple */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for a subtle effect */
+        }
+
+        /* Define paragraph styles */
+        p {
+            font-size: 1.5rem; /* Set font size to 1.5 times the root font size */
+            line-height: 2; /* Set line height to 2 times the font size */
+            color: #333; /* Set text color to dark gray */
+        }
+
+        /* Define button styles */
+        .btn {
+            padding: 10px 20px; /* Set padding of 10px on top/bottom and 20px on left/right */
+            font-size: 1.2rem; /* Set font size to 1.2 times the root font size */
+            background-color: aqua; /* Set background color to aqua */
+            border: none; /* Remove border */
+            border-radius: 5px; /* Add some border radius */
+            cursor: pointer; /* Change cursor to pointer on hover */
+            transition: background-color 0.3s ease; /* Smooth transition for background color */
+        }
+
+        /* Hover effect for button */
+        .btn:hover {
+            background-color: cyan; /* Change background color on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CSS Unit Example</h1>
+    <p>This is a fun example demonstrating the use of different CSS units for styling.</p>
+    <button class="btn" onclick="alert('Button Clicked!')">Click Me!</button>
+</div>
+
+</body>
+</html>

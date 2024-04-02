@@ -1,0 +1,35 @@
+@import "@/reset.scss";
+
+:host(loading-bar) {
+  .LoadingBar {
+    opacity: 0;
+    height: 0.4rem;
+    &__Body {
+      width: 100%;
+      height: 100%;
+      background-color: hsl(var(--theme-base), var(--theme-depth-500));
+      transform-origin: 0%;
+      animation: none;
+    }
+  }
+}
+:host(loading-bar[loading]) {
+  .LoadingBar {
+    opacity: 1;
+    &__Body {
+      animation: loading-animation 1000ms cubic-bezier(1, 0, 0, 1) infinite;
+    }
+  }
+}
+
+@keyframes loading-animation {
+  from {
+    transform: scaleX(0) translateX(0);
+  }
+  50% {
+    transform: scaleX(1);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}

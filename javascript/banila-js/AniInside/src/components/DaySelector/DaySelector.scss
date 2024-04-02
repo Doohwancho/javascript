@@ -1,0 +1,60 @@
+@import "@/reset.scss";
+
+:host(day-selector) {
+  width: 100%;
+}
+
+.DaySelector {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1rem;
+  width: 100%;
+  height: var(--day-selector-height);
+  background-color: hsla(var(--depth-200), 90%);
+  border-radius: var(--card-radius-1);
+  -webkit-backdrop-filter: blur(var(--backdrop-blur-1));
+  backdrop-filter: blur(var(--backdrop-blur-1));
+
+  &__Item {
+    position: relative;
+    height: 100%;
+    &::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 0.5rem;
+      bottom: 0;
+      left: 50%;
+      border-top: {
+        left-radius: 9999px;
+        right-radius: 9999px;
+      }
+      transform: translateX(-50%);
+      background-color: hsla(var(--theme-base), var(--theme-depth-500));
+      opacity: 0;
+    }
+    router-link {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 500;
+      height: 100%;
+      transition: opacity 150ms ease-out;
+    }
+    &--Selected {
+      router-link {
+        font-weight: 900;
+      }
+      &::before {
+        opacity: 1;
+      }
+    }
+    &:not(&--Selected):hover {
+      router-link {
+        opacity: 0.5;
+      }
+    }
+  }
+}

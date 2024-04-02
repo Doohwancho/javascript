@@ -1,0 +1,31 @@
+@import "@/reset.scss";
+
+.StarRating {
+  display: flex;
+  gap: 0.5rem;
+  &__Holder {
+    width: 7rem;
+  }
+  &__Progress {
+    fill: hsl(var(--star-color));
+    height: 100%;
+    animation: star-rating 600ms ease-out;
+  }
+  &__BG {
+    fill: hsl(var(--depth-300));
+  }
+  &__Number {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  &__Error {
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+}
+
+@keyframes star-rating {
+  from {
+    width: 0%;
+  }
+}

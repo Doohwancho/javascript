@@ -9,12 +9,12 @@ better user experience(positive feeling towards this app)
 Fields
 
 
-A. Html\
-B. Css\
-C. Javascript\
-D. Typescript\
-E. React\
-F. Nodejs\
-G. UIUX\
-H. Next.js\
+A. html\
+B. css\
+C. javascript\
+D. typescript\
+E. react\
+F. nodejs\
+G. interactive\
+H. next.js
 

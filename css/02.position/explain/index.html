@@ -1,0 +1,302 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+    />
+    <link
+      href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      span {
+        color: red;
+      }
+
+      .btn {
+      }
+
+      p {
+        margin-left: 10px;
+      }
+
+      h4 {
+        margin-left: 10px;
+      }
+
+      .intro {
+        margin-left: 10px;
+      }
+
+      .demo {
+        margin-top: 20px;
+      }
+
+      .square {
+        height: 100px;
+        width: 100px;
+        color: white;
+        padding: 40px;
+      }
+
+      .blue {
+        background: blue;
+      }
+
+      .red {
+        background-color: red;
+      }
+
+      .yellow {
+        background-color: yellow;
+        color: black;
+      }
+
+      .black {
+        background-color: black;
+      }
+
+      .block {
+        display: block;
+      }
+
+      .with-margin {
+        margin: 20px;
+      }
+
+      .inline-block {
+        display: inline-block;
+      }
+
+      .inline {
+        display: inline;
+        padding: 0px;
+      }
+
+      .float-right {
+        float: right;
+      }
+
+      .float-left {
+        float: left;
+      }
+
+      .clear-right {
+        clear: right;
+      }
+
+      .clear-left {
+        clear: left;
+      }
+
+      .clear-both {
+        clear: both;
+      }
+
+      .shifted {
+        top: 20px;
+        left: 20px;
+      }
+
+      .shifted-lots {
+        top: 990px;
+        left: 20px;
+      }
+      .absolute {
+        position: absolute;
+      }
+
+      .relative {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3 class="intro">CSS Positioning Explained</h3>
+
+    <button type="button" class="btn btn-primary intro" data-choice="box">
+      box model
+    </button>
+    <button class="btn btn-primary intro" data-choice="display">
+      display:
+    </button>
+    <button class="btn btn-primary intro" data-choice="float">float:</button>
+    <button class="btn btn-primary intro" data-choice="clear">clear:</button>
+    <button class="btn btn-primary intro" data-choice="position">
+      position:
+    </button>
+
+    <div class="container demo">
+      <h4><span>display:</span> Property</h4>
+    </div>
+  </body>
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    type="text/javascript"
+  ></script>
+
+  <script>
+    var $collection = $(".demo");
+
+    var boxModelTemplate =
+      "<h4>The Box Model</h4>" +
+      '<p class="intro">' +
+      "  Elements populate an HTML page using what is known as the CSS Box Model. The CSS Box Model describes the box that wraps around HTML elements which is made up of user-defined margins, borders, padding, and the actual content. The box model allows us to add a border around content, and to define space between content." +
+      "</p>" +
+      '<svg width="800" height="400">' +
+      '  <rect x="100" y="10" width="600" height="350" style="fill:#8DE6F2;stroke-width:1;stroke:gray" />' +
+      '  <text x="370" y="38" fill="red">margin</text>' +
+      '  <rect x="150" y="60" width="500" height="250" style="fill:#A8EDCA;stroke-width:3;stroke:black" />' +
+      '  <text x="370" y="88" fill="red">border</text>' +
+      '  <rect x="200" y="110" width="400" height="150" style="fill:#EDF28D;stroke-width:1;stroke:gray" />' +
+      '  <text x="370" y="138" fill="red">padding</text>' +
+      '  <rect x="250" y="160" width="300" height="50" style="fill:white;stroke-width:1;stroke:gray" />' +
+      '  <text x="370" y="190" fill="black">Content</text>' +
+      "</svg>";
+
+    var displayTemplate =
+      "  <h4>display: <span>block</span></h4>" +
+      "<p>" +
+      "The <span>display: block</span> property puts the element on the page as a box without letting anything sit next to it - it takes up the full width of the page. The following three square div elements are displayed with the <span>display:block</span> property." +
+      "</p>" +
+      '<div class="blue block square">A</div>' +
+      '<div class="yellow block square">B</div>' +
+      '<div class="red block square">C</div><br />' +
+      "<h4>display:<span> inline-block</span></h4>" +
+      "<p>" +
+      "Displays an element as a box, and allows other elements to sit next to it on the same line. The following three square divs are displayed with the <span>display:inline-block</span> property." +
+      "</p>" +
+      '<div class="blue inline-block square">A</div>' +
+      '<div class="yellow inline-block square">B</div>' +
+      '<div class="red inline-block square">C</div><br /><br /><br />' +
+      "<h4>display:<span> inline</span></h4>" +
+      "<p>" +
+      "Makes the element sit on the same line as another element, but without formatting it like a block. The <span>inline</span> property places all your elements next to one another, but not as blocks: so they don't keep their dimensions. The same square divs we displayed above, are now displayed below with the <span>display:inline</span> property." +
+      "</p>" +
+      '<div class="blue inline square">A</div>' +
+      '<div class="yellow inline square">B</div>' +
+      '<div class="red inline square">C</div><br /><br />' +
+      "<h4>display:<span> none</span></h4>" +
+      "<p>" +
+      "Makes the element and its content disappear from the page entirely." +
+      "</p>";
+
+    var floatTemplate =
+      "<h4>float: <span>right</span></h4>" +
+      '<p class="intro">' +
+      "Pushes the element to the right, allowing other elements to wrap around it. Float is very often used for images, but it is also useful when working with layouts. The following square div element has the <span>float right</span> property assigned to it." +
+      "</p>" +
+      '<div class="red float-right square">A</div><br /><br /><br />' +
+      "<h4>float: <span>left</span></h4>" +
+      '<p class="intro">' +
+      "Pushes the element to the left, allowing other elements to wrap around it. Float is very often used for images, but it is also useful when working with layouts. The following square div element has the <span>float left</span> property assigned to it." +
+      "</p>" +
+      '<div class="red float-left square">A</div><br /><br /><br />';
+
+    var clearTemplate =
+      "<h4>clear:<span>left:</span></h4>" +
+      '<p class="intro">' +
+      "Specifies that an element must be placed so that it has clear space to the left of it. In the example below, square divs A & B are displayed with the <span>float: left</span> property, and the red <span>square C</span> has the <span>clear: left</span> property, so it is placed below squares A & B." +
+      "</p>" +
+      '<div class="blue inline-block float-left square">A</div>' +
+      '<div class="yellow inline-block float-left square">B</div>' +
+      '<div class="red inline-block float-left clear-left square">C</div><br /><br/><br/><br/><br/>' +
+      '<h4 class="clear-both">clear:<span>right:</span></h4>' +
+      '<p class="intro">' +
+      "Specifies that an element must have clear space to the right of it. If you tell an element to clear: right, it will immediately move below any floating elements on the right side of the page. In the example below, square divs A & B are displayed with the <span>float: right</span> property, and the red <span>square C</span> has the <span>clear: right</span> property, so it is placed below squares A & B since it requires clear space on the right." +
+      "</p>" +
+      '<div class="blue inline-block float-right square">A</div>' +
+      '<div class="yellow inline-block float-right square">B</div>' +
+      '<div class="red inline-block float-right clear-right square">C</div><br /><br /><br />' +
+      '<h4 class="clear-both">clear:<span>both:</span></h4>' +
+      '<p class="intro">' +
+      "Specifies that an element must be placed so that it has clear space to the right and left of it.   When you tell it to clear: both, it will be placed out of the way of elements floating on the left and right." +
+      "</p>";
+
+    var positionTemplate =
+      "<h4>position: <span>static</span></h4>" +
+      "<p>" +
+      "There are two important types of properties you need to know about when positioning elements on a screen.  The first one, <strong>position:</strong>, specifies the <em>type</em> of positioning method to be used for an element (i.e. static, relative, absolute or fixed). Note, if you don't specify an element's positioning type, it defaults to static. The second is a set of properties <strong>(top:, bottom:, right:, left:)</strong>, used to specify the offset for the element. **Note - top, bottom, right & left are calculated differently based on the positioning method used, and are ignored for <em>position: static</em>.</p>" +
+      "<p>HTML elements are positioned static by default. A static positioned element is always positioned according to the normal flow of the page. The following red & yellow squares have the property <span>position: static</span></p>" +
+      '<div class="yellow square">A</div><div class="red square">B</div><br/><br/>' +
+      "<h4>position: <span>absolute</span></h4>" +
+      "<p>" +
+      "<p class=intro> <span>position: absolute</span> tells the browser that the element being positioned should be removed from the normal flow of the document and will be placed in an exact location on the page based on the values specified in <span>top, bottom, left & right</span>.  <em> (Don't confuse top:, bottom:, left:, & right: with margin-top:, margin-bottom, margin-left & margin-right!)</em> Note that the element is  taken out of the normal flow of the document - it won't affect how the elements before it or after it in the HTML are positioned on the Web page." +
+      "</p>" +
+      '<p class="intro">' +
+      "To show you how this works, let's  look again at the yellow & red square divs below which both have <span>static</span> positioning" +
+      "</p>" +
+      '<div class="yellow square">A</div><div class="red square">B</div><br/><br/>' +
+      "<p>" +
+      "Now let's look at these same two boxes with absolute positioning enabled on the <span>red box only</span>. You'll see that when absolute positioning is enabled, the red box is placed on the screen without regard to the normal flow of the document.  The red box properties <span>top: 990px</span> and <span>left: 20px</span>. With absolute positioning, top, bottom, left & right are specified relative to the top left corner of the screen:" +
+      "</p>" +
+      '<div class="yellow square">A</div><div class="red absolute shifted-lots square">B</div><br/><br/>' +
+      '<h4 class="clear-both">position: <span>relative</span></h4>' +
+      '<p class="intro">' +
+      "Relative positioning tells the element to move relative to where it would have landed if it just had the default static positioning. If you give an element relative positioning and tell it to have a top of 10px, it doesn't move down ten pixels from any particular thing—it moves down ten pixels from where it otherwise would have been. In the following example, the red square has properties <span>top: 20px</span> and <span>left: 20px</span>,</p>" +
+      '<div class="yellow inline-block with-margin square">A</div>' +
+      '<div class="red relative inline-block  shifted square">B</div>' +
+      '<div class="blue inline-block with-margin square">C</div>' +
+      '<p class="intro">' +
+      "</p><br/>" +
+      '<h4 class="clear-both">position: <span>fixed</span></h4>' +
+      '<p class="intro">' +
+      "Fixed positioning is a lot like absolute positioning. The position of the element is calculated in the same way as the absolute model - from the sides of the view port. But fixed positioning anchors an element to the browser window—you can think of it like gluing the element to the screen. If you scroll up and down, the fixed element stays put even as other elements scroll past." +
+      "</p>";
+
+    function showBoxModel() {
+      $collection.empty();
+      $collection.append($(boxModelTemplate));
+    }
+
+    function showDisplayProperty() {
+      $collection.empty();
+      $collection.append($(displayTemplate));
+    }
+
+    function showFloatProperty() {
+      $collection.empty();
+      $collection.append($(floatTemplate));
+    }
+
+    function showClearProperty() {
+      $collection.empty();
+      $collection.append($(clearTemplate));
+    }
+
+    function showPositionProperty() {
+      $collection.empty();
+      $collection.append($(positionTemplate));
+    }
+
+    $("button").click(function () {
+      var choice = $(this).data("choice");
+      switch (choice) {
+        case "box":
+          showBoxModel();
+          break;
+        case "display":
+          showDisplayProperty();
+          break;
+        case "float":
+          showFloatProperty();
+          break;
+        case "clear":
+          showClearProperty();
+          break;
+        case "position":
+          showPositionProperty();
+          break;
+        default:
+          showBoxModel();
+      }
+    });
+
+    function init() {
+      showBoxModel();
+    }
+
+    init();
+  </script>
+</html>

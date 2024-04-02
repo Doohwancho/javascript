@@ -1,0 +1,91 @@
+@import "@/reset.scss";
+
+:host(anime-card) {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  border-radius: var(--card-radius-1);
+  transition: box-shadow 150ms ease-out, transform 150ms ease-out;
+}
+
+.AnimeCard {
+  display: flex;
+  flex-grow: 0;
+  width: 100%;
+  gap: 1.5rem;
+  transition: 150ms ease-out;
+  border: 1px solid transparent;
+
+  &__Anchor {
+    width: 11rem;
+    height: calc(11rem / 7 * 10);
+    border-radius: var(--card-radius-2);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  &__Title {
+    --font-size: 1.8rem;
+    --line-height: 1.5;
+    margin: 0.5rem 0 1.5rem;
+    a {
+      font-size: var(--font-size);
+      line-height: var(--line-height);
+      font-weight: 900;
+    }
+  }
+
+  &__EtcMedia {
+    display: flex;
+    align-items: center;
+    margin: 0 calc(var(--card-radius-2) * -1);
+    button {
+      display: flex;
+      align-items: center;
+      margin: var(--card-radius-2) 0;
+      padding: 0 var(--card-radius-2);
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: hsla(var(--theme-base), var(--theme-depth-700));
+      &:not(:last-child) {
+        border-right: 1px solid hsla(var(--theme-base), var(--theme-depth-700));
+      }
+    }
+  }
+}
+.right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  .col {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :host(anime-card) {
+    padding: var(--card-padding) !important;
+  }
+  :host(anime-card:hover) {
+    box-shadow: 0 0.3rem 1.5rem hsl(var(--card-interaction-300));
+    transform: translateY(-0.5rem);
+  }
+}
+
+@media screen and (min-width: 512px) {
+  .AnimeCard {
+    flex-direction: column;
+    &__Anchor {
+      margin-right: 0;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 7/10;
+    }
+    &__EtcMedia {
+      margin-top: 0.75rem;
+    }
+  }
+}

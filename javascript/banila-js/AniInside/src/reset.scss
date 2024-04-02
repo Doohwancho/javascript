@@ -1,0 +1,211 @@
+@charset "utf-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;700;900&display=swap");
+@import "@/color.scss";
+
+html,
+body,
+header,
+nav,
+main,
+aside,
+section,
+article,
+figure,
+figcaption,
+footer,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p,
+span,
+ul,
+li,
+ol,
+i,
+address,
+strong,
+form,
+fieldset,
+input,
+textarea,
+legend,
+button,
+summary,
+details,
+select,
+option,
+label,
+img,
+video,
+svg,
+ai-app,
+ai-toggle,
+ai-header,
+anime-card,
+anime-list,
+cover-modal,
+day-selector,
+error-view,
+hamburger-button,
+icon-base,
+loading-bar,
+optimized-image,
+router-link,
+router-provider,
+slice-paragraph,
+star-rating,
+sticky-renderer,
+tag-list,
+teleport-portal {
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: hsl(var(--text-color));
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.03vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  word-break: keep-all;
+  float: none;
+  outline: none;
+}
+.static-asset {
+  display: none;
+}
+
+::selection {
+  background-color: hsl(var(--theme-base), var(--theme-depth-500));
+  color: #fff;
+}
+:root {
+  min-height: calc(var(--vh) * 100 * 1px);
+  background: hsl(var(--depth-100));
+}
+:host,
+:root,
+::after,
+::before {
+  --inner-padding: 2rem;
+  --card-padding: 1.5rem;
+  --chip-padding: 0.5rem 0.75rem;
+  --header-height: 7rem;
+  --day-selector-height: 6rem;
+  --card-radius-1: 1rem;
+  --card-radius-2: 0.5rem;
+  --app-width-limit: 1130px;
+  --cover-modal-z-index: 150;
+  --loading-bar-z-index: 110;
+  --sticky-list-z-index: 100;
+  --nav-z-index: 50;
+  --header-z-index: 10;
+  --backdrop-blur-1: 5px;
+  --backdrop-blur-2: 10px;
+  --backdrop-blur-3: 15px;
+}
+::after,
+::before {
+  --vw: inherit;
+  --vh: inherit;
+}
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong,
+b {
+  font-weight: 700;
+}
+html {
+  font-size: 0.625em;
+}
+a,
+router-link {
+  text-decoration: none;
+  cursor: default;
+}
+i {
+  font-style: normal;
+}
+button {
+  border-radius: 0;
+  background-color: transparent;
+  cursor: default;
+}
+ul,
+li {
+  list-style: none;
+}
+img,
+iframe {
+  vertical-align: middle;
+}
+summary {
+  list-style: none;
+  &::-webkit-details-marker {
+    display: none;
+  }
+}
+.blind {
+  clip: rect(1px 1px 1px 1px);
+  clip-path: inset(50%);
+  width: 1px !important;
+  height: 1px !important;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a,
+  button,
+  router-link,
+  ai-toggle,
+  [data-pointer="true"] {
+    cursor: pointer;
+  }
+}
+@media screen and (min-width: 768px) {
+  :host,
+  :root,
+  ::after,
+  ::before {
+    --card-padding: 2rem;
+    --chip-padding: 1rem 1.5rem;
+  }
+}
+
+@keyframes loading-animation {
+  0% {
+    background-position: 200% 200%;
+  }
+  80% {
+    background-position: 0% 0%;
+  }
+}
+
+.LoadingTarget {
+  background-image: linear-gradient(
+    90deg,
+    hsl(var(--depth-300)),
+    hsl(var(--depth-400)),
+    hsl(var(--depth-300))
+  );
+  background-size: 300% 300%;
+  animation: 0.8s ease-out infinite loading-animation;
+}

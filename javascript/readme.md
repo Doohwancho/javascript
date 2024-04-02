@@ -13,23 +13,14 @@ todos in Javascript
 a. get-used-to\
 b. frameless-frontend\
 c. banila-js-project\
-d. banila-js: spa from scratch\
-e. web component\
+e. web component
+
 x. core:this\
 x. core:scope\
 x. core:closure\
 x. core:promises\
 x. core:reduce\
-x. core:prototype\
-x. lib-util: Lodash\
-x. lib-util: UnderScore.js\
-x. lib-date: Moment.js\
-x. lib-date: date-fns\
-x. lib-data-visualization: D3.js\
-x. lib-data-visualization: Highchars\
-x. lib-animation: Tween.js\
-x. lib-animation: Anime.js\
-x. lib-http-request: axios
+x. core:prototype
 
 
 ---\
@@ -56,7 +47,6 @@ b-10. state management: web component with state management :white_check_mark:
 
 
 
-d-1. component lifecycle
 
 
 e-1. basic web component :white_check_mark:\

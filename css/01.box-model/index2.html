@@ -1,0 +1,222 @@
+<!-- resources: https://codepen.io/TechSquidTV/pen/oWXLeR -->
+<html>
+  <header>
+    <style>
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      @import url("https://fonts.googleapis.com/css?family=Roboto");
+
+      body,
+      html {
+        display: flex;
+        flex: 1;
+        height: 100%;
+        width: 100%;
+        flex-direction: column;
+      }
+
+      body {
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        background: #43c6ac; /* fallback for old browsers */
+        background: linear-gradient(
+          to right,
+          #191654,
+          #43c6ac
+        ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        color: #fff;
+      }
+
+      #wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+      }
+
+      #controls {
+        padding: 2em;
+        background-color: #66bb6a;
+        font-weight: bold;
+        border-radius: 0.4em;
+        padding: 2em;
+        margin: 1em;
+      }
+
+      #exampleContainer {
+        padding: 1em;
+        margin: 1em;
+        display: flex;
+        width: 55em;
+        justify-content: center;
+        border: 5px solid #fff;
+      }
+
+      .example {
+        background-color: #2ecc71;
+        text-align: center;
+        font-weight: bold;
+        color: #fff;
+
+        border-color: #fff;
+        border-style: solid;
+        border-width: 0px;
+      }
+
+      span {
+        display: inline-block;
+        width: 6em;
+        margin: 0.1em;
+      }
+
+      a {
+        color: #fff;
+      }
+
+      .center {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </header>
+  <body>
+    <div id="wrapper">
+      <div class="center">
+        <h1>RoboSquidTV - The CSS Box Model</h1>
+
+        <div id="controls">
+          <span>Height</span>
+          <input
+            id="boxHeight"
+            type="range"
+            min="0"
+            max="10"
+            step="0.1"
+            onInput="updateHeight(this.value)"
+            value="0"
+          />
+          <br />
+          <span>Width</span>
+          <input
+            id="boxWidth"
+            type="range"
+            min="0"
+            max="40"
+            step="0.1"
+            onInput="updateWidth(this.value)"
+            value="0"
+          />
+          <br />
+          <span>Padding</span>
+          <input
+            id="boxPadding"
+            type="range"
+            min="0"
+            max="5"
+            step="0.1"
+            onInput="updatePadding(this.value)"
+            value="0"
+          />
+          <br />
+          <span>Margin</span>
+          <input
+            id="boxMargin"
+            type="range"
+            min="0"
+            max="5"
+            step="0.1"
+            onInput="updateMargin(this.value)"
+            value="0"
+          />
+          <br />
+          <span>Border</span>
+          <input
+            id="boxBorder"
+            type="range"
+            min="0"
+            max="15"
+            step="0.1"
+            onInput="updateBorder(this.value)"
+            value="0"
+          />
+          <br />
+          <span>Border-Box</span>
+          <input type="checkbox" onclick="updateBoxSizing(this)" />
+        </div>
+
+        <div id="exampleContainer">
+          <div class="example">Content Box</div>
+          <div class="example">Content Box</div>
+          <div class="example">Content Box</div>
+        </div>
+        <p>
+          This Pen is part of a
+          <a href="https://www.youtube.com/watch?v=9fneagchy8k"
+            >CSS tutorial available on Youtube
+          </a>
+        </p>
+        <ul class="social">
+          <li>
+            <a href="https://www.youtube.com/channel/UC7vYUkA-s5XVjS7UoyGSFbg">
+              Youtube
+            </a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/robosquidtv/"> Facebook </a>
+          </li>
+          <li><a href="https://twitter.com/RoboSquidTV"> Twitter </a></li>
+        </ul>
+      </div>
+    </div>
+  </body>
+  <script>
+    function updateHeight(value) {
+      var boxes = document.getElementsByClassName("example");
+      for (i in boxes) {
+        boxes[i].style.height = value + "em";
+      }
+    }
+
+    function updateWidth(value) {
+      var boxes = document.getElementsByClassName("example");
+      for (i in boxes) {
+        boxes[i].style.width = value + "em";
+      }
+    }
+
+    function updatePadding(value) {
+      var boxes = document.getElementsByClassName("example");
+      for (i in boxes) {
+        boxes[i].style.padding = value + "em";
+      }
+    }
+
+    function updateMargin(value) {
+      var boxes = document.getElementsByClassName("example");
+      for (i in boxes) {
+        boxes[i].style.margin = value + "em";
+      }
+    }
+
+    function updateBorder(value) {
+      var boxes = document.getElementsByClassName("example");
+      for (i in boxes) {
+        boxes[i].style.borderWidth = value + "px";
+      }
+    }
+
+    function updateBoxSizing(cb) {
+      cb.checked
+        ? (document.querySelector("#wrapper").style.boxSizing = "border-box")
+        : (document.querySelector("#wrapper").style.boxSizing = "content-box");
+    }
+  </script>
+</html>

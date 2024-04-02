@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cross-Browser Compatibility Example</title>
+    <style>
+      /* Base styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+
+      /* Specific styles for different browsers */
+      /* Firefox */
+      @-moz-document url-prefix() {
+        /* Add Firefox-specific styles here */
+        body {
+          background-color: #e6e6e6;
+        }
+      }
+
+      /* Safari/Chrome */
+      @media screen and (-webkit-min-device-pixel-ratio: 0) {
+        /* Add Safari/Chrome-specific styles here */
+        body {
+          background-color: #f9f9f9;
+        }
+      }
+
+      /* Internet Explorer */
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        /* Add Internet Explorer-specific styles here */
+        body {
+          background-color: #cccccc;
+        }
+      }
+
+      /* Edge */
+      @supports (-ms-ime-align: auto) {
+        /* Add Microsoft Edge-specific styles here */
+        body {
+          background-color: #d9d9d9;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cross-Browser Compatibility Example</h1>
+    <p>
+      This is an example of how to apply specific styles for different web
+      browsers.
+    </p>
+  </body>
+</html>

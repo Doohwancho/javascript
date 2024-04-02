@@ -1,0 +1,21 @@
+@import "@/reset.scss";
+
+:host(ai-header) {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid hsl(var(--depth-200));
+  width: 100%;
+  height: var(--header-height);
+}
+
+.AiHeader {
+  width: min(calc(100% - var(--inner-padding) * 2), var(--app-width-limit));
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &__Logo {
+    font-size: 2rem;
+    font-weight: 700;
+  }
+}
