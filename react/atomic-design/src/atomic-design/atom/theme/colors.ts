@@ -1,10 +1,11 @@
-/**
- * 1. interface BaseColorScheme, AccentColorScheme,
- * 2. type ShadesColorScheme, ColorToken, Color, ColorPallete
- * 3. const colors(red, ..., lime)
- * 4. const variantPresetColors, defaultPresetColors
+import { HEX, ColorToken } from "./token/colorTypes"; /**
+
+ * 1. interface BaseColorScheme(mother), AccentColorScheme(child), ShadesColorScheme
+ * 2. type ColorToken, Color, ColorPallete
+ * 3. const colors(red, ..., lime) - ingredient: base, lighten1~5, darken1~5, accent1~4
+ * 4. const variantPresetColors(모든 컬러 const vars 담고있음), defaultPresetColors(각 color당 Hex color code 담고있음)
  */
-interface BaseColorScheme {
+export interface BaseColorScheme {
   base: string;
   lighten1: string;
   lighten2: string;
@@ -17,6 +18,7 @@ interface BaseColorScheme {
   darken4: string;
 }
 
+//not using it yet
 interface AccentColorScheme extends BaseColorScheme {
   accent1: string;
   accent2: string;
@@ -24,14 +26,14 @@ interface AccentColorScheme extends BaseColorScheme {
   accent4: string;
 }
 
-// type ShadesColorScheme = {
+// interface ShadesColorScheme {
 //   black: string;
 //   white: string;
 //   transparent: string;
-// };
+// }
 
 export type Color = {
-  [key: string]: AccentColorScheme | BaseColorScheme;
+  [key: string]: BaseColorScheme | AccentColorScheme;
   red: Readonly<AccentColorScheme>;
   pink: Readonly<AccentColorScheme>;
   purple: Readonly<AccentColorScheme>;
@@ -54,7 +56,7 @@ export type Color = {
   //   shades: Readonly<ShadesColorScheme>;
 };
 
-type ColorPallete =
+export type ColorPallete =
   | "red"
   | "pink"
   | "purple"
@@ -76,8 +78,6 @@ type ColorPallete =
   | "blueGrey"
   | "grey"
   | "shades";
-
-export type ColorToken = `${ColorPallete}-${keyof BaseColorScheme}`;
 
 const red = Object.freeze({
   base: "#f44336",
@@ -432,4 +432,30 @@ export const defaultPresetColors = {
   geekblue: "#2F54EB",
   gold: "#FAAD14",
   lime: "#A0D911",
+};
+
+/**
+ * takes color which has a format like 'green-lighten3'
+ * and parse it into baseColor: 'green', colorVariant:'lighten3'
+ * then returns hex code of those colors from colors.ts
+ *
+ * @param color ex. 'green-light1'
+ * @returns hex code(ex. #ebbe01) for 'green-light1 color I defined on colors.ts
+ */
+export const getColorByToken = (color: ColorToken): HEX => {
+  const [prefix, suffix] = color.split("-");
+  return variantPresetColors[prefix][suffix];
+};
+
+export const hexToRgba = (hex: HEX, opacity: number) => {
+  // console.log(
+  //   `rgba('${parseInt(hex.substring(1, 3), 16)}','${parseInt(
+  //     hex.substring(3, 5),
+  //     16
+  //   )}','${parseInt(hex.substring(5, 7), 16)}','${opacity}')`
+  // );
+  return `rgba(${parseInt(hex.substring(1, 3), 16)},${parseInt(
+    hex.substring(3, 5),
+    16
+  )},${parseInt(hex.substring(5, 7), 16)},${opacity})`;
 };

@@ -1,8 +1,9 @@
 /** @jsxImportSource @emotion/react */
-import variantPresetColors from "../theme";
+// import variantPresetColors from "../theme";
 import type { ColorToken } from "../theme";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
+import { getColorByToken } from "../theme/colors";
 
 /**
  * Q. what is this code?
@@ -46,50 +47,20 @@ interface IButtonProps {
   children: string;
 }
 
-// utils
-/**
- * takes color which has a format like 'green-lighten3'
- * and parse it into baseColor: 'green', colorVariant:'lighten3'
- * then returns hex code of those colors from colors.ts
- *
- * @param color ex. 'green-light1'
- * @returns hex code(ex. #ebbe01) for 'green-light1 color I defined on colors.ts
- */
-const colorTokenParser = (color: ColorToken) => {
-  //color: green-lighten1
-  color = color || buttonDefaultColorToken;
-  const defaultVariant = "base";
-  const baseColor = color.includes("-") ? color.split("-")[0] : color; //'green'
-  const colorVariant = color.includes("-") //'lighten1'
-    ? color.split("-")[1]
-    : defaultVariant;
-  if (baseColor && variantPresetColors[baseColor]) {
-    const parsedColor = variantPresetColors[baseColor][colorVariant]; //#66bb6a, which is hex color for green-lighten1 I defined on colors.ts file
-    return parsedColor;
-  }
-  console.log("ERROR! - there is a problem regarding parsing color token");
-};
-
 /**
  * style
  */
 const buttonDefaultColorToken: ColorToken = "green-lighten1";
-const whiteish: HEX = colorTokenParser("grey-lighten5");
+const whiteish: HEX = getColorByToken("grey-lighten5");
 
 const buttonSizeSet: TButtonSize[] = ["sm", "md", "lg", "xl"];
 
 const buttonDefaultStyle = {
-  backgroundColor: colorTokenParser(buttonDefaultColorToken), //should return hex color for green-lighten1 -> #eb4646
-  // backgroundColor: "#66bb6a",
-  // backgroundColor: "blue",
-  // backgroundColor: "#eb4646",
+  backgroundColor: getColorByToken(buttonDefaultColorToken), //should return hex color for green-lighten1 -> #eb4646
   border: "groove", //none, solid, outset, dashed, double, groove, inset,
   borderRadius: "4px", //how round the corner should be?
   whiteSpace: "nowrap",
   cursor: "default", //default, pointer, auto
-  // height: "32px",
-  // fontSize: "14px",
-  // padding: "0 16px",
 };
 /**
  * component의 variant를 미리 정해놓고, variant에 따라 style을 바꿔주는 함수
@@ -102,7 +73,7 @@ const buttonDefaultStyle = {
  *  - variant에 맞는 color를 적용한 style
  */
 const buttonVariantStyle = (variant: TButtonVariant, color: ColorToken) => {
-  const parsedColor: HEX = colorTokenParser(color);
+  const parsedColor: HEX = getColorByToken(color);
   const switchBackground = {
     background: "none",
     color: parsedColor,
