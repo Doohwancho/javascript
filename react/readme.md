@@ -15,6 +15,7 @@ e. state :white_check_mark:\
 f. react-query :white_check_mark:\
 g. starter template :white_check_mark:\
 h. design patterns :white_check_mark:\
+i. atomic design pattern\
 y. steal\
 z. module\
 zz. playground
@@ -69,6 +70,8 @@ h-2. control props :white_check_mark:\
 h-3. custom hooks pattern :white_check_mark:\
 h-4. props getter pattern :white_check_mark:\
 h-5. state reducer pattern :white_check_mark:
+
+i-1. [atomic design: theme and button](https://github.com/DesignSystemLab/design-system) :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\
