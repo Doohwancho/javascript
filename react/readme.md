@@ -74,6 +74,7 @@ h-5. state reducer pattern :white_check_mark:
 i-1. [atomic design: theme and button](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-2. [atomic design: textarea](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-3. [atomic design: radio](https://github.com/DesignSystemLab/design-system) :white_check_mark:
+i-4. [atomic design: checkbox](https://github.com/DesignSystemLab/design-system) :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\

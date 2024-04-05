@@ -1,6 +1,7 @@
 // import { useState } from "react";
 import "./App.css";
 import { Button } from "./atomic-design/atom/button";
+import Checkbox from "./atomic-design/atom/checkbox/checkbox";
 import Radio from "./atomic-design/atom/radio/Radio";
 import TextArea from "./atomic-design/atom/textarea/TextArea";
 
@@ -50,6 +51,14 @@ function App() {
       >
         수박
       </Radio>
+
+      <h2>step4 - checkbox</h2>
+      {/* <Checkbox>와자뵤</Checkbox> */}
+      <Checkbox />
+      <Checkbox color="amber-lighten1" />
+      <Checkbox checked color="lightBlue-darken1" />
+      <Checkbox disabled label="test" />
+      <Checkbox checked disabled />
     </>
   );
 }
