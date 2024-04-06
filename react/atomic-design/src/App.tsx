@@ -4,6 +4,7 @@ import { Button } from "./atomic-design/atom/button";
 import Checkbox from "./atomic-design/atom/checkbox/checkbox";
 import Radio from "./atomic-design/atom/radio/Radio";
 import TextArea from "./atomic-design/atom/textarea/TextArea";
+import TextInput from "./atomic-design/atom/textInput/TextInput";
 
 function App() {
   return (
@@ -57,7 +58,7 @@ function App() {
       <Checkbox disabled label="test" />
       <Checkbox checked disabled />
 
-      {/* <h2>step5 - input</h2>
+      <h2>step5 - input</h2>
       <>
         <TextInput variant="outline" inputSize="sm" label="outline" />
         <TextInput variant="outline" inputSize="md" placeholder="placeholder" />
@@ -122,7 +123,7 @@ function App() {
         <TextInput variant="filled" value="disabled" disabled />
         <TextInput variant="outline" value="disabled" disabled />
         <TextInput variant="solo" value="disabled" disabled />
-      </form> */}
+      </form>
     </>
   );
 }
