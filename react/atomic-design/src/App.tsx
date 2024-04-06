@@ -14,7 +14,11 @@ function App() {
       <Button variant="solid" color="blue-lighten1" size="lg">
         Custom Button!
       </Button>
+      <Button variant="solid" color="red-lighten3" size="sm">
+        Custom Button!
+      </Button>
       <Button></Button>
+
       <h2>step2 - TextArea</h2>
       <TextArea
         appearance="standard" //style related, from useStyle.ts, - standard, none
