@@ -1,5 +1,5 @@
 import type { ColorToken, HEX } from "../theme/";
-import { getColorByToken, hexToRgba } from "../theme/colors"; //TODO - index로부터 가져오기
+import { getColorByToken, hexToRgba } from "../theme/"; //TODO - index로부터 가져오기
 import type {
   ApperanceType,
   ResizeType,

@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 // import variantPresetColors from "../theme";
 import type { ColorToken } from "../theme";
+import { getColorByToken } from "../theme";
 import { css } from "@emotion/react";
 import PropTypes from "prop-types";
-import { getColorByToken } from "../theme/colors";
 
 /**
  * Q. what is this code?

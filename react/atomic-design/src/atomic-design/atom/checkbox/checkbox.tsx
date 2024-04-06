@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
-import { variantPresetColors } from "../theme/colors";
+import { variantPresetColors } from "../theme/token/colors";
 import type { ColorToken, Color } from "../theme/";
-import { getColorByToken, hexToRgba } from "../theme/colors";
+import { getColorByToken } from "../theme/";
 import type { CheckboxSize, CheckboxProps } from "./checkboxTypes";
 import { css } from "@emotion/react";
 // import { useEffect, useRef } from "react";

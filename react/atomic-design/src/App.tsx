@@ -13,7 +13,6 @@ function App() {
         Custom Button!
       </Button>
       <Button></Button>
-
       <h2>step2 - TextArea</h2>
       <TextArea
         appearance="standard" //style related, from useStyle.ts, - standard, none
@@ -23,7 +22,6 @@ function App() {
         resize="none" //text related, from useTextarea.ts - horizontal, vertical, none
         defaultValue={"텍스트를 입력해주세요"} //text related, from useTextarea.ts
       ></TextArea>
-
       <h2>step3 - Radio</h2>
       <Radio
         name="fruit"
@@ -51,7 +49,6 @@ function App() {
       >
         수박
       </Radio>
-
       <h2>step4 - checkbox</h2>
       {/* <Checkbox>와자뵤</Checkbox> */}
       <Checkbox />
@@ -59,6 +56,73 @@ function App() {
       <Checkbox checked color="lightBlue-darken1" />
       <Checkbox disabled label="test" />
       <Checkbox checked disabled />
+
+      {/* <h2>step5 - input</h2>
+      <>
+        <TextInput variant="outline" inputSize="sm" label="outline" />
+        <TextInput variant="outline" inputSize="md" placeholder="placeholder" />
+        <TextInput
+          variant="outline"
+          inputSize="lg"
+          label="outline"
+          placeholder="placeholder"
+        />
+        <TextInput variant="outline" inputSize="xl" />
+
+        <TextInput
+          variant="filled"
+          inputSize="sm"
+          label="filled"
+          placeholder="placeholder"
+        />
+        <TextInput variant="filled" inputSize="md" label="filled" />
+        <TextInput variant="filled" inputSize="lg" />
+        <TextInput variant="filled" inputSize="xl" label="filled" />
+
+        <TextInput variant="solo" inputSize="sm" label="solo" />
+        <TextInput
+          variant="solo"
+          inputSize="md"
+          placeholder="only_placeholder"
+        />
+        <TextInput
+          variant="solo"
+          inputSize="lg"
+          label="solo"
+          placeholder="placeholder"
+        />
+        <TextInput variant="solo" inputSize="xl" />
+      </>
+      <>
+        <TextInput inputSize="sm" label="sm" />
+        <TextInput inputSize="md" label="md" />
+        <TextInput inputSize="lg" label="lg" />
+        <TextInput inputSize="xl" label="xl" />
+      </>
+      <>
+        <TextInput type="text" label="ID" />
+        <TextInput type="password" label="password" />
+        <TextInput type="text" label="ID" />
+        <TextInput type="password" label="password" />
+        <TextInput type="text" label="only label" />
+        <TextInput placeholder="only placeholder" />
+        <TextInput label="label" placeholder="placeholder" />
+        <TextInput label="defaultValue" defaultValue="defaultValue" clearable />
+        <TextInput variant="filled" value="disabled" disabled />
+        <TextInput variant="outline" value="disabled" disabled />
+        <TextInput variant="solo" value="disabled" disabled />
+      </>
+      <form>
+        <TextInput type="text" label="ID" />
+        <TextInput type="password" label="password" />
+        <TextInput type="text" label="only label" />
+        <TextInput placeholder="only placeholder" />
+        <TextInput label="label" placeholder="placeholder" />
+        <TextInput label="defaultValue" defaultValue="defaultValue" />
+        <TextInput variant="filled" value="disabled" disabled />
+        <TextInput variant="outline" value="disabled" disabled />
+        <TextInput variant="solo" value="disabled" disabled />
+      </form> */}
     </>
   );
 }
