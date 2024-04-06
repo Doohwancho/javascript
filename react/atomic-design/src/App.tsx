@@ -5,6 +5,7 @@ import Checkbox from "./atomic-design/atom/checkbox/checkbox";
 import Radio from "./atomic-design/atom/radio/Radio";
 import TextArea from "./atomic-design/atom/textarea/TextArea";
 import TextInput from "./atomic-design/atom/textInput/TextInput";
+import { Box } from "./atomic-design/atom/box";
 
 function App() {
   return (
@@ -124,6 +125,21 @@ function App() {
         <TextInput variant="outline" value="disabled" disabled />
         <TextInput variant="solo" value="disabled" disabled />
       </form>
+      <h2>step6 - Box</h2>
+      <Box>
+        <Box width="64px" height="64px" center backgroundColor="yellow-base">
+          <span>first</span>
+        </Box>
+        <Box width="64px" height="64px" center backgroundColor="blue-base">
+          <span>second</span>
+        </Box>
+        <Box width="64px" height="64px" center backgroundColor="amber-base">
+          <span>third</span>
+        </Box>
+        <Box width="64px" height="64px" center backgroundColor="cyan-base">
+          <span>fourth</span>
+        </Box>
+      </Box>
     </>
   );
 }
