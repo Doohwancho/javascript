@@ -6,10 +6,25 @@ import Radio from "./atomic-design/atom/radio/Radio";
 import TextArea from "./atomic-design/atom/textarea/TextArea";
 import TextInput from "./atomic-design/atom/textInput/TextInput";
 import { Box } from "./atomic-design/atom/box";
+import { Nike } from "./atomic-design/atom/icon/Nike";
 
 function App() {
   return (
     <>
+      <h1>atoms</h1>
+      <text>
+        1. theme
+        2. button 
+        3. textarea
+        4. radio 
+        5. checkbox
+        6. input
+        7. box
+        8. icon 
+        - link 
+        - image 
+        - spinner 
+      </text>
       <h2>step1 - Button</h2>
       <Button variant="solid" color="blue-lighten1" size="lg">
         Custom Button!
@@ -144,6 +159,8 @@ function App() {
           <span>fourth</span>
         </Box>
       </Box>
+      <h2>step7 - icon</h2>
+      <Nike />
     </>
   );
 }
