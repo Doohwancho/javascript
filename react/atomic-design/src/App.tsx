@@ -1,5 +1,5 @@
 // import { useState } from "react";
-import "./App.css";
+// import "./App.css";
 import { Button } from "./atomic-design/atom/button";
 import Checkbox from "./atomic-design/atom/checkbox/checkbox";
 import Radio from "./atomic-design/atom/radio/Radio";
@@ -11,8 +11,11 @@ import Link from "./atomic-design/atom/link/Link";
 import Image from "./atomic-design/atom/image/Image";
 import Spinner from "./atomic-design/atom/spinner/Spinner";
 import Text from "./atomic-design/atom/text/Text";
+import TextList from "./atomic-design/atom/list/TextList";
 
 function App() {
+  const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4']; 
+
   return (
     <>
       <h1>1. atoms</h1>
@@ -29,6 +32,7 @@ function App() {
         10. image 
         11. spinner 
         12. text
+        13. list 
       </text>
 
       <h2>step1 - Button</h2>
@@ -184,6 +188,9 @@ function App() {
       <Text fontSize={32} bold={true}>this is bold h1 text</Text>
       <br></br>
       <Text fontSize={16} bold={false}>this is regular text</Text>
+
+      <h2>step12 - list</h2>
+      <TextList items={items} fontSize={18} color="black" />
     </>
   );
 }

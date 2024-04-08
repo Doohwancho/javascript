@@ -82,7 +82,8 @@ i-atom-8. [atomic design: icon](https://github.com/DesignSystemLab/design-system
 i-atom-9. [atomic design: link](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-atom-10. [atomic design: image](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-atom-11. [atomic design: spinner](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-atom-12. [atomic design: text](https://github.com/DesignSystemLab/design-system) :white_check_mark:
+i-atom-12. [atomic design: text](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-13. [atomic design: list](https://github.com/DesignSystemLab/design-system) :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\
