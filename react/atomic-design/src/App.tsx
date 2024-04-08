@@ -9,6 +9,7 @@ import { Box } from "./atomic-design/atom/box";
 import { Nike } from "./atomic-design/atom/icon/Nike";
 import Link from "./atomic-design/atom/link/Link";
 import Image from "./atomic-design/atom/image/Image";
+import Spinner from "./atomic-design/atom/spinner/Spinner";
 
 function App() {
   return (
@@ -25,7 +26,8 @@ function App() {
         8. icon 
         9. link 
         10. image 
-        - spinner 
+        11. spinner 
+        - label
       </text>
       <h2>step1 - Button</h2>
       <Button variant="solid" color="blue-lighten1" size="lg">
@@ -73,7 +75,6 @@ function App() {
         수박
       </Radio>
       <h2>step4 - checkbox</h2>
-      {/* <Checkbox>와자뵤</Checkbox> */}
       <Checkbox />
       <Checkbox color="amber-lighten1" />
       <Checkbox checked color="lightBlue-darken1" />
@@ -167,6 +168,9 @@ function App() {
       <Link to="https://google.com">google</Link>
       <h2>step9 - image</h2>
       <Image src="https://reactnative.dev/img/header_logo.svg" alt="image" width={100} height={100} />
+
+      <h2>step10 - loading spinner</h2>
+      <Spinner />
     </>
   );
 }
