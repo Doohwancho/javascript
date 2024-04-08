@@ -7,6 +7,7 @@ import TextArea from "./atomic-design/atom/textarea/TextArea";
 import TextInput from "./atomic-design/atom/textInput/TextInput";
 import { Box } from "./atomic-design/atom/box";
 import { Nike } from "./atomic-design/atom/icon/Nike";
+import Link from "./atomic-design/atom/link/Link";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
         6. input
         7. box
         8. icon 
-        - link 
+        9. link 
         - image 
         - spinner 
       </text>
@@ -161,6 +162,8 @@ function App() {
       </Box>
       <h2>step7 - icon</h2>
       <Nike />
+      <h2>step8 - Link</h2>
+      <Link to="https://google.com">google</Link>
     </>
   );
 }
