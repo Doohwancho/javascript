@@ -71,17 +71,18 @@ h-3. custom hooks pattern :white_check_mark:\
 h-4. props getter pattern :white_check_mark:\
 h-5. state reducer pattern :white_check_mark:
 
-i-1. [atomic design: theme](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-2. [atomic design: textarea](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-3. [atomic design: radio](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-4. [atomic design: checkbox](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-5. [atomic design: textInput](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-6. [atomic design: box](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-7. [atomic design: button](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-8. [atomic design: icon](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-9. [atomic design: link](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-10. [atomic design: image](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
-i-11. [atomic design: spinner](https://github.com/DesignSystemLab/design-system) :white_check_mark:
+i-atom-1. [atomic design: theme](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-2. [atomic design: textarea](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-3. [atomic design: radio](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-4. [atomic design: checkbox](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-5. [atomic design: textInput](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-6. [atomic design: box](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-7. [atomic design: button](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-8. [atomic design: icon](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-9. [atomic design: link](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-10. [atomic design: image](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-11. [atomic design: spinner](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
+i-atom-12. [atomic design: text](https://github.com/DesignSystemLab/design-system) :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\

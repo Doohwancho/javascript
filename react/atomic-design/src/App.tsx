@@ -10,11 +10,12 @@ import { Nike } from "./atomic-design/atom/icon/Nike";
 import Link from "./atomic-design/atom/link/Link";
 import Image from "./atomic-design/atom/image/Image";
 import Spinner from "./atomic-design/atom/spinner/Spinner";
+import Text from "./atomic-design/atom/text/Text";
 
 function App() {
   return (
     <>
-      <h1>atoms</h1>
+      <h1>1. atoms</h1>
       <text>
         1. theme
         2. button 
@@ -27,8 +28,9 @@ function App() {
         9. link 
         10. image 
         11. spinner 
-        - label
+        12. text
       </text>
+
       <h2>step1 - Button</h2>
       <Button variant="solid" color="blue-lighten1" size="lg">
         Custom Button!
@@ -47,6 +49,7 @@ function App() {
         resize="none" //text related, from useTextarea.ts - horizontal, vertical, none
         defaultValue={"텍스트를 입력해주세요"} //text related, from useTextarea.ts
       ></TextArea>
+
       <h2>step3 - Radio</h2>
       <Radio
         name="fruit"
@@ -74,6 +77,7 @@ function App() {
       >
         수박
       </Radio>
+
       <h2>step4 - checkbox</h2>
       <Checkbox />
       <Checkbox color="amber-lighten1" />
@@ -147,6 +151,7 @@ function App() {
         <TextInput variant="outline" value="disabled" disabled />
         <TextInput variant="solo" value="disabled" disabled />
       </form>
+
       <h2>step6 - Box</h2>
       <Box>
         <Box width="64px" height="64px" center backgroundColor="yellow-base">
@@ -162,15 +167,23 @@ function App() {
           <span>fourth</span>
         </Box>
       </Box>
+
       <h2>step7 - icon</h2>
       <Nike />
+
       <h2>step8 - Link</h2>
       <Link to="https://google.com">google</Link>
+
       <h2>step9 - image</h2>
       <Image src="https://reactnative.dev/img/header_logo.svg" alt="image" width={100} height={100} />
 
       <h2>step10 - loading spinner</h2>
       <Spinner />
+
+      <h2>step11 - text</h2>
+      <Text fontSize={32} bold={true}>this is bold h1 text</Text>
+      <br></br>
+      <Text fontSize={16} bold={false}>this is regular text</Text>
     </>
   );
 }
