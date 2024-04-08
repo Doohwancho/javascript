@@ -1,5 +1,5 @@
 // import { useState } from "react";
-// import "./App.css";
+import "./App.css";
 import { Button } from "./atomic-design/atom/button";
 import Checkbox from "./atomic-design/atom/checkbox/checkbox";
 import Radio from "./atomic-design/atom/radio/Radio";
