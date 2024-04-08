@@ -8,6 +8,7 @@ import TextInput from "./atomic-design/atom/textInput/TextInput";
 import { Box } from "./atomic-design/atom/box";
 import { Nike } from "./atomic-design/atom/icon/Nike";
 import Link from "./atomic-design/atom/link/Link";
+import Image from "./atomic-design/atom/image/Image";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         7. box
         8. icon 
         9. link 
-        - image 
+        10. image 
         - spinner 
       </text>
       <h2>step1 - Button</h2>
@@ -164,6 +165,8 @@ function App() {
       <Nike />
       <h2>step8 - Link</h2>
       <Link to="https://google.com">google</Link>
+      <h2>step9 - image</h2>
+      <Image src="https://reactnative.dev/img/header_logo.svg" alt="image" width={100} height={100} />
     </>
   );
 }
