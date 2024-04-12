@@ -11,7 +11,9 @@ todos in Javascript
 a. get-used-to\
 b. frameless-frontend\
 c. banila-js-project\
+d. syntax\
 e. web component
+
 
 x. core:this\
 x. core:scope\
@@ -44,8 +46,7 @@ b-8. state management: Reactive Programming :white_check_mark:\
 b-9. state management: Redux :white_check_mark:\
 b-10. state management: web component with state management :white_check_mark:
 
-
-
+d-1. import (es6, commonjs, amd, umd) :white_check_mark:
 
 
 e-1. basic web component :white_check_mark:\
