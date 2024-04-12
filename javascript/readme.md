@@ -4,8 +4,6 @@ Objective
 modularize javascript concepts
 
 
-
-
 ---\
 todos in Javascript
 
@@ -20,7 +18,8 @@ x. core:scope\
 x. core:closure\
 x. core:promises\
 x. core:reduce\
-x. core:prototype
+x. core:prototype\
+x. you dont know js
 
 
 ---\

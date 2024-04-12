@@ -1,0 +1,8 @@
+---
+How to run?
+
+1. npm install
+2. chmod +x node_modules/.bin/webpack*
+3. npm run dev
+4. npm run start
+5. type 'pizza' on search query
