@@ -4,16 +4,11 @@ Objective
 modularize nextjs
 
 
-
-
 ---\
 concepts
 
 
-z. steal\
-zz. playground
-
-x. installation\
+a. syntax
 x. special files for ver13\
 x. routing\
 x. rendering\
@@ -30,10 +25,8 @@ x. tooling
 Todos
 
 
-z-a
-
 ---\
 reference
 
-
-z-a. [vercel/commerce](https://github.com/vercel/commerce)
+z. steal\
+zz. playground

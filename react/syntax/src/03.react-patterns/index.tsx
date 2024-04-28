@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import { Usage as CompoundComponent } from "./compound-component/Usage";
-import { Usage as ControlProps } from "./control-props/Usage";
-import { Usage as CustomHooks } from "./custom-hooks/Usage";
-import { Usage as PropsGetters } from "./props-getters/Usage";
-import { Usage as StateReducer } from "./state-reducer/Usage";
+import { Usage as CompoundComponent } from "./01.compound-component/Usage";
+import { Usage as ControlProps } from "./02.control-props/Usage";
+import { Usage as CustomHooks } from "./03.custom-hooks/Usage";
+import { Usage as PropsGetters } from "./04.props-getters/Usage";
+import { Usage as StateReducer } from "./05.state-reducer/Usage";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import {

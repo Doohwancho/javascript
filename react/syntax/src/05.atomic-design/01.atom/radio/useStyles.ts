@@ -1,5 +1,5 @@
 import type { ColorToken, HEX } from "../theme";
-import { getColorByToken } from "../theme/";
+import { getColorByToken } from "../theme";
 import type { RadioProps, RadioSize } from "./radioTypes";
 import { useEffect, useState } from "react";
 import { css } from "@emotion/react";

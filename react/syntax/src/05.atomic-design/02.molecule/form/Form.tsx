@@ -1,8 +1,8 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import { useState } from 'react';
-import TextInput from '../../atom/textInput/TextInput';
-import { Button } from '../../atom/button';
+import TextInput from '../../01.atom/textInput/TextInput';
+import { Button } from '../../01.atom/button';
 
 interface FormProps {
   onSubmit: (data: FormData) => void;

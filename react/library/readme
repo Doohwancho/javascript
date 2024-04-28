@@ -1,0 +1,18 @@
+1. component
+    1. shadcnUI (template component code주고, 내가 원하는 원본 코드만 바꿀 수 있다.)
+2. validation
+    1. Zod (parameter validation from client)
+    2. react-hook-form (form validation from client)
+3. css animation
+    1. framer-motion
+4. authentication
+    1. next-auth (bad documents)
+    2. kinde (alternative to next-auth)
+5. payments
+    1. stripe
+    2. kinde (alternative)
+6. hosting providers
+    1. vercel (for next.js)
+    2. netlify (for react)
+7. mobile
+    1. react native
