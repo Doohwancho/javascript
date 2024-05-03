@@ -71,6 +71,7 @@ h-3. custom hooks pattern :white_check_mark:\
 h-4. props getter pattern :white_check_mark:\
 h-5. state reducer pattern :white_check_mark:
 
+i-shadcn. use shadcn + tailwind for designing component :white_check_mark:\
 i-atom-1. [atomic design: theme](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-atom-2. [atomic design: textarea](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-atom-3. [atomic design: radio](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
