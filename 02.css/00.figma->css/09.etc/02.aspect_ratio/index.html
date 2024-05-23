@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aspect Ratio Example</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      .aspect-ratio-container {
+        position: relative;
+        width: 100%;
+        /* Set aspect ratio here (height = width * (desired aspect ratio)) */
+        /* For a 4:2 aspect ratio, it would be 50% */
+        padding-top: calc(200 / 400 * 100%);
+        /* For a 4:3 aspect ratio, it would be 75% */
+        /* For a 16:9 aspect ratio, it would be 56.25% */
+        /* For a 1:1 aspect ratio, it would be 100% */
+        /* etc. */
+      }
+
+      .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .content img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* or contain, or whatever fits your needs */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="aspect-ratio-container">
+      <div class="content">
+        <!-- Your content here (image, video, etc.) -->
+        <img
+          src="https://via.placeholder.com/400x200"
+          alt="Placeholder Image"
+        />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout with Semantic Elements</title>
+    <style>
+        body {
+            display: grid;
+            grid-template-areas: 
+                "header"
+                "nav"
+                "main"
+                "footer";
+            grid-template-rows: 100px 50px 1fr 30px;
+            grid-gap: 10px;
+            height: 100vh;
+            margin: 0;
+        }
+        header {
+            grid-area: header;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        nav {
+            grid-area: nav;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        main {
+            grid-area: main;
+            background-color: #fff;
+            padding: 20px;
+        }
+        footer {
+            grid-area: footer;
+            background-color: #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <nav>Navigation</nav>
+    <main>
+        <h1>Main Content</h1>
+        <p>This is the main area where content goes.</p>
+    </main>
+    <footer>Footer</footer>
+</body>
+</html>
+</html>

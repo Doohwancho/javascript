@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flexbox Layout</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      header,
+      footer {
+        background-color: #f3f3f3;
+        padding: 1rem;
+        text-align: center;
+      }
+      main {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        justify-content: space-around;
+        padding: 20px;
+      }
+      .card {
+        width: 30%;
+        margin: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>My Website</h1>
+    </header>
+    <main>
+      <article class="card">
+        <h2>Card Title 1</h2>
+        <p>This is a card. You can add more content here.</p>
+      </article>
+      <article class="card">
+        <h2>Card Title 2</h2>
+        <p>This is another card. You can add more content here.</p>
+      </article>
+      <article class="card">
+        <h2>Card Title 3</h2>
+        <p>This is yet another card. You can add more content here.</p>
+      </article>
+    </main>
+    <footer>
+      <p>Footer content here.</p>
+    </footer>
+  </body>
+</html>

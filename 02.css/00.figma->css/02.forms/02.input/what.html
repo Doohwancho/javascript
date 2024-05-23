@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Input Example</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .container {
+        margin: 20px;
+      }
+
+      .label {
+        display: inline-block;
+      }
+
+      .input-field {
+        width: 200px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 9px; /* roundness of border-edge */
+        font-size: 16px;
+        /* outline: none; */
+      }
+
+      /* Style for when input is focused */
+      .input-field:focus {
+        border-color: #007bff; /* Blue border color */
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue shadow */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <!-- The for attribute of the <label> element matches the id attribute of the <input> field -->
+      <!-- for="name" -> <input id="name"> -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" class="input-field" />
+    </div>
+  </body>
+</html>

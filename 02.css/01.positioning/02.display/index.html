@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* block: takes whole width */
+      /* block 엘리먼트는 inline 엘리먼트와 달리 width, height, margin, padding 속성이 모두 반영이 됩니다 */
+      .block-element {
+        display: block;
+        background-color: red;
+      }
+      /* inline: flow within the element and does not start on a new line */
+      /* 주의1: width와 height 속성을 지정해도 무시된다는 것입니다 */
+      /* 주의2: margin과 padding 속성은 좌우 간격만 반영이 되고, 상하 간격은 반영이 되지 않습니다. */
+      .inline-element {
+        display: inline;
+        background-color: blue;
+      }
+      /* inline-block: block + inline  */
+      /* 기본적으로 inline 엘리먼트처럼 전후 줄바꿈 없이 한 줄에 다른 엘리먼트들과 나란히 배치되지만,  */
+      /* block 엘리먼트처럼 width와 height 속성 지정 및 margin과 padding 속성의 상하 간격 지정이 가능합니다.  */
+      /* 다시 말해서, 내부적으로는 block 엘리먼트의 규칙을 따르면서 외부적으로 inline 엘리먼트의 규칙을 따르게 되는 것이지요 */
+      .inline-block-element {
+        display: inline-block;
+        background-color: green;
+      }
+      .hidden-element {
+        display: none;
+        background-color: yellow;
+      }
+      .flex-container {
+        display: flex;
+      }
+      .flex-item {
+        background-color: orange;
+      }
+      .grid-container {
+        display: grid;
+      }
+      .grid-item {
+        background-color: purple;
+      }
+      .table {
+        display: table;
+        width: 100%;
+      }
+      .table__row {
+        display: table-row;
+      }
+      .table__cell {
+        display: table-cell;
+        padding: 10px;
+        border: 1px solid #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block-element">1. this is block-level element</div>
+    <span class="inline-element">2. This is inline element</span>
+    <div class="inline-block-element">3. This is inline-block element</div>
+    <div class="hidden-element">4. This is hidden element</div>
+    <div class="flex-container">
+      <div class="flex-item">5-1. This is flex item</div>
+      <div class="flex-item">5-2. This is flex item</div>
+      <div class="flex-item">5-3. This is flex item</div>
+    </div>
+    <div class="grid-container">
+      <div class="grid-item">6-1. This is grid item</div>
+      <div class="grid-item">6-2. This is grid item</div>
+      <div class="grid-item">6-3. This is grid item</div>
+    </div>
+    <div class="table">
+      <div class="table__row">
+        <div class="table__cell">7-1. This is table cell</div>
+        <div class="table__cell">7-2. This is table cell</div>
+        <div class="table__cell">7-3. This is table cell</div>
+      </div>
+      <div class="table__row">
+        <div class="table__cell">7-4. This is table cell</div>
+        <div class="table__cell">7-5. This is table cell</div>
+        <div class="table__cell">7-6. This is table cell</div>
+      </div>
+    </div>
+  </body>
+</html>

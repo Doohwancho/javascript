@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .button {
+        display: inline-block;
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 8px; /* rounded-ness of border */
+        text-align: center;
+        font-family: Arial, sans-serif;
+        cursor: pointer; /* make the button clickable */
+      }
+
+      .button__text {
+        display: inline;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+    </style>
+  </head>
+  <body>
+    <button class="button">
+      <!-- BEM style classname -->
+      <span class="button__text">Button</span>
+    </button>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+# what
+
+BEM (Block Element Modifier) is a naming convention for CSS classes
+in order to create more maintainable and modular code.
+
+```html
+<div class="card">
+  <div class="card__header">
+    <h2 class="card__title">Card Title</h2>
+  </div>
+  <div class="card__body">
+    <p class="card__text">This is the content of the card.</p>
+  </div>
+</div>
+```
+
+1. Block: The main component or container. In this case, it's card.
+2. Element: The child elements or components within the block. For example, header and body.
+3. Modifier: Variants or states of the block or element. For example, if you have a variation of the card, such as a card--highlighted or a card\_\_header--small.
+
+css for BEM
+
+```CSS
+/* Block */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+/* Element */
+.card__header {
+  background-color: #f0f0f0;
+  padding: 5px;
+}
+
+.card__body {
+  padding: 10px;
+}
+
+/* Modifier */
+.card--highlighted {
+  background-color: yellow;
+}
+
+.card__header--small {
+  font-size: 14px;
+}
+```
+
+Using BEM helps to create a clear and predictable structure in your CSS,
+making it easier to maintain and scale as your project grows.
+
+tips
+
+- 2depth 표현이 필요하다는 것은 컴포넌트가 분리되어야 한다는 신호이니 적당히 컴포넌트로 쪼개어 주세요.
