@@ -26,9 +26,13 @@
       }
 
       .row {
+        /* step1) row에 display: flex 먹임 */
         display: flex;
+        /* step2) container 중심 축은 세로가 아닌 가로 row  */
         flex-direction: row;
+        /* step3) 컨텐츠 들은 evenly spaced */
         justify-content: space-around;
+        /* media query처럼 아이템 많아지만 자동 line break  */
         flex-flow: wrap;
       }
 
