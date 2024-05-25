@@ -23,10 +23,10 @@ function App() {
       {/* <LoginPage /> */}
 
       {/* step4. tailwind */}
-      {/* <TailwindMain /> */}
+      <TailwindMain />
 
       {/* step5. shadcn */}
-      <ShadcnMain />
+      {/* <ShadcnMain /> */}
     </>
   )
 }

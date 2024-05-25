@@ -16,6 +16,7 @@ f. react-query :white_check_mark:\
 g. starter template :white_check_mark:\
 h. design patterns :white_check_mark:\
 i. atomic design pattern\
+j. tailwind :white_check_mark:\
 y. steal\
 z. module\
 zz. playground
