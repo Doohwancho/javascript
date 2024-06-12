@@ -1,16 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react';
-// import MyInput from './MyInput';
-
-/*
-
-allows you to forward a ref through a component to one of its child components. 
-This is useful when you need to access the DOM node or a child component instance directly, 
-which is common in scenarios such as managing focus, 
-measuring size or position, or triggering animations.
-
-
-*/
-
 const UseRefDemo2 = () => {
     const [count, setCount] = useState(1);
 

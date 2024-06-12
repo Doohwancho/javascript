@@ -6,8 +6,10 @@ import LoginPage from './05.atomic-design/05.page/LoginPage'
 import TsxIndex from './01.types-for-tsx';
 import TailwindMain from './04.style/tailwindcss/main';
 import ShadcnMain from './06.shadcn/main';
-import { UseRefDemo } from './02.hooks/state/05.useRef/01.what/useRefDemo';
-import UseRefDemo2 from './02.hooks/state/05.useRef/02.useRef_vs_useState/useRefDemo2';
+import { UseRefDemo } from './02.hooks/state/05.useRef/02.what/useRefDemo';
+import UseRefDemo2 from './02.hooks/state/05.useRef/03.useRef_vs_useState/useRefDemo2';
+import Parent from './02.hooks/state/05.useRef/05.useImperativeHandle/ex2';
+import ParentComponent from './02.hooks/state/05.useRef/05.useImperativeHandle/ex1';
 
 function App() {
 
@@ -18,7 +20,10 @@ function App() {
 
       {/* step2. hooks */}
       {/* <UseRefDemo /> */}
-      <UseRefDemo2 />
+      {/* <UseRefDemo2 /> */}
+      {/* <Parent /> */}
+      <ParentComponent />
+
 
       {/* step3. react patterns */}
       {/* <ReactPatterns /> */}
