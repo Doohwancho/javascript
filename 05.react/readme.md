@@ -17,6 +17,7 @@ g. starter template :white_check_mark:\
 h. design patterns :white_check_mark:\
 i. atomic design pattern\
 j. tailwind :white_check_mark:\
+k. design pattern :white_check_mark:\
 y. steal\
 z. module\
 zz. playground
@@ -86,6 +87,8 @@ i-atom-10. [atomic design: image](https://github.com/DesignSystemLab/design-syst
 i-atom-11. [atomic design: spinner](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-atom-12. [atomic design: text](https://github.com/DesignSystemLab/design-system) :white_check_mark:\
 i-atom-13. [atomic design: list](https://github.com/DesignSystemLab/design-system) :white_check_mark:
+
+k-1. [funnel pattern](https://www.youtube.com/watch?v=NwLWX2RNVcw) :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\
