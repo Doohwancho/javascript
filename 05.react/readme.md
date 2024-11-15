@@ -90,7 +90,8 @@ i-atom-13. [atomic design: list](https://github.com/DesignSystemLab/design-syste
 
 k-1. [funnel pattern, useContext로 만든 버전](https://www.youtube.com/watch?v=NwLWX2RNVcw) :white_check_mark:\
 k-2. [funnel pattern, Compount Pattern으로 만든 버전](https://www.youtube.com/watch?v=NwLWX2RNVcw) :white_check_mark:\
-k-3. feat: goBack :white_check_mark:
+k-3. feat: goBack :white_check_mark:\
+k-4. feat: progressive_bar :white_check_mark:
 
 y-a-1. react+springboot analyze :white_check_mark:\
 y-a-2. react+springboot+mysql on docker-compose :white_check_mark:\
