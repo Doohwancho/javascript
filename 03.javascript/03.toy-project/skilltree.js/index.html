@@ -1,264 +1,399 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Skill Tree Visualization</title>
     <style id="dynamicStyles">
+        /* Define rarity colors */
+        :root {
+            --rarity-gold: #FFD700;
+            --rarity-orange: #FFA500;
+            --rarity-purple: #800080;
+            --rarity-blue: #0000FF;
+            --rarity-green: #008000;
+            --rarity-white: #FFFFFF;
+        }
 
-/* Define rarity colors */
-:root {
-    --rarity-gold: #FFD700;
-    --rarity-orange: #FFA500;
-    --rarity-purple: #800080;
-    --rarity-blue: #0000FF;
-    --rarity-green: #008000;
-    --rarity-white: #FFFFFF;
-}
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
 
-body {
-    margin: 0;
-    overflow: hidden;
-    background: #1a1a1a;
-}
+        #container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
 
-#container {
-    width: 100vw;
-    height: 100vh;
-    position: relative;
-}
+        #skillTree {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-#skillTree {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+        /* Base node styles */
+        .node {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 10px;
+            font-size: 12px;
+            word-wrap: break-word;
+            overflow: visible;
+            position: relative;
+            background-clip: padding-box;
+        }
 
-/* Base node styles */
-.node {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-    cursor: pointer;
-    transition: all 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 10px;
-    font-size: 12px;
-    word-wrap: break-word;
-    overflow: visible;
-    position: relative;
-    background-clip: padding-box;
-}
+        /* Star shape with outline */
+        .node.fundamental {
+            width: 110px;
+            height: 90px;
+            background-clip: padding-box;
+            position: relative;
+        }
 
-/* Star shape with outline */
-.node.fundamental {
-    width: 110px;
-    height: 90px;
-    background-clip: padding-box;
-    position: relative;
-}
-
-.node.fundamental::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    clip-path: polygon(
-        50% 0%,
-        61% 35%,
-        98% 35%,
-        68% 57%,
-        79% 91%,
-        50% 70%,
-        21% 91%,
-        32% 57%,
-        2% 35%,
-        39% 35%
-    );
-    z-index: -1;
-}
+        .node.fundamental::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            clip-path: polygon(50% 0%,
+                    61% 35%,
+                    98% 35%,
+                    68% 57%,
+                    79% 91%,
+                    50% 70%,
+                    21% 91%,
+                    32% 57%,
+                    2% 35%,
+                    39% 35%);
+            z-index: -1;
+        }
 
 
-/* Diamond shape */
-.node.major {
-    width: 70px;
-    height: 70px;
-}
-.node.major::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-    z-index: -1;
-}
+        /* Diamond shape */
+        .node.major {
+            width: 70px;
+            height: 70px;
+        }
 
-/* Circle shape */
-.node.minor {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-}
-.node.minor::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 50%;
-    z-index: -1;
-}
+        .node.major::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            z-index: -1;
+        }
 
-/* Square shape */
-.node.keystone {
-    width: 65px;
-    height: 65px;
-}
-.node.keystone::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    z-index: -1;
-}
+        /* Circle shape */
+        /* Circle shape */
+        .node.minor {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: visible;
+            /* Allow outline to be visible */
+        }
 
+        /* Update inner container for circle */
+        .node.minor::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            z-index: -1;
+        }
 
-/* Rarity colors */
-.node.rarity-gold::before { background-color: var(--rarity-gold); }
-.node.rarity-orange::before { background-color: var(--rarity-orange); }
-.node.rarity-purple::before { background-color: var(--rarity-purple); }
-.node.rarity-blue::before { background-color: var(--rarity-blue); }
-.node.rarity-green::before { background-color: var(--rarity-green); }
-.node.rarity-white::before { background-color: var(--rarity-white); }
+        /* Add specific styling for minor node's inner container */
+        .node.minor>div {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            /* Make inner content round too */
+            overflow: hidden;
+            /* Keep text inside circle */
+            margin: 0;
+            /* Remove any margin */
+            padding: 0;
+            /* Remove any padding */
+        }
 
-.edge {
-    position: absolute;
-    background: #4a90e2;
-    height: 4px;         /* Made thicker */
-    pointer-events: none;
-    transition: all 0.3s;
-    transform-origin: left center;
-    z-index: -1;         /* Added to ensure edges appear under nodes */
-}
+        /* Square shape */
+        .node.keystone {
+            width: 65px;
+            height: 65px;
+        }
 
-.edge::after {
-    content: '';
-    position: absolute;
-    right: -8px;
-    top: -6px;          /* Adjusted for thicker line */
-    width: 0;
-    height: 0;
-    border-left: 12px solid #4a90e2;  /* Made arrow bigger */
-    border-top: 7px solid transparent;
-    border-bottom: 7px solid transparent;
-}
+        .node.keystone::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            z-index: -1;
+        }
 
-.edge.active {
-    background: #00ff00;
-}
+        .node-content-locked {
+            font-size: 14px;
+            content: '🔒';
+            /* Lock emoji */
+        }
 
-.edge.active::after {
-    border-left-color: #00ff00;
-}
+        .node-content-unknown {
+            font-size: 14px;
+            content: '?';
+        }
 
-#controls {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
+        /* Rarity colors */
+        .node.rarity-gold::before {
+            background-color: var(--rarity-gold);
+        }
 
-#stats {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    color: white;
-    z-index: 1000;
-}
+        .node.rarity-orange::before {
+            background-color: var(--rarity-orange);
+        }
 
-/* Add these styles */
-#legend {
-    margin-top: 20px;
-    padding: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
-}
+        .node.rarity-purple::before {
+            background-color: var(--rarity-purple);
+        }
 
-.legend-title {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 10px;
-    color: white;
-}
+        .node.rarity-blue::before {
+            background-color: var(--rarity-blue);
+        }
 
-.legend-item {
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
+        .node.rarity-green::before {
+            background-color: var(--rarity-green);
+        }
 
-.color-box {
-    width: 20px;
-    height: 20px;
-    border-radius: 4px;
-    margin-right: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-}
+        .node.rarity-white::before {
+            background-color: var(--rarity-white);
+        }
 
-/* Grid styles */
-.grid {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    z-index: -2;
-}
+        .edge {
+            position: absolute;
+            background: #4a90e2;
+            height: 4px;
+            /* Made thicker */
+            pointer-events: none;
+            transition: all 0.3s;
+            transform-origin: left center;
+            z-index: -1;
+            /* Added to ensure edges appear under nodes */
+        }
 
-.grid-line {
-    stroke: rgba(255, 255, 255, 0.1);
-    stroke-width: 1;
-}
+        .edge::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: -6px;
+            /* Adjusted for thicker line */
+            width: 0;
+            height: 0;
+            border-left: 12px solid #4a90e2;
+            /* Made arrow bigger */
+            border-top: 7px solid transparent;
+            border-bottom: 7px solid transparent;
+        }
 
-	</style>
+        .edge.active {
+            background: #00ff00;
+        }
+
+        .edge.active::after {
+            border-left-color: #00ff00;
+        }
+
+        #controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #stats {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            color: white;
+            z-index: 1000;
+        }
+
+        /* Add these styles */
+        #legend {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .legend-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        #rarity-legend {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+        }
+
+        .count {
+            margin-left: auto;
+            padding-left: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            justify-content: flex-start;
+            white-space: nowrap;
+        }
+
+        .color-box {
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Grid styles */
+        .grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -2;
+        }
+
+        .grid-line {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 1;
+        }
+    </style>
 </head>
+
 <body>
     <div id="container">
         <div id="skillTree"></div>
         <div id="stats">
-            <div>Active Nodes: <span id="activeNodes">0</span></div>
-            <div>Active Edges: <span id="activeEdges">0</span></div>
+            <div>Active Nodes: <span id="activeNodes">0</span> / <span id="totalNodes">0</span> (<span id="activeNodesPercent">0%</span>)</div>
+            <div>Active Edges: <span id="activeEdges">0</span> / <span id="totalEdges">0</span> (<span id="activeEdgesPercent">0%</span>)</div>
             <div id="legend">
                 <div class="legend-title">Domains:</div>
                 <div class="legend-item">
                     <div class="color-box" style="background-color: #4A90E2"></div>
                     <span>Learn</span>
+                    <span class="count">
+                        <span id="count-learn">0</span> / <span id="total-learn">0</span>
+                        (<span id="percent-learn">0%</span>)
+                    </span>
                 </div>
                 <div class="legend-item">
                     <div class="color-box" style="background-color: #F5A623"></div>
                     <span>Computer Science</span>
+                    <span class="count">
+                        <span id="count-computer-science">0</span> / <span id="total-computer-science">0</span>
+                        (<span id="percent-computer-science">0%</span>)
+                    </span>
                 </div>
                 <div class="legend-item">
                     <div class="color-box" style="background-color: #7ED321"></div>
                     <span>Web Development</span>
+                    <span class="count">
+                        <span id="count-web-development">0</span> / <span id="total-web-development">0</span>
+                        (<span id="percent-web-development">0%</span>)
+                    </span>
                 </div>
                 <div class="legend-item">
                     <div class="color-box" style="background-color: #BD10E0"></div>
                     <span>Math</span>
+                    <span class="count">
+                        <span id="count-math">0</span> / <span id="total-math">0</span>
+                        (<span id="percent-math">0%</span>)
+                    </span>
                 </div>
                 <div class="legend-item">
                     <div class="color-box" style="background-color: #FF5733"></div>
                     <span>Machine Learning</span>
+                    <span class="count">
+                        <span id="count-machine-learning">0</span> / <span id="total-machine-learning">0</span>
+                        (<span id="percent-machine-learning">0%</span>)
+                    </span>
+                </div>
+            </div>
+            <div id="rarity-legend">
+                <div class="legend-title">Rarities:</div>
+                <div class="legend-item">
+                    <div class="color-box" style="background-color: var(--rarity-gold)"></div>
+                    <span>초월</span>
+                    <span class="count">
+                        <span id="count-rarity-gold">0</span> / <span id="total-rarity-gold">0</span>
+                        (<span id="percent-rarity-gold">0%</span>)
+                    </span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background-color: var(--rarity-orange)"></div>
+                    <span>전설</span>
+                    <span class="count">
+                        <span id="count-rarity-orange">0</span> / <span id="total-rarity-orange">0</span>
+                        (<span id="percent-rarity-orange">0%</span>)
+                    </span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background-color: var(--rarity-purple)"></div>
+                    <span>영웅</span>
+                    <span class="count">
+                        <span id="count-rarity-purple">0</span> / <span id="total-rarity-purple">0</span>
+                        (<span id="percent-rarity-purple">0%</span>)
+                    </span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background-color: var(--rarity-blue)"></div>
+                    <span>희귀</span>
+                    <span class="count">
+                        <span id="count-rarity-blue">0</span> / <span id="total-rarity-blue">0</span>
+                        (<span id="percent-rarity-blue">0%</span>)
+                    </span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background-color: var(--rarity-green)"></div>
+                    <span>일반</span>
+                    <span class="count">
+                        <span id="count-rarity-green">0</span> / <span id="total-rarity-green">0</span>
+                        (<span id="percent-rarity-green">0%</span>)
+                    </span>
+                </div>
+                <div class="legend-item">
+                    <div class="color-box" style="background-color: var(--rarity-white)"></div>
+                    <span>기본</span>
+                    <span class="count">
+                        <span id="count-rarity-white">0</span> / <span id="total-rarity-white">0</span>
+                        (<span id="percent-rarity-white">0%</span>)
+                    </span>
                 </div>
             </div>
         </div>
@@ -268,424 +403,634 @@ body {
             <button id="fitScreen">Fit Screen</button>
         </div>
     </div>
-	<script>
-class SkillTree {
-    constructor(containerId, data) {
-        this.container = document.getElementById(containerId);
-        this.data = data;
-        this.scale = 1;
-        this.dragStart = { x: 0, y: 0 };
-        this.offset = { x: 0, y: 0 };
-        this.activeNodes = new Set();
-        this.activeEdges = new Set();
+    <script>
+        class SkillTree {
+            constructor(containerId, data) {
+                this.container = document.getElementById(containerId);
+                this.data = data;
+                this.scale = 1;
+                this.dragStart = {
+                    x: 0,
+                    y: 0
+                };
+                this.offset = {
+                    x: 0,
+                    y: 0
+                };
+                this.activeNodes = new Set();
+                this.activeEdges = new Set();
 
-        this.showGrid = true;  // Add this
-        this.data.domains = {
-            "learn": "#4A90E2",
-            "computer-science": "#F5A623",
-            "web-development": "#7ED321",
-            "math": "#BD10E0",
-            "machine-learning": "#FF5733"
-        };
+                this.showGrid = true; // Add this
+                this.data.domains = {
+                    "learn": "#4A90E2",
+                    "computer-science": "#F5A623",
+                    "web-development": "#7ED321",
+                    "math": "#BD10E0",
+                    "machine-learning": "#FF5733"
+                };
 
-        this.init();
-    }
-
-    createGrid() {
-        const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        svg.classList.add('grid');
-        svg.setAttribute('width', '100%');
-        svg.setAttribute('height', '100%');
-
-        // Create grid lines
-        const gridSize = 50;
-        const width = this.container.clientWidth;
-        const height = this.container.clientHeight;
-
-        // Vertical lines
-        for (let x = 0; x <= width; x += gridSize) {
-            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            line.setAttribute('x1', x);
-            line.setAttribute('y1', 0);
-            line.setAttribute('x2', x);
-            line.setAttribute('y2', height);
-            line.classList.add('grid-line');
-            svg.appendChild(line);
-        }
-
-        // Horizontal lines
-        for (let y = 0; y <= height; y += gridSize) {
-            const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
-            line.setAttribute('x1', 0);
-            line.setAttribute('y1', y);
-            line.setAttribute('x2', width);
-            line.setAttribute('y2', y);
-            line.classList.add('grid-line');
-            svg.appendChild(line);
-        }
-
-        this.container.appendChild(svg);
-    }
-
-    isEdgeActive(edge) {
-        const sourceNode = this.findNodeData(edge.source);
-        const targetNode = this.findNodeData(edge.target);
-        return sourceNode.explored && targetNode.explored;
-    }
-
-    init() {
-        this.setupContainer();
-        this.createGrid();
-        this.createNodes();
-        this.createEdges();
-        this.setupEventListeners();
-        this.updateStats();
-    }
-
-    setupContainer() {
-        this.container.style.transform = `scale(${this.scale})
-            translate(${this.offset.x}px, ${this.offset.y}px)`;
-    }
-
-    createNodes() {
-        // Create nodes for each type
-        Object.entries(this.data.nodes).forEach(([type, nodes]) => {
-            if (Array.isArray(nodes)) {
-                nodes.forEach(node => this.createNode(node));
-            } else {
-                this.createNode(nodes);
+                this.init();
             }
-        });
-    }
 
-    createNode(nodeData) {
-        const node = document.createElement('div');
-        node.className = `node ${nodeData.type}`;
-        
-        // Add rarity class
-        if (nodeData.rarity) {
-            node.classList.add(`rarity-${nodeData.rarity}`);
-        } else {
-            node.classList.add('rarity-white'); // default rarity
-        }
-        
-        node.id = nodeData.id;
-        node.style.left = `${nodeData.position.x}px`;
-        node.style.top = `${nodeData.position.y}px`;
+            createGrid() {
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.classList.add('grid');
+                svg.setAttribute('width', '100%');
+                svg.setAttribute('height', '100%');
 
-        // Create inner container for content
-        const innerContainer = document.createElement('div');
-        innerContainer.style.width = '100%';
-        innerContainer.style.height = '100%';
-        innerContainer.style.display = 'flex';
-        innerContainer.style.alignItems = 'center';
-        innerContainer.style.justifyContent = 'center';
-        innerContainer.style.padding = '5px';
-        innerContainer.style.clipPath = this.getClipPath(nodeData.type);
-        innerContainer.style.backgroundColor = nodeData.explored ? 
-            this.data.domains[nodeData.domain] : '#333';
+                // Create grid lines
+                const gridSize = 50;
+                const width = this.container.clientWidth;
+                const height = this.container.clientHeight;
 
-        if (nodeData.explored) {
-            this.activeNodes.add(nodeData.id);
-            this.createTextContainer(innerContainer, nodeData.title);
-        } else {
-            innerContainer.textContent = '?';
-        }
-        
-        node.appendChild(innerContainer);
-        
-        this.container.appendChild(node);
-    }
+                // Vertical lines
+                for (let x = 0; x <= width; x += gridSize) {
+                    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    line.setAttribute('x1', x);
+                    line.setAttribute('y1', 0);
+                    line.setAttribute('x2', x);
+                    line.setAttribute('y2', height);
+                    line.classList.add('grid-line');
+                    svg.appendChild(line);
+                }
 
-    getClipPath(type) {
-        switch(type) {
-            case 'fundamental':
-                return 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
-            case 'major':
-                return 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)';
-            case 'minor':
-                return 'circle(50%)';
-            case 'keystone':
-                return 'none';
-            default:
-                return 'none';
-        }
-    }
+                // Horizontal lines
+                for (let y = 0; y <= height; y += gridSize) {
+                    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+                    line.setAttribute('x1', 0);
+                    line.setAttribute('y1', y);
+                    line.setAttribute('x2', width);
+                    line.setAttribute('y2', y);
+                    line.classList.add('grid-line');
+                    svg.appendChild(line);
+                }
 
-    createTextContainer(container, text) {
-        if (text.length > 20) {
-            container.style.fontSize = '9px';
-        } else if (text.length > 15) {
-            container.style.fontSize = '10px';
-        } else if (text.length > 10) {
-            container.style.fontSize = '11px';
-        } else {
-            container.style.fontSize = '12px';
-        }
-        
-        container.textContent = text;
-    }
+                this.container.appendChild(svg);
+            }
 
-    createEdges() {
-        // Get all nodes in a flat array
-        const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
-        
-        // Create edges from connections
-        allNodes.forEach(node => {
-            if (node.connections) {
-                node.connections.forEach(targetId => {
-                    const edgeElement = document.createElement('div');
-                    edgeElement.className = 'edge';
-                    this.updateEdgePosition(edgeElement, node.id, targetId);
-                    edgeElement.dataset.source = node.id;
-                    edgeElement.dataset.target = targetId;
-                    this.container.appendChild(edgeElement);
+            isEdgeActive(edge) {
+                const sourceNode = this.findNodeData(edge.source);
+                const targetNode = this.findNodeData(edge.target);
+                return sourceNode.explored && targetNode.explored;
+            }
 
-                    // If both nodes are explored, activate the edge
-                    if (node.explored && this.findNodeData(targetId).explored) {
-                        this.activeEdges.add(`${node.id}-${targetId}`);
-                        edgeElement.classList.add('active');
+            init() {
+                this.setupContainer();
+                this.createGrid();
+
+                // Initialize active nodes first
+                const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
+                allNodes.forEach(nodeData => {
+                    if (nodeData.explored) {
+                        this.activeNodes.add(nodeData.id);
+                    }
+                });
+
+                this.createNodes();
+                this.createEdges();
+                this.setupEventListeners();
+                this.updateStats();
+            }
+
+            setupContainer() {
+                this.container.style.transform = `scale(${this.scale})
+            translate(${this.offset.x}px, ${this.offset.y}px)`;
+            }
+
+            createNodes() {
+                // Create nodes for each type
+                Object.entries(this.data.nodes).forEach(([type, nodes]) => {
+                    if (Array.isArray(nodes)) {
+                        nodes.forEach(node => this.createNode(node));
+                    } else {
+                        this.createNode(nodes);
                     }
                 });
             }
-        });
-    }
 
-    updateEdgePosition(edgeElement, sourceId, targetId) {
-        const source = document.getElementById(sourceId);
-        const target = document.getElementById(targetId);
+            createNode(nodeData) {
+                const node = document.createElement('div');
+                node.className = `node ${nodeData.type}`;
 
-        if (!source || !target) return;
-
-        const sourceRect = source.getBoundingClientRect();
-        const targetRect = target.getBoundingClientRect();
-
-        // Get positions relative to container
-        const containerRect = this.container.getBoundingClientRect();
-        const relativeSourceX = sourceRect.left - containerRect.left + sourceRect.width/2;
-        const relativeSourceY = sourceRect.top - containerRect.top + sourceRect.height/2;
-        const relativeTargetX = targetRect.left - containerRect.left + targetRect.width/2;
-        const relativeTargetY = targetRect.top - containerRect.top + targetRect.height/2;
-
-        // Calculate distance and angle
-        const dx = relativeTargetX - relativeSourceX;
-        const dy = relativeTargetY - relativeSourceY;
-        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-        const length = Math.sqrt(dx * dx + dy * dy);
-
-        // Position the edge
-        edgeElement.style.width = `${length}px`;
-        edgeElement.style.left = `${relativeSourceX}px`;
-        edgeElement.style.top = `${relativeSourceY}px`;
-        edgeElement.style.transform = `rotate(${angle}deg)`;
-    }
-
-    setupEventListeners() {
-        // Node click handling
-        this.container.addEventListener('click', (e) => {
-            const node = e.target.closest('.node');
-            if (node) {
-                this.toggleNode(node);
-            }
-        });
-
-        // Dragging
-        let isDragging = false;
-        let startX, startY;
-
-        this.container.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            startX = e.clientX - this.offset.x;
-            startY = e.clientY - this.offset.y;
-        });
-
-        document.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-
-            this.offset.x = e.clientX - startX;
-            this.offset.y = e.clientY - startY;
-            this.updateTransform();
-        });
-
-        document.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        // Zooming
-        document.getElementById('zoomIn').addEventListener('click', () => {
-            this.scale *= 1.2;
-            this.updateTransform();
-        });
-
-        document.getElementById('zoomOut').addEventListener('click', () => {
-            this.scale /= 1.2;
-            this.updateTransform();
-        });
-
-        document.getElementById('fitScreen').addEventListener('click', () => {
-            this.fitToScreen();
-        });
-
-        // Mouse wheel zooming
-        this.container.addEventListener('wheel', (e) => {
-            e.preventDefault();
-            const delta = e.deltaY > 0 ? 0.9 : 1.1;
-            this.scale *= delta;
-            this.updateTransform();
-        });
-    }
-
-    toggleNode(node) {
-        const nodeId = node.id;
-        if (this.activeNodes.has(nodeId)) {
-            this.deactivateNode(node);
-        } else {
-            this.activateNode(node);
-        }
-        this.updateStats();
-    }
-    activateNode(node) {
-        const nodeId = node.id;
-        const nodeData = this.findNodeData(nodeId);
-        
-        this.activeNodes.add(nodeId);
-        node.style.backgroundColor = this.data.domains[nodeData.domain];
-        node.innerHTML = '';  // Clear before adding text container
-        this.createTextContainer(node, nodeData.title);
-
-        // Activate connected edges
-        const nodeWithConnections = this.findNodeData(nodeId);
-        if (nodeWithConnections.connections) {
-            nodeWithConnections.connections.forEach(targetId => {
-                if (this.activeNodes.has(targetId)) {
-                    this.activeEdges.add(`${nodeId}-${targetId}`);
-                    const edgeElement = this.findEdgeElement({source: nodeId, target: targetId});
-                    if (edgeElement) edgeElement.classList.add('active');
+                // Add rarity class
+                if (nodeData.rarity) {
+                    node.classList.add(`rarity-${nodeData.rarity}`);
+                } else {
+                    node.classList.add('rarity-white'); // default rarity
                 }
+
+                node.id = nodeData.id;
+                node.style.left = `${nodeData.position.x}px`;
+                node.style.top = `${nodeData.position.y}px`;
+
+                this.updateNodeDisplay(node, nodeData);
+                this.container.appendChild(node);
+            }
+
+            isNodeAccessible(nodeId) {
+                const nodeData = this.findNodeData(nodeId);
+
+                // Check incoming connections
+                const hasActiveIncomingConnection = Object.values(this.data.nodes)
+                    .flat()
+                    .filter(node => node)
+                    .some(node =>
+                        node.connections &&
+                        node.connections.includes(nodeId) &&
+                        this.activeNodes.has(node.id)
+                    );
+
+                // Check outgoing connections
+                const hasActiveOutgoingConnection = nodeData.connections &&
+                    nodeData.connections.some(targetId => this.activeNodes.has(targetId));
+
+                return hasActiveIncomingConnection || hasActiveOutgoingConnection;
+            }
+
+            updateNodeDisplay(node, nodeData) {
+                // Clear current content
+                node.innerHTML = '';
+
+                // Create inner container
+                const innerContainer = document.createElement('div');
+                innerContainer.style.width = '100%';
+                innerContainer.style.height = '100%';
+                innerContainer.style.display = 'flex';
+                innerContainer.style.alignItems = 'center';
+                innerContainer.style.justifyContent = 'center';
+                innerContainer.style.padding = '5px';
+                innerContainer.style.clipPath = this.getClipPath(nodeData.type);
+
+                if (this.activeNodes.has(nodeData.id)) {
+                    // Active node
+                    innerContainer.style.backgroundColor = this.data.domains[nodeData.domain];
+                    this.createTextContainer(innerContainer, nodeData.title);
+                } else {
+                    // Inactive node
+                    innerContainer.style.backgroundColor = '#333';
+                    if (this.isNodeAccessible(nodeData.id)) {
+                        innerContainer.textContent = '?';
+                    } else {
+                        innerContainer.textContent = '🔒';
+                    }
+                }
+
+                node.appendChild(innerContainer);
+            }
+
+            getClipPath(type) {
+                switch (type) {
+                    case 'fundamental':
+                        return 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)';
+                    case 'major':
+                        return 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)';
+                    case 'minor':
+                        return 'circle(50%)';
+                    case 'keystone':
+                        return 'none';
+                    default:
+                        return 'none';
+                }
+            }
+
+            createTextContainer(container, text) {
+                if (text.length > 20) {
+                    container.style.fontSize = '9px';
+                } else if (text.length > 15) {
+                    container.style.fontSize = '10px';
+                } else if (text.length > 10) {
+                    container.style.fontSize = '11px';
+                } else {
+                    container.style.fontSize = '12px';
+                }
+
+                container.textContent = text;
+            }
+
+            createEdges() {
+                // Get all nodes in a flat array
+                const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
+
+                // Create edges from connections
+                allNodes.forEach(node => {
+                    if (node.connections) {
+                        node.connections.forEach(targetId => {
+                            const edgeElement = document.createElement('div');
+                            edgeElement.className = 'edge';
+                            this.updateEdgePosition(edgeElement, node.id, targetId);
+                            edgeElement.dataset.source = node.id;
+                            edgeElement.dataset.target = targetId;
+                            this.container.appendChild(edgeElement);
+
+                            // If both nodes are explored, activate the edge
+                            if (node.explored && this.findNodeData(targetId).explored) {
+                                this.activeEdges.add(`${node.id}-${targetId}`);
+                                edgeElement.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+
+            updateEdgePosition(edgeElement, sourceId, targetId) {
+                const source = document.getElementById(sourceId);
+                const target = document.getElementById(targetId);
+
+                if (!source || !target) return;
+
+                const sourceRect = source.getBoundingClientRect();
+                const targetRect = target.getBoundingClientRect();
+
+                // Get positions relative to container
+                const containerRect = this.container.getBoundingClientRect();
+
+                // Calculate center points
+                const sourceX = sourceRect.left - containerRect.left + sourceRect.width / 2;
+                const sourceY = sourceRect.top - containerRect.top + sourceRect.height / 2;
+                const targetX = targetRect.left - containerRect.left + targetRect.width / 2;
+                const targetY = targetRect.top - containerRect.top + targetRect.height / 2;
+
+                // Calculate angle
+                const dx = targetX - sourceX;
+                const dy = targetY - sourceY;
+                const angle = Math.atan2(dy, dx);
+
+                // Get node radii (half of width for simplicity)
+                const sourceRadius = sourceRect.width / 2;
+                const targetRadius = targetRect.width / 2;
+
+                // Calculate edge start and end points at node boundaries
+                const startX = sourceX + sourceRadius * Math.cos(angle);
+                const startY = sourceY + sourceRadius * Math.sin(angle);
+                const endX = targetX - targetRadius * Math.cos(angle);
+                const endY = targetY - targetRadius * Math.sin(angle);
+
+                // Calculate new length and position
+                const length = Math.sqrt(
+                    Math.pow(endX - startX, 2) +
+                    Math.pow(endY - startY, 2)
+                );
+
+                // Position the edge
+                edgeElement.style.width = `${length}px`;
+                edgeElement.style.left = `${startX}px`;
+                edgeElement.style.top = `${startY}px`;
+                edgeElement.style.transform = `rotate(${angle * 180 / Math.PI}deg)`;
+            }
+
+            setupEventListeners() {
+                // Node click handling
+                this.container.addEventListener('click', (e) => {
+                    const node = e.target.closest('.node');
+                    if (node) {
+                        this.toggleNode(node);
+                    }
+                });
+
+                // Dragging
+                let isDragging = false;
+                let startX, startY;
+
+                // Add mousedown listener to the whole window
+                window.addEventListener('mousedown', (e) => {
+                    // Only start drag if not clicking a node
+                    if (!e.target.closest('.node')) {
+                        isDragging = true;
+                        startX = e.clientX - this.offset.x;
+                        startY = e.clientY - this.offset.y;
+                    }
+                });
+
+                window.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+
+                    this.offset.x = e.clientX - startX;
+                    this.offset.y = e.clientY - startY;
+                    this.updateTransform();
+                });
+
+                document.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+
+                // Zooming
+                document.getElementById('zoomIn').addEventListener('click', () => {
+                    this.scale *= 1.2;
+                    this.updateTransform();
+                });
+
+                document.getElementById('zoomOut').addEventListener('click', () => {
+                    this.scale /= 1.2;
+                    this.updateTransform();
+                });
+
+                document.getElementById('fitScreen').addEventListener('click', () => {
+                    this.fitToScreen();
+                });
+
+                // Mouse wheel zooming
+                this.container.addEventListener('wheel', (e) => {
+                    e.preventDefault();
+                    const delta = e.deltaY > 0 ? 0.9 : 1.1;
+                    this.scale *= delta;
+                    this.updateTransform();
+                });
+            }
+
+            toggleNode(node) {
+                const nodeId = node.id;
+                if (this.activeNodes.has(nodeId)) {
+                    this.deactivateNode(node);
+                } else {
+                    this.activateNode(node);
+                }
+                this.updateStats();
+            }
+
+            activateNode(node) {
+                const nodeId = node.id;
+                const nodeData = this.findNodeData(nodeId);
+
+                this.activeNodes.add(nodeId);
+                this.updateNodeDisplay(node, nodeData);
+
+                // Update edges
+                nodeData.connections?.forEach(targetId => {
+                    if (this.activeNodes.has(targetId)) {
+                        this.activeEdges.add(`${nodeId}-${targetId}`);
+                        const edgeElement = Array.from(this.container.getElementsByClassName('edge'))
+                            .find(el =>
+                                (el.dataset.source === nodeId && el.dataset.target === targetId) ||
+                                (el.dataset.source === targetId && el.dataset.target === nodeId)
+                            );
+                        if (edgeElement) edgeElement.classList.add('active');
+                    }
+                });
+
+                // Update edges where this node is the target
+                Object.values(this.data.nodes)
+                    .flat()
+                    .filter(n => n && n.connections?.includes(nodeId))
+                    .forEach(sourceNode => {
+                        if (this.activeNodes.has(sourceNode.id)) {
+                            this.activeEdges.add(`${sourceNode.id}-${nodeId}`);
+                            const edgeElement = Array.from(this.container.getElementsByClassName('edge'))
+                                .find(el =>
+                                    (el.dataset.source === sourceNode.id && el.dataset.target === nodeId) ||
+                                    (el.dataset.source === nodeId && el.dataset.target === sourceNode.id)
+                                );
+                            if (edgeElement) edgeElement.classList.add('active');
+                        }
+                    });
+
+                this.updateConnectedNodesDisplay(nodeId);
+            }
+
+            deactivateNode(node) {
+                const nodeId = node.id;
+                const nodeData = this.findNodeData(nodeId);
+
+                this.activeNodes.delete(nodeId);
+                this.updateNodeDisplay(node, nodeData);
+
+                // Update edges
+                nodeData.connections?.forEach(targetId => {
+                    this.activeEdges.delete(`${nodeId}-${targetId}`);
+                    const edgeElement = Array.from(this.container.getElementsByClassName('edge'))
+                        .find(el =>
+                            (el.dataset.source === nodeId && el.dataset.target === targetId) ||
+                            (el.dataset.source === targetId && el.dataset.target === nodeId)
+                        );
+                    if (edgeElement) edgeElement.classList.remove('active');
+                });
+
+                // Update edges where this node is the target
+                Object.values(this.data.nodes)
+                    .flat()
+                    .filter(n => n && n.connections?.includes(nodeId))
+                    .forEach(sourceNode => {
+                        this.activeEdges.delete(`${sourceNode.id}-${nodeId}`);
+                        const edgeElement = Array.from(this.container.getElementsByClassName('edge'))
+                            .find(el =>
+                                (el.dataset.source === sourceNode.id && el.dataset.target === nodeId) ||
+                                (el.dataset.source === nodeId && el.dataset.target === sourceNode.id)
+                            );
+                        if (edgeElement) edgeElement.classList.remove('active');
+                    });
+
+                this.updateConnectedNodesDisplay(nodeId);
+            }
+
+            updateConnectedNodesDisplay(nodeId) {
+                const nodeData = this.findNodeData(nodeId);
+
+                // Update nodes that this node connects to
+                if (nodeData.connections) {
+                    nodeData.connections.forEach(targetId => {
+                        const targetNode = document.getElementById(targetId);
+                        if (targetNode) {
+                            this.updateNodeDisplay(targetNode, this.findNodeData(targetId));
+                        }
+                    });
+                }
+
+                // Update nodes that connect to this node
+                Object.values(this.data.nodes)
+                    .flat()
+                    .filter(node => node && node.connections && node.connections.includes(nodeId))
+                    .forEach(sourceNode => {
+                        const sourceElement = document.getElementById(sourceNode.id);
+                        if (sourceElement) {
+                            this.updateNodeDisplay(sourceElement, sourceNode);
+                        }
+                    });
+            }
+
+            updateEdgeStyle(edge) {
+                const edgeId = `${edge.source}-${edge.target}`;
+                const edgeElement = this.findEdgeElement(edge);
+                if (edgeElement) {
+                    if (this.activeEdges.has(edgeId)) {
+                        edgeElement.classList.add('active');
+                    } else {
+                        edgeElement.classList.remove('active');
+                    }
+                }
+            }
+
+            findNodeData(nodeId) {
+                const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
+                return allNodes.find(node => node.id === nodeId);
+            }
+
+            findEdgeElement(edge) {
+                return Array.from(this.container.getElementsByClassName('edge'))
+                    .find(el =>
+                        el.dataset.source === edge.source &&
+                        el.dataset.target === edge.target
+                    );
+            }
+
+            updateTransform() {
+                if (this.container) {
+                    this.container.style.transform =
+                        `translate(${this.offset.x}px, ${this.offset.y}px) scale(${this.scale})`;
+                }
+            }
+
+            fitToScreen() {
+                // Get root node and all nodes
+                const rootNode = document.getElementById('root');
+                const nodes = Array.from(this.container.getElementsByClassName('node'));
+                if (!rootNode || nodes.length === 0) return;
+
+                // First, center on root node
+                const containerRect = this.container.parentElement.getBoundingClientRect();
+                const containerCenterX = containerRect.width / 2;
+                const containerCenterY = containerRect.height / 2;
+
+                // Reset scale initially
+                this.scale = 1;
+                this.updateTransform();
+
+                // Get root node position
+                const rootRect = rootNode.getBoundingClientRect();
+                const rootCenterX = rootRect.left + (rootRect.width / 2);
+                const rootCenterY = rootRect.top + (rootRect.height / 2);
+
+                // Center on root
+                this.offset.x = containerCenterX - rootCenterX;
+                this.offset.y = containerCenterY - rootCenterY;
+                this.updateTransform();
+
+                // Now find the bounds of all nodes
+                let minX = Infinity,
+                    maxX = -Infinity;
+                let minY = Infinity,
+                    maxY = -Infinity;
+
+                nodes.forEach(node => {
+                    const rect = node.getBoundingClientRect();
+                    minX = Math.min(minX, rect.left);
+                    maxX = Math.max(maxX, rect.right);
+                    minY = Math.min(minY, rect.top);
+                    maxY = Math.max(maxY, rect.bottom);
+                });
+
+                // Calculate required scale with padding
+                const padding = 50;
+                const width = maxX - minX + (padding * 2);
+                const height = maxY - minY + (padding * 2);
+
+                const scaleX = containerRect.width / width;
+                const scaleY = containerRect.height / height;
+                this.scale = Math.min(scaleX, scaleY);
+
+                // Update one final time with new scale
+                this.updateTransform();
+            }
+
+            updateStats() {
+                // Get total counts first
+                const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
+                const totalNodes = allNodes.length;
+                const totalEdges = allNodes.reduce((count, node) =>
+                    count + (node.connections?.length || 0), 0);
+
+                // Count totals by domain and rarity
+                const domainTotals = {};
+                const rarityTotals = {
+                    gold: 0,
+                    orange: 0,
+                    purple: 0,
+                    blue: 0,
+                    green: 0,
+                    white: 0
+                };
+
+                allNodes.forEach(node => {
+                    if (node.domain) {
+                        domainTotals[node.domain] = (domainTotals[node.domain] || 0) + 1;
+                    }
+                    const rarity = node.rarity || 'white';
+                    rarityTotals[rarity] = (rarityTotals[rarity] || 0) + 1;
+                });
+
+                // Update total counts
+                document.getElementById('totalNodes').textContent = totalNodes;
+                document.getElementById('totalEdges').textContent = totalEdges;
+                document.getElementById('activeNodes').textContent = this.activeNodes.size;
+                document.getElementById('activeEdges').textContent = this.activeEdges.size;
+
+                // Update percentages
+                const activeNodesPercent = ((this.activeNodes.size / totalNodes) * 100).toFixed(1);
+                const activeEdgesPercent = ((this.activeEdges.size / totalEdges) * 100).toFixed(1);
+                document.getElementById('activeNodesPercent').textContent = `${activeNodesPercent}%`;
+                document.getElementById('activeEdgesPercent').textContent = `${activeEdgesPercent}%`;
+
+                // Count active nodes by domain and rarity
+                const domainCounts = {};
+                const rarityCounts = {
+                    gold: 0,
+                    orange: 0,
+                    purple: 0,
+                    blue: 0,
+                    green: 0,
+                    white: 0
+                };
+
+                this.activeNodes.forEach(nodeId => {
+                    const nodeData = this.findNodeData(nodeId);
+                    if (nodeData) {
+                        if (nodeData.domain) {
+                            domainCounts[nodeData.domain] = (domainCounts[nodeData.domain] || 0) + 1;
+                        }
+                        const rarity = nodeData.rarity || 'white';
+                        rarityCounts[rarity]++;
+                    }
+                });
+
+                // Update domain stats
+                Object.keys(domainTotals).forEach(domain => {
+                    const active = domainCounts[domain] || 0;
+                    const total = domainTotals[domain];
+                    const percent = ((active / total) * 100).toFixed(1);
+
+                    document.getElementById(`count-${domain}`).textContent = active;
+                    document.getElementById(`total-${domain}`).textContent = total;
+                    document.getElementById(`percent-${domain}`).textContent = `${percent}%`;
+                });
+
+                // Update rarity stats
+                Object.keys(rarityTotals).forEach(rarity => {
+                    const active = rarityCounts[rarity] || 0;
+                    const total = rarityTotals[rarity];
+                    const percent = ((active / total) * 100).toFixed(1);
+
+                    document.getElementById(`count-rarity-${rarity}`).textContent = active;
+                    document.getElementById(`total-rarity-${rarity}`).textContent = total;
+                    document.getElementById(`percent-rarity-${rarity}`).textContent = `${percent}%`;
+                });
+            }
+
+            // Add method to toggle grid
+            toggleGrid() {
+                this.showGrid = !this.showGrid;
+                const grid = this.container.querySelector('.grid');
+                if (grid) {
+                    grid.style.display = this.showGrid ? 'block' : 'none';
+                }
+            }
+
+        }
+
+
+        fetch('skill-tree.json')
+            .then(response => response.json())
+            .then(data => {
+                const skillTree = new SkillTree('skillTree', data);
             });
-        }
-
-        // Check if this node is a target of any other node's connections
-        const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
-        allNodes.forEach(sourceNode => {
-            if (sourceNode.connections && sourceNode.connections.includes(nodeId) && this.activeNodes.has(sourceNode.id)) {
-                this.activeEdges.add(`${sourceNode.id}-${nodeId}`);
-                const edgeElement = this.findEdgeElement({source: sourceNode.id, target: nodeId});
-                if (edgeElement) edgeElement.classList.add('active');
-            }
-        });
-    }
-
-    deactivateNode(node) {
-        const nodeId = node.id;
-        this.activeNodes.delete(nodeId);
-        node.style.backgroundColor = '#333';
-        node.innerHTML = '?';
-
-        // Deactivate connected edges
-        const nodeWithConnections = this.findNodeData(nodeId);
-        if (nodeWithConnections.connections) {
-            nodeWithConnections.connections.forEach(targetId => {
-                this.activeEdges.delete(`${nodeId}-${targetId}`);
-                const edgeElement = this.findEdgeElement({source: nodeId, target: targetId});
-                if (edgeElement) edgeElement.classList.remove('active');
-            });
-        }
-
-        // Check for incoming connections
-        const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
-        allNodes.forEach(sourceNode => {
-            if (sourceNode.connections && sourceNode.connections.includes(nodeId)) {
-                this.activeEdges.delete(`${sourceNode.id}-${nodeId}`);
-                const edgeElement = this.findEdgeElement({source: sourceNode.id, target: nodeId});
-                if (edgeElement) edgeElement.classList.remove('active');
-            }
-        });
-    }
-
-    updateEdgeStyle(edge) {
-        const edgeId = `${edge.source}-${edge.target}`;
-        const edgeElement = this.findEdgeElement(edge);
-        if (edgeElement) {
-            if (this.activeEdges.has(edgeId)) {
-                edgeElement.classList.add('active');
-            } else {
-                edgeElement.classList.remove('active');
-            }
-        }
-    }
-
-    findNodeData(nodeId) {
-        const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
-        return allNodes.find(node => node.id === nodeId);
-    }
-
-    findEdgeElement(edge) {
-        return Array.from(this.container.getElementsByClassName('edge'))
-        .find(el => 
-            el.dataset.source === edge.source && 
-            el.dataset.target === edge.target
-        );
-    }
-
-    updateTransform() {
-        this.container.style.transform =
-            `scale(${this.scale}) translate(${this.offset.x}px, ${this.offset.y}px)`;
-    }
-
-    fitToScreen() {
-        const nodes = Array.from(this.container.getElementsByClassName('node'));
-        let minX = Infinity, maxX = -Infinity;
-        let minY = Infinity, maxY = -Infinity;
-
-        nodes.forEach(node => {
-            const rect = node.getBoundingClientRect();
-            minX = Math.min(minX, rect.left);
-            maxX = Math.max(maxX, rect.right);
-            minY = Math.min(minY, rect.top);
-            maxY = Math.max(maxY, rect.bottom);
-        });
-
-        const width = maxX - minX;
-        const height = maxY - minY;
-        const containerRect = this.container.parentElement.getBoundingClientRect();
-
-        this.scale = Math.min(
-            containerRect.width / width,
-            containerRect.height / height
-        ) * 0.9;
-
-        this.offset.x = (containerRect.width - width) / 2;
-        this.offset.y = (containerRect.height - height) / 2;
-
-        this.updateTransform();
-    }
-
-    updateStats() {
-        document.getElementById('activeNodes').textContent =
-            this.activeNodes.size;
-        document.getElementById('activeEdges').textContent =
-            this.activeEdges.size;
-    }
-
-    // Add method to toggle grid
-    toggleGrid() {
-        this.showGrid = !this.showGrid;
-        const grid = this.container.querySelector('.grid');
-        if (grid) {
-            grid.style.display = this.showGrid ? 'block' : 'none';
-        }
-    }
-
-}
-
-
-fetch('skill-tree.json')
-	.then(response => response.json())
-	.then(data => {
-		const skillTree = new SkillTree('skillTree', data);
-});
-
-	</script>
+    </script>
 </body>
+
 </html>
