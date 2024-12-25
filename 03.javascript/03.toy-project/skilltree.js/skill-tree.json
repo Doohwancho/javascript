@@ -1,0 +1,57 @@
+{
+    "domains": {
+        "learn": "#4A90E2",
+        "computer-science": "#F5A623",
+        "web-development": "#7ED321",
+        "math": "#BD10E0",
+        "machine-learning": "#FF5733"
+    },
+    "nodes": {
+        "fundamental": {
+            "id": "root",
+            "type": "fundamental",
+            "domain": "learn",
+            "position": {"x": 0, "y": 0},
+            "title": "Core Skills",
+            "explored": true,
+            "connections": ["algo"],
+            "rarity": "gold"
+        },
+        "major": [
+            {
+                "id": "algo",
+                "type": "major",
+                "domain": "computer-science",
+                "position": {"x": 120, "y": 0},
+                "title": "Algorithms",
+                "explored": true,
+                "connections": ["sorting"],
+                "rarity": "purple"
+            }
+        ],
+        "minor": [
+            {
+                "id": "sorting",
+                "type": "minor",
+                "domain": "computer-science",
+                "position": {"x": 230, "y": 50},
+                "title": "Sorting Algorithms",
+                "explored": false,
+                "connections": [],
+                "rarity": "blue"
+            }
+        ],
+        "keystone": [
+            {
+                "id": "system-design",
+                "type": "keystone",
+                "domain": "computer-science",
+                "position": {"x": 150, "y": 150},
+                "title": "System Design",
+                "explored": false,
+                "connections": [],
+                "rarity": "blue"
+            }
+        ]
+    }
+}

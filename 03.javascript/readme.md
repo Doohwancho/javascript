@@ -12,7 +12,8 @@ a. get-used-to\
 b. frameless-frontend\
 c. banila-js-project\
 d. syntax\
-e. web component
+e. web component\
+z. toy_projects
 
 
 x. core:this\
@@ -56,6 +57,8 @@ e-3. slots :white_check_mark:\
 e-4. lifecycle methods :white_check_mark:\
 e-5. extending existing html elements :white_check_mark:
 
+
+z-1. skill tree :white_check_mark:
 
 ---\
 Reference
