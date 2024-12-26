@@ -236,9 +236,9 @@
         }
 
         /* Add these styles */
-        #legend {
+        #legend, #rarity-legend {
             margin-top: 20px;
-            padding: 10px;
+            padding: 10px 15px; /* Reduced right padding */
             background: rgba(0, 0, 0, 0.5);
             border-radius: 5px;
         }
@@ -248,13 +248,6 @@
             font-weight: bold;
             margin-bottom: 10px;
             color: white;
-        }
-
-        #rarity-legend {
-            margin-top: 20px;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
         }
 
         .count {
@@ -293,6 +286,103 @@
             stroke: rgba(255, 255, 255, 0.1);
             stroke-width: 1;
         }
+
+        /* Add these styles to your existing CSS */
+        .gauge-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 8px;
+        }
+
+        .gauge-label {
+            width: 30px;
+            font-size: 14px;
+            color: white;
+        }
+
+        .gauge-track {
+            flex: 1;
+            height: 24px;
+            background: #333;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gauge-fill {
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
+        }
+
+        .gauge-value {
+            width: 64px;
+            text-align: right;
+            font-size: 14px;
+        }
+
+        /* Circular gauge styles */
+        .total-gauges-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+            padding: 25px 20px 35px 20px; 
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            min-height: 150px; 
+        }
+
+        .circular-gauge {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            text-align: center;
+        }
+
+        .gauge-circle {
+            transform: rotate(-180deg);
+            fill: none;
+            stroke-width: 8;
+        }
+
+        .gauge-circle-bg {
+            stroke: #333;
+        }
+
+        .gauge-circle-fill {
+            stroke-linecap: round;
+            transition: stroke-dasharray 0.3s ease;
+            transform-origin: center;
+        }
+
+        .gauge-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 100%;
+            color: white;
+        }
+
+        .gauge-percent {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .gauge-count {
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        .gauge-label {
+            position: relative;
+            margin-top: 8px;
+            font-size: 14px;
+            color: white;
+        }
+
     </style>
 </head>
 
@@ -302,99 +392,19 @@
         <div id="stats">
             <div>Active Nodes: <span id="activeNodes">0</span> / <span id="totalNodes">0</span> (<span id="activeNodesPercent">0%</span>)</div>
             <div>Active Edges: <span id="activeEdges">0</span> / <span id="totalEdges">0</span> (<span id="activeEdgesPercent">0%</span>)</div>
+
+            <div class="total-gauges-container">
+                <div class="circular-gauge" id="totalDomainGauge"></div>
+                <div class="circular-gauge" id="totalRarityGauge"></div>
+            </div>
+
             <div id="legend">
                 <div class="legend-title">Domains:</div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: #4A90E2"></div>
-                    <span>Learn</span>
-                    <span class="count">
-                        <span id="count-learn">0</span> / <span id="total-learn">0</span>
-                        (<span id="percent-learn">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: #F5A623"></div>
-                    <span>Computer Science</span>
-                    <span class="count">
-                        <span id="count-computer-science">0</span> / <span id="total-computer-science">0</span>
-                        (<span id="percent-computer-science">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: #7ED321"></div>
-                    <span>Web Development</span>
-                    <span class="count">
-                        <span id="count-web-development">0</span> / <span id="total-web-development">0</span>
-                        (<span id="percent-web-development">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: #BD10E0"></div>
-                    <span>Math</span>
-                    <span class="count">
-                        <span id="count-math">0</span> / <span id="total-math">0</span>
-                        (<span id="percent-math">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: #FF5733"></div>
-                    <span>Machine Learning</span>
-                    <span class="count">
-                        <span id="count-machine-learning">0</span> / <span id="total-machine-learning">0</span>
-                        (<span id="percent-machine-learning">0%</span>)
-                    </span>
-                </div>
+                <!-- Gauge bars will be inserted here -->
             </div>
             <div id="rarity-legend">
                 <div class="legend-title">Rarities:</div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: var(--rarity-gold)"></div>
-                    <span>초월</span>
-                    <span class="count">
-                        <span id="count-rarity-gold">0</span> / <span id="total-rarity-gold">0</span>
-                        (<span id="percent-rarity-gold">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: var(--rarity-orange)"></div>
-                    <span>전설</span>
-                    <span class="count">
-                        <span id="count-rarity-orange">0</span> / <span id="total-rarity-orange">0</span>
-                        (<span id="percent-rarity-orange">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: var(--rarity-purple)"></div>
-                    <span>영웅</span>
-                    <span class="count">
-                        <span id="count-rarity-purple">0</span> / <span id="total-rarity-purple">0</span>
-                        (<span id="percent-rarity-purple">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: var(--rarity-blue)"></div>
-                    <span>희귀</span>
-                    <span class="count">
-                        <span id="count-rarity-blue">0</span> / <span id="total-rarity-blue">0</span>
-                        (<span id="percent-rarity-blue">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: var(--rarity-green)"></div>
-                    <span>일반</span>
-                    <span class="count">
-                        <span id="count-rarity-green">0</span> / <span id="total-rarity-green">0</span>
-                        (<span id="percent-rarity-green">0%</span>)
-                    </span>
-                </div>
-                <div class="legend-item">
-                    <div class="color-box" style="background-color: var(--rarity-white)"></div>
-                    <span>기본</span>
-                    <span class="count">
-                        <span id="count-rarity-white">0</span> / <span id="total-rarity-white">0</span>
-                        (<span id="percent-rarity-white">0%</span>)
-                    </span>
-                </div>
+                <!-- Gauge bars will be inserted here -->
             </div>
         </div>
         <div id="controls">
@@ -930,6 +940,100 @@
                 this.updateTransform();
             }
 
+            createGaugeBar(container, label, percentage, color, count, total) {
+                const gaugeBar = document.createElement('div');
+                gaugeBar.className = 'gauge-bar';
+                
+                const labelEl = document.createElement('span');
+                labelEl.className = 'gauge-label';
+                labelEl.textContent = label;
+                labelEl.style.color = color; 
+                
+                const track = document.createElement('div');
+                track.className = 'gauge-track';
+                
+                const fill = document.createElement('div');
+                fill.className = 'gauge-fill';
+                fill.style.width = `${percentage}%`;
+                fill.style.backgroundColor = color;
+                
+                const value = document.createElement('span');
+                value.className = 'gauge-value';
+                value.style.color = color;
+                value.textContent = `${percentage.toFixed(1)}%`;
+                
+                track.appendChild(fill);
+                gaugeBar.appendChild(labelEl);
+                gaugeBar.appendChild(track);
+                gaugeBar.appendChild(value);
+                
+                container.appendChild(gaugeBar);
+            }
+
+            createCircularGauge(container, percentage, color, count, total, label) {
+                container.innerHTML = '';
+                
+                const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+                svg.setAttribute('viewBox', '0 0 100 100');
+                svg.style.width = '100%';
+                svg.style.height = '100%';
+                svg.style.transform = 'rotate(-90deg)'; // Rotate the SVG
+                
+                // Background circle
+                const bgCircle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                bgCircle.setAttribute('cx', '50');
+                bgCircle.setAttribute('cy', '50');
+                bgCircle.setAttribute('r', '45');
+                // bgCircle.className = 'gauge-circle gauge-circle-bg';
+                // Fix: Use setAttribute for SVG classes
+                bgCircle.setAttribute('class', 'gauge-circle gauge-circle-bg');
+
+                    
+                // Progress circle
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', '50');
+                circle.setAttribute('cy', '50');
+                circle.setAttribute('r', '45');
+                // circle.className = 'gauge-circle gauge-circle-fill';
+                // Fix: Use setAttribute for SVG classes
+                bgCircle.setAttribute('class', 'gauge-circle gauge-circle-fill');
+                circle.style.stroke = color;
+                
+                const circumference = 2 * Math.PI * 45;
+                const fillLength = (percentage / 100) * circumference;
+
+                // Add strokeDashoffset to start from top
+                circle.style.strokeDasharray = `${circumference}`;
+                circle.style.strokeDashoffset = circumference - fillLength;
+                
+                svg.appendChild(bgCircle);
+                svg.appendChild(circle);
+                
+                // Add text elements
+                const textContainer = document.createElement('div');
+                textContainer.className = 'gauge-text';
+                
+                const percentText = document.createElement('div');
+                percentText.className = 'gauge-percent';
+                percentText.textContent = `${percentage.toFixed(1)}%`;
+                
+                const countText = document.createElement('div');
+                countText.className = 'gauge-count';
+                countText.textContent = `${count} / ${total}`;
+                
+                textContainer.appendChild(percentText);
+                textContainer.appendChild(countText);
+                
+                const labelText = document.createElement('div');
+                labelText.className = 'gauge-label';
+                labelText.textContent = label;
+                labelText.style.color = color;
+                
+                container.appendChild(svg);
+                container.appendChild(textContainer);
+                container.appendChild(labelText);
+            }
+
             updateStats() {
                 // Get total counts first
                 const allNodes = Object.values(this.data.nodes).flat().filter(node => node);
@@ -990,27 +1094,113 @@
                     }
                 });
 
-                // Update domain stats
-                Object.keys(domainTotals).forEach(domain => {
+                // Calculate totals for domains and rarities
+                const totalDomainCount = Object.values(domainCounts).reduce((a, b) => a + b, 0);
+                const totalDomainTotal = Object.values(domainTotals).reduce((a, b) => a + b, 0);
+                const totalDomainPercentage = (totalDomainCount / totalDomainTotal) * 100;
+
+                const totalRarityCount = Object.values(rarityCounts).reduce((a, b) => a + b, 0);
+                const totalRarityTotal = Object.values(rarityTotals).reduce((a, b) => a + b, 0);
+                const totalRarityPercentage = (totalRarityCount / totalRarityTotal) * 100;
+
+                // Update circular gauges for totals
+                this.createCircularGauge(
+                    document.getElementById('totalDomainGauge'),
+                    totalDomainPercentage,
+                    '#4A90E2', // Use appropriate color
+                    totalDomainCount,
+                    totalDomainTotal,
+                    'Total Domains'
+                );
+
+                this.createCircularGauge(
+                    document.getElementById('totalRarityGauge'),
+                    totalRarityPercentage,
+                    '#FFD700', // Use appropriate color
+                    totalRarityCount,
+                    totalRarityTotal,
+                    'Total Rarities'
+                );
+
+                // Update domain gauge bars
+                const legend = document.getElementById('legend');
+                legend.innerHTML = '<div class="legend-title">Domains:</div>';
+                Object.entries(this.data.domains).forEach(([domain, color]) => {
                     const active = domainCounts[domain] || 0;
                     const total = domainTotals[domain];
-                    const percent = ((active / total) * 100).toFixed(1);
-
-                    document.getElementById(`count-${domain}`).textContent = active;
-                    document.getElementById(`total-${domain}`).textContent = total;
-                    document.getElementById(`percent-${domain}`).textContent = `${percent}%`;
+                    const percentage = total > 0 ? (active / total) * 100 : 0;
+                    this.createGaugeBar(
+                        legend,
+                        domain === 'learn' ? '학습' :
+                        domain === 'computer-science' ? 'CS' :
+                        domain === 'web-development' ? 'Web' :
+                        domain === 'math' ? 'Math' :
+                        domain === 'machine-learning' ? 'ML' : domain,
+                        percentage,
+                        color,
+                        active,
+                        total
+                    );
                 });
 
-                // Update rarity stats
-                Object.keys(rarityTotals).forEach(rarity => {
+                // Update rarity gauge bars
+                const rarityLegend = document.getElementById('rarity-legend');
+                rarityLegend.innerHTML = '<div class="legend-title">Rarities:</div>';
+                const rarityLabels = {
+                    'gold': '초월',
+                    'orange': '전설',
+                    'purple': '영웅',
+                    'blue': '희귀',
+                    'green': '일반',
+                    'white': '기본'
+                };
+                Object.entries(rarityTotals).forEach(([rarity, total]) => {
                     const active = rarityCounts[rarity] || 0;
-                    const total = rarityTotals[rarity];
-                    const percent = ((active / total) * 100).toFixed(1);
-
-                    document.getElementById(`count-rarity-${rarity}`).textContent = active;
-                    document.getElementById(`total-rarity-${rarity}`).textContent = total;
-                    document.getElementById(`percent-rarity-${rarity}`).textContent = `${percent}%`;
+                    const percentage = total > 0 ? (active / total) * 100 : 0;
+                    const color = getComputedStyle(document.documentElement)
+                        .getPropertyValue(`--rarity-${rarity}`).trim();
+                    this.createGaugeBar(rarityLegend, rarityLabels[rarity], percentage, color, active, total);
                 });
+
+                // Update circular gauges style
+                const style = document.createElement('style');
+                style.textContent = `
+                    .gauge-circle-bg {
+                        stroke: #333;
+                        stroke-width: 8;
+                    }
+                    .gauge-circle-fill {
+                        stroke-width: 8;
+                        stroke-linecap: round;
+                        transform: rotate(-90deg);
+                        transform-origin: center;
+                        transition: stroke-dasharray 0.3s ease;
+                    }
+                `;
+                document.head.appendChild(style);
+
+                // Update the circular gauges for totals
+                if (totalDomainTotal > 0) {
+                    this.createCircularGauge(
+                        document.getElementById('totalDomainGauge'),
+                        totalDomainPercentage,
+                        '#4A90E2',
+                        totalDomainCount,
+                        totalDomainTotal,
+                        'Total Domains'
+                    );
+                }
+
+                if (totalRarityTotal > 0) {
+                    this.createCircularGauge(
+                        document.getElementById('totalRarityGauge'),
+                        totalRarityPercentage,
+                        '#FFD700',
+                        totalRarityCount,
+                        totalRarityTotal,
+                        'Total Rarities'
+                    );
+                }
             }
 
             // Add method to toggle grid
