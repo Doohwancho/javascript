@@ -1,0 +1,6 @@
+{
+    "compilerOptions": {
+      "types": ["vite/client", "@vue/runtime-core"]
+    },
+    "include": ["src/**/*.vue"]
+}
