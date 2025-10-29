@@ -10,11 +10,13 @@ import { UseRefDemo } from './02.hooks/state/05.useRef/02.what/useRefDemo';
 import UseRefDemo2 from './02.hooks/state/05.useRef/03.useRef_vs_useState/useRefDemo2';
 import Parent from './02.hooks/state/05.useRef/05.useImperativeHandle/ex2';
 import ParentComponent from './02.hooks/state/05.useRef/05.useImperativeHandle/ex1';
+import Example from './09.graph/bar_stack';
 
 function App() {
 
   return (
     <>
+      <Example width={1000} height={1000} />
       {/* step1. tsx */}
       {/* <TsxIndex /> */}
 
@@ -22,7 +24,7 @@ function App() {
       {/* <UseRefDemo /> */}
       {/* <UseRefDemo2 /> */}
       {/* <Parent /> */}
-      <ParentComponent />
+      {/* <ParentComponent /> */}
 
 
       {/* step3. react patterns */}
@@ -38,6 +40,9 @@ function App() {
 
       {/* step6. shadcn */}
       {/* <ShadcnMain /> */}
+
+      {/* step7. motion  */}
+
     </>
   )
 }
