@@ -6,45 +6,45 @@ import { Group } from "@visx/group";
 import { AxisBottom, AxisLeft } from "@visx/axis";
 // Mock data for stacked categories
 const cityTemperature = [
-  { date: "2020-01-01", Critical: 9, Complain: 17, Confused: 17, Misc: 4 },
-  { date: "2020-01-02", Critical: 8, Complain: 18, Confused: 17, Misc: 3 },
-  { date: "2020-01-03", Critical: 10, Complain: 18, Confused: 16, Misc: 5 },
-  { date: "2020-01-04", Critical: 9, Complain: 18, Confused: 16, Misc: 4 },
-  { date: "2020-01-05", Critical: 11, Complain: 19, Confused: 17, Misc: 4 },
-  { date: "2020-01-06", Critical: 10, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-07", Critical: 10, Complain: 18, Confused: 17, Misc: 4 },
-  { date: "2020-01-08", Critical: 9, Complain: 17, Confused: 16, Misc: 3 },
-  { date: "2020-01-09", Critical: 11, Complain: 19, Confused: 17, Misc: 5 },
-  { date: "2020-01-10", Critical: 9, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-11", Critical: 10, Complain: 19, Confused: 17, Misc: 4 },
-  { date: "2020-01-12", Critical: 9, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-13", Critical: 10, Complain: 18, Confused: 17, Misc: 4 },
-  { date: "2020-01-14", Critical: 10, Complain: 18, Confused: 16, Misc: 4 },
-  { date: "2020-01-15", Critical: 9, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-16", Critical: 9, Complain: 17, Confused: 16, Misc: 3 },
-  { date: "2020-01-17", Critical: 9, Complain: 17, Confused: 15, Misc: 3 },
-  { date: "2020-01-18", Critical: 9, Complain: 17, Confused: 16, Misc: 3 },
-  { date: "2020-01-19", Critical: 10, Complain: 18, Confused: 17, Misc: 4 },
-  { date: "2020-01-20", Critical: 10, Complain: 18, Confused: 17, Misc: 4 },
-  { date: "2020-01-21", Critical: 11, Complain: 19, Confused: 17, Misc: 5 },
-  { date: "2020-01-22", Critical: 11, Complain: 19, Confused: 18, Misc: 5 },
-  { date: "2020-01-23", Critical: 10, Complain: 19, Confused: 17, Misc: 4 },
-  { date: "2020-01-24", Critical: 10, Complain: 18, Confused: 17, Misc: 3 },
-  { date: "2020-01-25", Critical: 9, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-26", Critical: 9, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-27", Critical: 9, Complain: 17, Confused: 16, Misc: 3 },
-  { date: "2020-01-28", Critical: 10, Complain: 17, Confused: 15, Misc: 3 },
-  { date: "2020-01-29", Critical: 10, Complain: 18, Confused: 16, Misc: 3 },
-  { date: "2020-01-30", Critical: 11, Complain: 18, Confused: 16, Misc: 4 },
-  { date: "2020-01-31", Critical: 11, Complain: 18, Confused: 17, Misc: 4 },
+  { date: "2020-01-01", Critical: 9, Complaints: 17, Concern: 17, Neutral: 4 },
+  { date: "2020-01-02", Critical: 8, Complaints: 18, Concern: 17, Neutral: 3 },
+  { date: "2020-01-03", Critical: 10, Complaints: 18, Concern: 16, Neutral: 5 },
+  { date: "2020-01-04", Critical: 9, Complaints: 18, Concern: 16, Neutral: 4 },
+  { date: "2020-01-05", Critical: 11, Complaints: 19, Concern: 17, Neutral: 4 },
+  { date: "2020-01-06", Critical: 10, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-07", Critical: 10, Complaints: 18, Concern: 17, Neutral: 4 },
+  { date: "2020-01-08", Critical: 9, Complaints: 17, Concern: 16, Neutral: 3 },
+  { date: "2020-01-09", Critical: 11, Complaints: 19, Concern: 17, Neutral: 5 },
+  { date: "2020-01-10", Critical: 9, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-11", Critical: 10, Complaints: 19, Concern: 17, Neutral: 4 },
+  { date: "2020-01-12", Critical: 9, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-13", Critical: 10, Complaints: 18, Concern: 17, Neutral: 4 },
+  { date: "2020-01-14", Critical: 10, Complaints: 18, Concern: 16, Neutral: 4 },
+  { date: "2020-01-15", Critical: 9, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-16", Critical: 9, Complaints: 17, Concern: 16, Neutral: 3 },
+  { date: "2020-01-17", Critical: 9, Complaints: 17, Concern: 15, Neutral: 3 },
+  { date: "2020-01-18", Critical: 9, Complaints: 17, Concern: 16, Neutral: 3 },
+  { date: "2020-01-19", Critical: 10, Complaints: 18, Concern: 17, Neutral: 4 },
+  { date: "2020-01-20", Critical: 10, Complaints: 18, Concern: 17, Neutral: 4 },
+  { date: "2020-01-21", Critical: 11, Complaints: 19, Concern: 17, Neutral: 5 },
+  { date: "2020-01-22", Critical: 11, Complaints: 19, Concern: 18, Neutral: 5 },
+  { date: "2020-01-23", Critical: 10, Complaints: 19, Concern: 17, Neutral: 4 },
+  { date: "2020-01-24", Critical: 10, Complaints: 18, Concern: 17, Neutral: 3 },
+  { date: "2020-01-25", Critical: 9, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-26", Critical: 9, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-27", Critical: 9, Complaints: 17, Concern: 16, Neutral: 3 },
+  { date: "2020-01-28", Critical: 10, Complaints: 17, Concern: 15, Neutral: 3 },
+  { date: "2020-01-29", Critical: 10, Complaints: 18, Concern: 16, Neutral: 3 },
+  { date: "2020-01-30", Critical: 11, Complaints: 18, Concern: 16, Neutral: 4 },
+  { date: "2020-01-31", Critical: 11, Complaints: 18, Concern: 17, Neutral: 4 },
 ];
 
 type CityTemperature = {
   date: string;
   Critical: number;
-  Complain: number;
-  Confused: number;
-  Misc: number;
+  Complaints: number;
+  Concern: number;
+  Neutral: number;
 };
 import { scaleBand, scaleLinear, scaleOrdinal } from "@visx/scale";
 import { timeParse, timeFormat } from "@visx/vendor/d3-time-format";
@@ -52,7 +52,7 @@ import { useTooltip, useTooltipInPortal, defaultStyles } from "@visx/tooltip";
 import { LegendOrdinal } from "@visx/legend";
 import { localPoint } from "@visx/event";
 
-type CityName = "Critical" | "Complain" | "Confused" | "Misc";
+type CityName = "Critical" | "Complaints" | "Concern" | "Neutral";
 
 type TooltipData = {
   bar: SeriesPoint<CityTemperature>;
@@ -72,10 +72,7 @@ export type BarStackProps = {
   events?: boolean;
 };
 
-const purple1 = "#6c5efb";
-const purple2 = "#c998ff";
-export const purple3 = "#a44afe";
-const purple4 = "#ff8c00";
+const fontColor = "#C9CCE5";
 export const background = "#eaedff";
 const defaultMargin = { top: 40, right: 0, bottom: 0, left: 40 };
 const tooltipStyles = {
@@ -107,7 +104,8 @@ const getDate = (d: CityTemperature) => d.date;
 // scales
 const dateScale = scaleBand<string>({
   domain: data.map(getDate),
-  padding: 0.2,
+  paddingOuter: 10, // 첫 번째/마지막 막대와 축 끝 사이의 간격
+  paddingInner: 0.3, // 막대들 사이의 내부 간격 (값을 작게 할수록 간격이 줄어듭니다)
 });
 const temperatureScale = scaleLinear<number>({
   domain: [0, Math.max(...temperatureTotals)],
@@ -115,7 +113,7 @@ const temperatureScale = scaleLinear<number>({
 });
 const colorScale = scaleOrdinal<CityName, string>({
   domain: keys,
-  range: [purple1, purple2, purple3, purple4],
+  range: ["#D50000", "#DD9515", "#5E6CBE", "#444857"], // Critical, Complain, Confused, Misc
 });
 
 let tooltipTimeout: number;
@@ -338,14 +336,14 @@ export default function Example({
           </BarStack>
         </Group>
         <AxisLeft
-          left={margin.left}
+          left={margin.left + 200} //+200을 더해줘야 왼쪽에 있던 y-axis가 오른쪽으로 옮겨진다. scale에 InnerPadding, OuterPadding을 설정했기 때문에 바꿔주는 부분.
           top={margin.top}
           scale={temperatureScale}
-          stroke="none" // prev: purple3
-          tickStroke="none" // prev:purple3
+          stroke="none"
+          tickStroke="none"
           numTicks={6} // y축에 몇개의 숫자를 표시할지
           tickLabelProps={{
-            fill: purple3,
+            fill: fontColor,
             fontSize: 11,
             textAnchor: "end",
           }}
@@ -355,10 +353,10 @@ export default function Example({
           left={margin.left}
           scale={dateScale}
           tickFormat={formatDate}
-          stroke="none" // prev: purple3
-          tickStroke="none" // prev: purple3
+          stroke="none"
+          tickStroke="none"
           tickLabelProps={{
-            fill: purple3,
+            fill: fontColor,
             fontSize: 11,
             textAnchor: "middle",
           }}

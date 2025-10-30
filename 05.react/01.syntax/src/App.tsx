@@ -16,7 +16,7 @@ function App() {
 
   return (
     <>
-      <Example width={1000} height={1000} />
+      <Example width={1000} height={200} />
       {/* step1. tsx */}
       {/* <TsxIndex /> */}
 
